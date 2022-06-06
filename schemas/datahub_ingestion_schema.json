@@ -2216,6 +2216,15 @@
                     "writeOnly": true,
                     "format": "password"
                 },
+                "oauth_config": {
+                    "title": "Oauth Config",
+                    "description": "oauth configuration - https://docs.snowflake.com/en/user-guide/python-connector-example.html#connecting-with-oauth",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/OauthConfiguration"
+                        }
+                    ]
+                },
                 "authentication_type": {
                     "title": "Authentication Type",
                     "description": "The type of authenticator to use when connecting to Snowflake. Supports \"DEFAULT_AUTHENTICATOR\", \"EXTERNAL_BROWSER_AUTHENTICATOR\" and \"KEY_PAIR_AUTHENTICATOR\".",
@@ -4124,6 +4133,15 @@
                     "type": "string",
                     "writeOnly": true,
                     "format": "password"
+                },
+                "oauth_config": {
+                    "title": "Oauth Config",
+                    "description": "oauth configuration - https://docs.snowflake.com/en/user-guide/python-connector-example.html#connecting-with-oauth",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/OauthConfiguration"
+                        }
+                    ]
                 },
                 "authentication_type": {
                     "title": "Authentication Type",
@@ -9868,6 +9886,57 @@
                 "HOUR"
             ],
             "type": "string"
+        },
+        "OauthConfiguration": {
+            "title": "OauthConfiguration",
+            "type": "object",
+            "properties": {
+                "provider": {
+                    "title": "Provider",
+                    "description": "Identity provider for oauth, e.g- microsoft",
+                    "type": "string"
+                },
+                "client_id": {
+                    "title": "Client Id",
+                    "description": "client id of your registered application",
+                    "type": "string"
+                },
+                "scopes": {
+                    "title": "Scopes",
+                    "description": "scopes required to connect to snowflake",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "use_certificate": {
+                    "title": "Use Certificate",
+                    "description": "Do you want to use certificate and private key to authenticate using oauth",
+                    "default": false,
+                    "type": "string"
+                },
+                "client_secret": {
+                    "title": "Client Secret",
+                    "description": "client secret of the application if use_certificate = false",
+                    "type": "string"
+                },
+                "authority_url": {
+                    "title": "Authority Url",
+                    "description": "Authority url of your identity provider",
+                    "type": "string"
+                },
+                "encoded_oauth_public_key": {
+                    "title": "Encoded Oauth Public Key",
+                    "description": "base64 encoded certificate content if use_certificate = true",
+                    "type": "string"
+                },
+                "encoded_oauth_private_key": {
+                    "title": "Encoded Oauth Private Key",
+                    "description": "base64 encoded private key content if use_certificate = true",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
         },
         "SnowflakeProvisionRoleConfig": {
             "title": "SnowflakeProvisionRoleConfig",
