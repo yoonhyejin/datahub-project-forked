@@ -864,6 +864,11 @@
                     "description": "The platform that dbt is loading onto. (e.g. bigquery / redshift / postgres etc.)",
                     "type": "string"
                 },
+                "target_platform_instance": {
+                    "title": "Target Platform Instance",
+                    "description": "The platform instance for the platform that dbt is operating on. Use this if you have multiple instances of the same platform (e.g. redshift) and need to distinguish between them.",
+                    "type": "string"
+                },
                 "load_schemas": {
                     "title": "Load Schemas",
                     "description": "This flag is only consulted when disable_dbt_node_creation is set to True. Load schemas for target_platform entities from dbt catalog file, not necessary when you are already ingesting this metadata from the data platform directly. If set to False, table schema details (e.g. columns) will not be ingested.",
