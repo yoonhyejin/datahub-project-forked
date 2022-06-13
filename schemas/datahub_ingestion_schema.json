@@ -606,6 +606,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -1151,6 +1152,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -1475,6 +1477,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -1771,6 +1774,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -2160,6 +2164,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -2480,6 +2485,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -2730,6 +2736,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -2984,6 +2991,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -3693,6 +3701,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -4454,6 +4463,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -4844,6 +4854,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -5062,6 +5073,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -5537,6 +5549,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -5773,6 +5786,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -6064,6 +6078,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -6639,6 +6654,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -7521,6 +7537,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -8173,6 +8190,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -8458,6 +8476,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -8708,6 +8727,7 @@
                             "alphabet": "[A-Za-z0-9 _.-]"
                         },
                         "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
                         "max_workers": 10,
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
@@ -9394,6 +9414,13 @@
                     "description": "A positive integer that specifies the maximum number of columns to profile for any table. `None` implies all columns. The cost of profiling goes up significantly as the number of columns to profile goes up.",
                     "exclusiveMinimum": 0,
                     "type": "integer"
+                },
+                "profile_if_updated_since_days": {
+                    "title": "Profile If Updated Since Days",
+                    "description": "Profile table only if it has been updated since these many number of days. `None` implies profile all tables. Only Snowflake supports this.",
+                    "default": 1,
+                    "exclusiveMinimum": 0,
+                    "type": "number"
                 },
                 "max_workers": {
                     "title": "Max Workers",
