@@ -2991,6 +2991,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "format_sql_queries": {
                     "title": "Format Sql Queries",
                     "description": "Whether to format sql queries",
@@ -4044,6 +4050,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "format_sql_queries": {
                     "title": "Format Sql Queries",
                     "description": "Whether to format sql queries",
@@ -4647,6 +4659,12 @@
                     "title": "Include Operational Stats",
                     "description": "Whether to display operational stats.",
                     "default": true,
+                    "type": "boolean"
+                },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
                     "type": "boolean"
                 },
                 "format_sql_queries": {
@@ -6183,6 +6201,12 @@
                     "title": "Include Operational Stats",
                     "description": "Whether to display operational stats.",
                     "default": true,
+                    "type": "boolean"
+                },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
                     "type": "boolean"
                 },
                 "format_sql_queries": {
@@ -8169,6 +8193,12 @@
                     "title": "Include Operational Stats",
                     "description": "Whether to display operational stats.",
                     "default": true,
+                    "type": "boolean"
+                },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
                     "type": "boolean"
                 },
                 "format_sql_queries": {
