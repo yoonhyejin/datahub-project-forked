@@ -2036,6 +2036,11 @@
                     "description": "Path to dbt sources JSON. See https://docs.getdbt.com/reference/artifacts/sources-json. If not specified, last-modified fields will not be populated. Note this can be a local file or a URI.",
                     "type": "string"
                 },
+                "test_results_path": {
+                    "title": "Test Results Path",
+                    "description": "Path to output of dbt test run as run_results file in JSON format. See https://docs.getdbt.com/reference/artifacts/run-results-json. If not specified, test execution results will not be populated in DataHub.",
+                    "type": "string"
+                },
                 "target_platform": {
                     "title": "Target Platform",
                     "description": "The platform that dbt is loading onto. (e.g. bigquery / redshift / postgres etc.)",
@@ -2135,6 +2140,12 @@
                             "$ref": "#/definitions/AwsConnectionConfig"
                         }
                     ]
+                },
+                "delete_tests_as_datasets": {
+                    "title": "Delete Tests As Datasets",
+                    "description": "Prior to version 0.8.38, dbt tests were represented as datasets. If you ingested dbt tests before, set this flag to True (just needed once) to soft-delete tests that were generated as datasets by previous ingestion.",
+                    "default": false,
+                    "type": "boolean"
                 },
                 "disable_dbt_node_creation": {
                     "title": "Disable Dbt Node Creation",
