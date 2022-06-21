@@ -5822,6 +5822,16 @@
                     "description": "Size of each page to fetch when extracting metadata.",
                     "default": 20,
                     "type": "integer"
+                },
+                "user_attrs_map": {
+                    "title": "User Attrs Map",
+                    "default": {},
+                    "type": "object"
+                },
+                "group_attrs_map": {
+                    "title": "Group Attrs Map",
+                    "default": {},
+                    "type": "object"
                 }
             },
             "required": [
