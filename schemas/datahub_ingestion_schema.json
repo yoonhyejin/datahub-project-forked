@@ -7902,7 +7902,12 @@
                 },
                 "workbooks_page_size": {
                     "title": "Workbooks Page Size",
-                    "description": "Number of workbooks to query at a time using Tableau api.",
+                    "description": "@deprecated(use page_size instead) Number of workbooks to query at a time using Tableau api.",
+                    "type": "integer"
+                },
+                "page_size": {
+                    "title": "Page Size",
+                    "description": "Number of metadata objects (e.g. CustomSQLTable, PublishedDatasource, etc) to query at a time using Tableau api.",
                     "default": 10,
                     "type": "integer"
                 },
