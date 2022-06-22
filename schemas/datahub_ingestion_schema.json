@@ -3198,6 +3198,57 @@
             },
             "additionalProperties": false
         },
+        "csv-enricher": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "csv-enricher"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/csv-enricher_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "csv-enricher_config": {
+            "title": "CSVEnricherConfig",
+            "type": "object",
+            "properties": {
+                "filename": {
+                    "title": "Filename",
+                    "description": "Path to ingestion CSV file",
+                    "type": "string"
+                },
+                "should_overwrite": {
+                    "title": "Should Overwrite",
+                    "description": "Whether the ingestion should overwrite. Otherwise, we will append data.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "delimiter": {
+                    "title": "Delimiter",
+                    "description": "Delimiter to use when parsing CSV",
+                    "default": ",",
+                    "type": "string"
+                },
+                "array_delimiter": {
+                    "title": "Array Delimiter",
+                    "description": "Delimiter to use when parsing array fields (tags, terms, owners)",
+                    "default": "|",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "filename"
+            ],
+            "additionalProperties": false
+        },
         "sagemaker": {
             "type": "object",
             "properties": {
@@ -10645,6 +10696,9 @@
                 },
                 {
                     "$ref": "#/definitions/snowflake-usage"
+                },
+                {
+                    "$ref": "#/definitions/csv-enricher"
                 },
                 {
                     "$ref": "#/definitions/sagemaker"
