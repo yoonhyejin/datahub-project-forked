@@ -5449,6 +5449,18 @@
                     "default": 60,
                     "type": "integer"
                 },
+                "temp_table_dataset_prefix": {
+                    "title": "Temp Table Dataset Prefix",
+                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
+                    "default": "_",
+                    "type": "string"
+                },
+                "sharded_table_pattern": {
+                    "title": "Sharded Table Pattern",
+                    "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
+                    "default": "((.+)[_$])?(\\d{4,10})$",
+                    "type": "string"
+                },
                 "scheme": {
                     "title": "Scheme",
                     "default": "bigquery",
@@ -5518,12 +5530,6 @@
                     "description": "Whether to read date sharded tables or time partitioned tables when extracting usage from exported audit logs.",
                     "default": false,
                     "type": "boolean"
-                },
-                "temp_table_dataset_prefix": {
-                    "title": "Temp Table Dataset Prefix",
-                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
-                    "default": "_",
-                    "type": "string"
                 },
                 "use_v2_audit_metadata": {
                     "title": "Use V2 Audit Metadata",
@@ -6652,6 +6658,18 @@
                     "default": 60,
                     "type": "integer"
                 },
+                "temp_table_dataset_prefix": {
+                    "title": "Temp Table Dataset Prefix",
+                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
+                    "default": "_",
+                    "type": "string"
+                },
+                "sharded_table_pattern": {
+                    "title": "Sharded Table Pattern",
+                    "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
+                    "default": "((.+)[_$])?(\\d{4,10})$",
+                    "type": "string"
+                },
                 "projects": {
                     "title": "Projects",
                     "description": "List of project ids to ingest usage from. If not specified, will infer from environment.",
@@ -6757,12 +6775,6 @@
                             "$ref": "#/definitions/BigQueryCredential"
                         }
                     ]
-                },
-                "temp_table_dataset_prefix": {
-                    "title": "Temp Table Dataset Prefix",
-                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
-                    "default": "_",
-                    "type": "string"
                 }
             },
             "additionalProperties": false
