@@ -3549,6 +3549,15 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "s3_lineage_config": {
+                    "title": "S3 Lineage Config",
+                    "description": "Common config for S3 lineage generation",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/S3LineageProviderConfig"
+                        }
+                    ]
+                },
                 "platform_instance_map": {
                     "title": "Platform Instance Map",
                     "description": "A holder for platform -> platform_instance mappings to generate correct dataset urns",
@@ -4783,6 +4792,15 @@
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
+                "s3_lineage_config": {
+                    "title": "S3 Lineage Config",
+                    "description": "Common config for S3 lineage generation",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/S3LineageProviderConfig"
+                        }
+                    ]
+                },
                 "env": {
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
@@ -10181,6 +10199,25 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false
+        },
+        "S3LineageProviderConfig": {
+            "title": "S3LineageProviderConfig",
+            "description": "Any source that produces s3 lineage from/to Datasets should inherit this class.",
+            "type": "object",
+            "properties": {
+                "path_specs": {
+                    "title": "Path Specs",
+                    "description": "List of PathSpec. See below the details about PathSpec",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PathSpec"
+                    }
+                }
+            },
+            "required": [
+                "path_specs"
+            ],
             "additionalProperties": false
         },
         "LineageMode": {
