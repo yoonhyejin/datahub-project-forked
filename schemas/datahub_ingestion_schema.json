@@ -5468,12 +5468,12 @@
                 },
                 "project_id": {
                     "title": "Project Id",
-                    "description": "Project ID to ingest from. If not specified, will infer from environment.",
+                    "description": "Project ID where you have rights to run queries and create tables. If `storage_project_id` is not specified then it is assumed this is the same project where data is stored. If not specified, will infer from environment.",
                     "type": "string"
                 },
-                "lineage_client_project_id": {
-                    "title": "Lineage Client Project Id",
-                    "description": "If you want to use a different ProjectId for the lineage collection you can set it here.",
+                "storage_project_id": {
+                    "title": "Storage Project Id",
+                    "description": "If your data is stored in a different project where you don't have rights to run jobs and create tables then specify this field. The same service account must have read rights in this GCP project and write rights in `project_id`.",
                     "type": "string"
                 },
                 "log_page_size": {
@@ -9532,7 +9532,7 @@
                 },
                 "bigquery_temp_table_schema": {
                     "title": "Bigquery Temp Table Schema",
-                    "description": "On bigquery for profiling partitioned tables needs to create temporary views. You have to define a schema where these will be created. Views will be cleaned up after profiler runs. (Great expectation tech details about this (https://legacy.docs.greatexpectations.io/en/0.9.0/reference/integrations/bigquery.html#custom-queries-with-sql-datasource).",
+                    "description": "On bigquery for profiling partitioned tables needs to create temporary views. You have to define a dataset where these will be created. Views will be cleaned up after profiler runs. (Great expectation tech details about this (https://legacy.docs.greatexpectations.io/en/0.9.0/reference/integrations/bigquery.html#custom-queries-with-sql-datasource).",
                     "type": "string"
                 },
                 "partition_datetime": {
