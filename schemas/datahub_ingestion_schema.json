@@ -3418,6 +3418,82 @@
             ],
             "additionalProperties": false
         },
+        "delta-lake": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "delta-lake"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/delta-lake_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "delta-lake_config": {
+            "title": "DeltaLakeSourceConfig",
+            "description": "Any source that connects to a platform should inherit this class",
+            "type": "object",
+            "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "const": "delta-lake",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "base_path": {
+                    "title": "Base Path",
+                    "description": "Path to table (s3 or local file system). If path is not a delta table path then all subfolders will be scanned to detect and ingest delta tables.",
+                    "type": "string"
+                },
+                "relative_path": {
+                    "title": "Relative Path",
+                    "description": "If set, delta-tables will be searched at location '<base_path>/<relative_path>' and URNs will be created using relative_path only.",
+                    "type": "string"
+                },
+                "table_pattern": {
+                    "title": "Table Pattern",
+                    "description": "regex patterns for tables to filter in ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true,
+                        "alphabet": "[A-Za-z0-9 _.-]"
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "s3": {
+                    "$ref": "#/definitions/S3"
+                }
+            },
+            "required": [
+                "base_path"
+            ],
+            "additionalProperties": false
+        },
         "datahub-business-glossary": {
             "type": "object",
             "properties": {
@@ -10201,6 +10277,34 @@
             },
             "additionalProperties": false
         },
+        "S3": {
+            "title": "S3",
+            "type": "object",
+            "properties": {
+                "aws_config": {
+                    "title": "Aws Config",
+                    "description": "AWS configuration",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AwsSourceConfig"
+                        }
+                    ]
+                },
+                "use_s3_bucket_tags": {
+                    "title": "Use S3 Bucket Tags",
+                    "description": "Whether or not to create tags in datahub from the s3 bucket",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "use_s3_object_tags": {
+                    "title": "Use S3 Object Tags",
+                    "description": "# Whether or not to create tags in datahub from the s3 object",
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
         "S3LineageProviderConfig": {
             "title": "S3LineageProviderConfig",
             "description": "Any source that produces s3 lineage from/to Datasets should inherit this class.",
@@ -10747,6 +10851,9 @@
                 },
                 {
                     "$ref": "#/definitions/athena"
+                },
+                {
+                    "$ref": "#/definitions/delta-lake"
                 },
                 {
                     "$ref": "#/definitions/datahub-business-glossary"
