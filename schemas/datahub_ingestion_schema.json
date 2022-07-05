@@ -2112,6 +2112,12 @@
                     "description": "When extracting the view definition from a lookml file, the maximum number of characters to extract.",
                     "default": 512000,
                     "type": "integer"
+                },
+                "emit_reachable_views_only": {
+                    "title": "Emit Reachable Views Only",
+                    "description": "When enabled, only views that are reachable from explores defined in the model files are emitted",
+                    "default": false,
+                    "type": "boolean"
                 }
             },
             "required": [
