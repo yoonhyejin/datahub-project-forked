@@ -9386,14 +9386,14 @@
             "properties": {
                 "filename": {
                     "title": "Filename",
-                    "description": "Path to ingestion CSV file",
+                    "description": "Path to CSV file to ingest",
                     "type": "string"
                 },
-                "should_overwrite": {
-                    "title": "Should Overwrite",
-                    "description": "Whether the ingestion should overwrite. Otherwise, we will append data.",
-                    "default": false,
-                    "type": "boolean"
+                "write_semantics": {
+                    "title": "Write Semantics",
+                    "description": "Whether the new tags, terms and owners to be added will override the existing ones added only by this source or not. Value for this config can be \"PATCH\" or \"OVERRIDE\"",
+                    "default": "PATCH",
+                    "type": "string"
                 },
                 "delimiter": {
                     "title": "Delimiter",
@@ -9403,7 +9403,7 @@
                 },
                 "array_delimiter": {
                     "title": "Array Delimiter",
-                    "description": "Delimiter to use when parsing array fields (tags, terms, owners)",
+                    "description": "Delimiter to use when parsing array fields (tags, terms and owners)",
                     "default": "|",
                     "type": "string"
                 }
