@@ -6901,7 +6901,7 @@
                 },
                 "credential": {
                     "title": "Credential",
-                    "description": "Bigquery credential. Required if GOOGLE_APPLICATION_CREDENTIALS enviroment variable is not set. See this example recipe for details",
+                    "description": "Bigquery credential. Required if GOOGLE_APPLICATION_CREDENTIALS environment variable is not set. See this example recipe for details",
                     "allOf": [
                         {
                             "$ref": "#/definitions/BigQueryCredential"
@@ -9141,7 +9141,7 @@
                 },
                 "exclude_individual_partitions": {
                     "title": "Exclude Individual Partitions",
-                    "description": "Extract each individual partitioned topic. e.g. when turned off a topic with 100 partitions will result in 100 Datesets.",
+                    "description": "Extract each individual partitioned topic. e.g. when turned off a topic with 100 partitions will result in 100 Datasets.",
                     "default": true,
                     "type": "boolean"
                 },
