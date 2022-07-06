@@ -6670,6 +6670,141 @@
             },
             "additionalProperties": false
         },
+        "salesforce": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "salesforce"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/salesforce_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "salesforce_config": {
+            "title": "SalesforceConfig",
+            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
+            "type": "object",
+            "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "default": "salesforce",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "auth": {
+                    "default": "USERNAME_PASSWORD",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/SalesforceAuthType"
+                        }
+                    ]
+                },
+                "username": {
+                    "title": "Username",
+                    "description": "Salesforce username",
+                    "type": "string"
+                },
+                "password": {
+                    "title": "Password",
+                    "description": "Password for Salesforce user",
+                    "type": "string"
+                },
+                "security_token": {
+                    "title": "Security Token",
+                    "description": "Security token for Salesforce username",
+                    "type": "string"
+                },
+                "instance_url": {
+                    "title": "Instance Url",
+                    "description": "Salesforce instance url. e.g. https://MyDomainName.my.salesforce.com",
+                    "type": "string"
+                },
+                "access_token": {
+                    "title": "Access Token",
+                    "description": "Access token for instance url",
+                    "type": "string"
+                },
+                "ingest_tags": {
+                    "title": "Ingest Tags",
+                    "description": "Ingest Tags from source. This will override Tags entered from UI",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "object_pattern": {
+                    "title": "Object Pattern",
+                    "description": "Regex patterns for Salesforce objects to filter in ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true,
+                        "alphabet": "[A-Za-z0-9 _.-]"
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "domain": {
+                    "title": "Domain",
+                    "description": "Regex patterns for tables/schemas to describe domain_key domain key (domain_key can be any string like \"sales\".) There can be multiple domain keys specified.",
+                    "default": {},
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/AllowDenyPattern"
+                    }
+                },
+                "profiling": {
+                    "title": "Profiling",
+                    "default": {
+                        "enabled": false
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/SalesforceProfilingConfig"
+                        }
+                    ]
+                },
+                "profile_pattern": {
+                    "title": "Profile Pattern",
+                    "description": "Regex patterns for profiles to filter in ingestion, allowed by the `object_pattern`.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true,
+                        "alphabet": "[A-Za-z0-9 _.-]"
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
         "bigquery-usage": {
             "type": "object",
             "properties": {
@@ -10728,6 +10863,27 @@
             },
             "additionalProperties": false
         },
+        "SalesforceAuthType": {
+            "title": "SalesforceAuthType",
+            "description": "An enumeration.",
+            "enum": [
+                "USERNAME_PASSWORD",
+                "DIRECT_ACCESS_TOKEN"
+            ]
+        },
+        "SalesforceProfilingConfig": {
+            "title": "SalesforceProfilingConfig",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "title": "Enabled",
+                    "description": "Whether profiling should be done. Supports only table-level profiling at this stage",
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
         "GlueProfilingConfig": {
             "title": "GlueProfilingConfig",
             "type": "object",
@@ -10963,6 +11119,9 @@
                 },
                 {
                     "$ref": "#/definitions/kafka"
+                },
+                {
+                    "$ref": "#/definitions/salesforce"
                 },
                 {
                     "$ref": "#/definitions/bigquery-usage"
