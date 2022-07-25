@@ -5220,6 +5220,12 @@
                     "default": false,
                     "type": "boolean"
                 },
+                "backcompat_skip_source_on_lineage_edge": {
+                    "title": "Backcompat Skip Source On Lineage Edge",
+                    "description": "Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "disable_dbt_node_creation": {
                     "title": "Disable Dbt Node Creation",
                     "description": "Whether to suppress dbt dataset metadata creation. When set to True, this flag applies the dbt metadata to the target_platform entities (e.g. populating schema and column descriptions from dbt into the postgres / bigquery table metadata in DataHub) and generates lineage between the platform entities.",
