@@ -8135,6 +8135,14 @@
                     "default": "(objectClass=*)",
                     "type": "string"
                 },
+                "attrs_list": {
+                    "title": "Attrs List",
+                    "description": "Retrieved attributes list",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "drop_missing_first_last_name": {
                     "title": "Drop Missing First Last Name",
                     "description": "If set to true, any users without first and last names will be dropped.",
