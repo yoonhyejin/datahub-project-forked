@@ -1662,6 +1662,11 @@
                     "default": "localhost:8088",
                     "type": "string"
                 },
+                "display_uri": {
+                    "title": "Display Uri",
+                    "description": "optional URL to use in links (if `connect_uri` is only for ingestion)",
+                    "type": "string"
+                },
                 "username": {
                     "title": "Username",
                     "description": "Superset username.",
