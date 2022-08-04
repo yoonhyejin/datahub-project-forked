@@ -7006,6 +7006,31 @@
                             "$ref": "#/definitions/AllowDenyPattern"
                         }
                     ]
+                },
+                "ingest_index_templates": {
+                    "title": "Ingest Index Templates",
+                    "description": "Ingests ES index templates if enabled.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "index_template_pattern": {
+                    "title": "Index Template Pattern",
+                    "description": "The regex patterns for filtering index templates to ingest.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [
+                            "^_.*"
+                        ],
+                        "ignoreCase": true,
+                        "alphabet": "[A-Za-z0-9 _.-]"
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
                 }
             },
             "additionalProperties": false
