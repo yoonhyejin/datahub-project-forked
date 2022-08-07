@@ -9382,6 +9382,12 @@
                         }
                     ]
                 },
+                "version_history_lookback": {
+                    "title": "Version History Lookback",
+                    "description": "Number of previous version histories to be ingested. Defaults to 1. If set to -1 all version history will be ingested.",
+                    "default": 1,
+                    "type": "integer"
+                },
                 "s3": {
                     "$ref": "#/definitions/S3"
                 }
