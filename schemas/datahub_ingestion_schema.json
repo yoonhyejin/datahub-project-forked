@@ -4625,6 +4625,17 @@
                     "description": "Aws region where your Athena database is located",
                     "type": "string"
                 },
+                "aws_role_arn": {
+                    "title": "Aws Role Arn",
+                    "description": "AWS Role arn for Pyathena to assume in its connection",
+                    "type": "string"
+                },
+                "aws_role_assumption_duration": {
+                    "title": "Aws Role Assumption Duration",
+                    "description": "Duration to assume the AWS Role for. Maximum of 43200 (12 hours)",
+                    "default": 3600,
+                    "type": "integer"
+                },
                 "s3_staging_dir": {
                     "title": "S3 Staging Dir",
                     "description": "Staging s3 location where the Athena query results will be stored",
@@ -4633,6 +4644,12 @@
                 "work_group": {
                     "title": "Work Group",
                     "description": "The name of your Amazon Athena Workgroups",
+                    "type": "string"
+                },
+                "catalog_name": {
+                    "title": "Catalog Name",
+                    "description": "Athena Catalog Name",
+                    "default": "awsdatacatalog",
                     "type": "string"
                 }
             },
