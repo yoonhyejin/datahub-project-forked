@@ -1190,6 +1190,7 @@
                 "password": {
                     "title": "Password",
                     "description": "password",
+                    "default": "",
                     "type": "string",
                     "writeOnly": true,
                     "format": "password"
@@ -3856,6 +3857,7 @@
                 "password": {
                     "title": "Password",
                     "description": "password",
+                    "default": "",
                     "type": "string",
                     "writeOnly": true,
                     "format": "password"
