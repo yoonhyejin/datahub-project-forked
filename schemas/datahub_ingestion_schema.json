@@ -2701,14 +2701,12 @@
             "properties": {
                 "okta_domain": {
                     "title": "Okta Domain",
-                    "description": "The location of your Okta Domain, without a protocol. Can be found in Okta Developer console.",
-                    "default": "dev-33231928.okta.com",
+                    "description": "The location of your Okta Domain, without a protocol. Can be found in Okta Developer console. e.g. dev-33231928.okta.com",
                     "type": "string"
                 },
                 "okta_api_token": {
                     "title": "Okta Api Token",
-                    "description": "An API token generated for the DataHub application inside your Okta Developer Console.",
-                    "default": "00be4R_M2MzDqXawbWgfKGpKee0kuEOfX1RCQSRx00",
+                    "description": "An API token generated for the DataHub application inside your Okta Developer Console. e.g. 00be4R_M2MzDqXawbWgfKGpKee0kuEOfX1RCQSRx00",
                     "type": "string"
                 },
                 "ingest_users": {
@@ -2815,6 +2813,10 @@
                     "type": "boolean"
                 }
             },
+            "required": [
+                "okta_domain",
+                "okta_api_token"
+            ],
             "additionalProperties": false
         },
         "glue": {
