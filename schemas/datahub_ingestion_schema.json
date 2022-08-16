@@ -109,6 +109,11 @@
                 "extra_headers": {
                     "type": "string",
                     "description": "Extra headers which will be added to the request."
+                },
+                "disable_ssl_verification": {
+                    "type": "bool",
+                    "description": "Disable SSL verification for HTTPS communications.",
+                    "default": false
                 }
             },
             "required": [
