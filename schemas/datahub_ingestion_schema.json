@@ -6055,154 +6055,6 @@
             },
             "additionalProperties": false
         },
-        "data-lake": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "data-lake"
-                    ]
-                },
-                "config": {
-                    "$ref": "#/definitions/data-lake_config"
-                }
-            },
-            "required": [
-                "type",
-                "config"
-            ]
-        },
-        "data-lake_config": {
-            "title": "DataLakeSourceConfig",
-            "description": "Any source that produces dataset urns in a single environment should inherit this class",
-            "type": "object",
-            "properties": {
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "base_path": {
-                    "title": "Base Path",
-                    "description": "Path of the base folder to crawl. Unless `schema_patterns` and `profile_patterns` are set, the connector will ingest all files in this folder.",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "Autodetected.  Platform to use in namespace when constructing URNs. If left blank, local paths will correspond to `file` and S3 paths will correspond to `s3`.",
-                    "default": "",
-                    "type": "string"
-                },
-                "use_relative_path": {
-                    "title": "Use Relative Path",
-                    "description": "Whether to use the relative path when constructing URNs. Has no effect when a `path_spec` is provided.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_dotfiles": {
-                    "title": "Ignore Dotfiles",
-                    "description": "Whether to ignore files that start with `.`. For instance, `.DS_Store`, `.bash_profile`, etc.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "aws_config": {
-                    "title": "Aws Config",
-                    "description": "AWS details",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AwsSourceConfig"
-                        }
-                    ]
-                },
-                "schema_patterns": {
-                    "title": "Schema Patterns",
-                    "description": "regex patterns for tables to filter for ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "profile_patterns": {
-                    "title": "Profile Patterns",
-                    "description": "regex patterns for tables to profile ",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "path_spec": {
-                    "title": "Path Spec",
-                    "description": "Format string for constructing table identifiers from the relative path. See the above setup section for details.",
-                    "type": "string"
-                },
-                "profiling": {
-                    "title": "Profiling",
-                    "description": "Profiling configurations",
-                    "default": {
-                        "enabled": false,
-                        "spark_cluster_manager": null,
-                        "profile_table_level_only": false,
-                        "allow_deny_patterns": {
-                            "allow": [
-                                ".*"
-                            ],
-                            "deny": [],
-                            "ignoreCase": true
-                        },
-                        "max_number_of_fields_to_profile": null,
-                        "include_field_null_count": true,
-                        "include_field_min_value": true,
-                        "include_field_max_value": true,
-                        "include_field_mean_value": true,
-                        "include_field_median_value": true,
-                        "include_field_stddev_value": true,
-                        "include_field_quantiles": true,
-                        "include_field_distinct_value_frequencies": true,
-                        "include_field_histogram": true,
-                        "include_field_sample_values": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DataLakeProfilerConfig"
-                        }
-                    ]
-                },
-                "spark_driver_memory": {
-                    "title": "Spark Driver Memory",
-                    "description": "Max amount of memory to grant Spark.",
-                    "default": "4g",
-                    "type": "string"
-                },
-                "max_rows": {
-                    "title": "Max Rows",
-                    "description": "Maximum number of rows to use when inferring schemas for TSV and CSV files.",
-                    "default": 100,
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "base_path"
-            ],
-            "additionalProperties": false
-        },
         "metabase": {
             "type": "object",
             "properties": {
@@ -10429,11 +10281,6 @@
                     "default": false,
                     "type": "boolean"
                 },
-                "spark_cluster_manager": {
-                    "title": "Spark Cluster Manager",
-                    "description": "Spark master URL. See [Spark docs](https://spark.apache.org/docs/latest/submitting-applications.html#master-urls) for details.",
-                    "type": "string"
-                },
                 "profile_table_level_only": {
                     "title": "Profile Table Level Only",
                     "description": "Whether to perform profiling at table-level only or include column-level profiling as well.",
@@ -11526,9 +11373,6 @@
                 },
                 {
                     "$ref": "#/definitions/hana"
-                },
-                {
-                    "$ref": "#/definitions/data-lake"
                 },
                 {
                     "$ref": "#/definitions/metabase"
