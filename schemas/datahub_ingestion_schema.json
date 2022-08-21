@@ -6023,10 +6023,29 @@
                     "title": "Filename",
                     "description": "Path to file to ingest.",
                     "type": "string"
+                },
+                "path": {
+                    "title": "Path",
+                    "description": "Path to folder or file to ingest. If pointed to a folder, all files with extension {file_extension} (default json) within that folder will be processed.",
+                    "type": "string"
+                },
+                "file_extension": {
+                    "title": "File Extension",
+                    "description": "When providing a folder to use to read files, set this field to control file extensions that you want the source to process. * is a special value that means process every file regardless of extension",
+                    "default": "json",
+                    "type": "string"
+                },
+                "read_mode": {
+                    "default": "AUTO",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/FileReadMode"
+                        }
+                    ]
                 }
             },
             "required": [
-                "filename"
+                "path"
             ],
             "additionalProperties": false
         },
@@ -10939,6 +10958,15 @@
                 }
             },
             "additionalProperties": false
+        },
+        "FileReadMode": {
+            "title": "FileReadMode",
+            "description": "An enumeration.",
+            "enum": [
+                "STREAM",
+                "BATCH",
+                "AUTO"
+            ]
         },
         "SnowflakeStatefulIngestionConfig": {
             "title": "SnowflakeStatefulIngestionConfig",
