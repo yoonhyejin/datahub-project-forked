@@ -7072,6 +7072,20 @@
                     "description": "Where clause to specify what Hive schemas should be ingested.",
                     "default": "",
                     "type": "string"
+                },
+                "metastore_db_name": {
+                    "title": "Metastore Db Name",
+                    "description": "Name of the Hive metastore's database (usually: metastore).\n        For backwardcompatibility, if this field is not provided, the 'database' field will be used.\n        If both the 'database' and 'metastore_db_name' fields are set then the 'database'\n        field will be used to filter the hive/presto/trino database",
+                    "type": "string"
+                },
+                "mode": {
+                    "description": "The ingested data will be stored under this platform.\n        Valid options: ['hive', 'presto', 'presto-on-hive', 'trino']",
+                    "default": "presto-on-hive",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/PrestoOnHiveConfigMode"
+                        }
+                    ]
                 }
             },
             "additionalProperties": false
@@ -11009,6 +11023,17 @@
                 "BATCH",
                 "AUTO"
             ]
+        },
+        "PrestoOnHiveConfigMode": {
+            "title": "PrestoOnHiveConfigMode",
+            "description": "An enumeration.",
+            "enum": [
+                "hive",
+                "presto",
+                "presto-on-hive",
+                "trino"
+            ],
+            "type": "string"
         },
         "SnowflakeStatefulIngestionConfig": {
             "title": "SnowflakeStatefulIngestionConfig",
