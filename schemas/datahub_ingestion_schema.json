@@ -6047,7 +6047,7 @@
                 "file_extension": {
                     "title": "File Extension",
                     "description": "When providing a folder to use to read files, set this field to control file extensions that you want the source to process. * is a special value that means process every file regardless of extension",
-                    "default": "json",
+                    "default": ".json",
                     "type": "string"
                 },
                 "read_mode": {
@@ -6057,6 +6057,11 @@
                             "$ref": "#/definitions/FileReadMode"
                         }
                     ]
+                },
+                "aspect": {
+                    "title": "Aspect",
+                    "description": "Set to an aspect to only read this aspect for ingestion.",
+                    "type": "string"
                 }
             },
             "required": [
