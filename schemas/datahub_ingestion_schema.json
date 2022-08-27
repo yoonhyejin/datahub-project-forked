@@ -5094,7 +5094,7 @@
                 },
                 "account_id": {
                     "title": "Account Id",
-                    "description": "Snowflake account. e.g. abc48144",
+                    "description": "Snowflake account identifier. e.g. xy12345,  xy12345.us-east-2.aws, xy12345.us-central1.gcp, xy12345.central-us.azure. Refer [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-2-legacy-account-locator-in-a-region) for more details.",
                     "type": "string"
                 },
                 "warehouse": {
@@ -7294,7 +7294,7 @@
                 },
                 "account_id": {
                     "title": "Account Id",
-                    "description": "Snowflake account. e.g. abc48144",
+                    "description": "Snowflake account identifier. e.g. xy12345,  xy12345.us-east-2.aws, xy12345.us-central1.gcp, xy12345.central-us.azure. Refer [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-2-legacy-account-locator-in-a-region) for more details.",
                     "type": "string"
                 },
                 "warehouse": {
@@ -9242,7 +9242,7 @@
                 },
                 "account_id": {
                     "title": "Account Id",
-                    "description": "Snowflake account. e.g. abc48144",
+                    "description": "Snowflake account identifier. e.g. xy12345,  xy12345.us-east-2.aws, xy12345.us-central1.gcp, xy12345.central-us.azure. Refer [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#format-2-legacy-account-locator-in-a-region) for more details.",
                     "type": "string"
                 },
                 "warehouse": {
@@ -9468,6 +9468,12 @@
                 "include_usage_stats": {
                     "title": "Include Usage Stats",
                     "description": "If enabled, populates the snowflake usage statistics. Requires appropriate grants given to the role.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_technical_schema": {
+                    "title": "Include Technical Schema",
+                    "description": "If enabled, populates the snowflake technical schema and descriptions.",
                     "default": true,
                     "type": "boolean"
                 }
@@ -10032,20 +10038,20 @@
                 },
                 "profile_if_updated_since_days": {
                     "title": "Profile If Updated Since Days",
-                    "description": "Profile table only if it has been updated since these many number of days. If set to `null`, no constraint of last modified time for tables to profile. Supported only in `Snowflake` and `BigQuery`.",
+                    "description": "Profile table only if it has been updated since these many number of days. If set to `null`, no constraint of last modified time for tables to profile. Supported only in `snowflake`, `snowflake-beta` and `BigQuery`.",
                     "default": 1,
                     "exclusiveMinimum": 0,
                     "type": "number"
                 },
                 "profile_table_size_limit": {
                     "title": "Profile Table Size Limit",
-                    "description": "Profile tables only if their size is less then specified GBs. If set to `null`, no limit on the size of tables to profile. Supported only in `BigQuery`",
+                    "description": "Profile tables only if their size is less then specified GBs. If set to `null`, no limit on the size of tables to profile. Supported only in `snowflake-beta` and `BigQuery`",
                     "default": 1,
                     "type": "integer"
                 },
                 "profile_table_row_limit": {
                     "title": "Profile Table Row Limit",
-                    "description": "Profile tables only if their row count is less then specified count. If set to `null`, no limit on the row count of tables to profile. Supported only in `BigQuery`",
+                    "description": "Profile tables only if their row count is less then specified count. If set to `null`, no limit on the row count of tables to profile. Supported only in `snowflake-beta` and `BigQuery`",
                     "default": 50000,
                     "type": "integer"
                 },
