@@ -1664,7 +1664,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-08-30T16:25:23.039931+00:00",
+                        "end_time": "2022-08-30T18:19:53.940429+00:00",
                         "start_time": "2022-08-29T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -11353,7 +11353,7 @@
                     "title": "Use Certificate",
                     "description": "Do you want to use certificate and private key to authenticate using oauth",
                     "default": false,
-                    "type": "string"
+                    "type": "boolean"
                 },
                 "client_secret": {
                     "title": "Client Secret",
