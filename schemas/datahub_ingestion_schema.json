@@ -1664,7 +1664,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-08-31T16:01:44.644304+00:00",
+                        "end_time": "2022-08-31T17:39:36.148696+00:00",
                         "start_time": "2022-08-30T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9249,7 +9249,7 @@
                 },
                 "github_info": {
                     "title": "Github Info",
-                    "description": "Reference to your github location to enable easy navigation from DataHub to your LookML files",
+                    "description": "Reference to your github location. If present, supplies handy links to your lookml on the dataset entity page.",
                     "allOf": [
                         {
                             "$ref": "#/definitions/GitHubInfo"
@@ -10095,7 +10095,7 @@
                 },
                 "github_info": {
                     "title": "Github Info",
-                    "description": "Reference to your github location to enable easy navigation from DataHub to your LookML files",
+                    "description": "Reference to your github location. If present, supplies handy links to your lookml on the dataset entity page.",
                     "allOf": [
                         {
                             "$ref": "#/definitions/GitHubInfo"
