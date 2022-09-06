@@ -1664,8 +1664,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-05T19:14:10.371846+00:00",
-                        "start_time": "2022-09-04T00:00:00+00:00",
+                        "end_time": "2022-09-06T04:24:58.953128+00:00",
+                        "start_time": "2022-09-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -2753,7 +2753,7 @@
                     "description": "AWS configuration",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/AwsSourceConfig"
+                            "$ref": "#/definitions/AwsConnectionConfig"
                         }
                     ]
                 },
@@ -10471,9 +10471,9 @@
             },
             "additionalProperties": false
         },
-        "AwsSourceConfig": {
-            "title": "AwsSourceConfig",
-            "description": "Common AWS credentials config.\n\nCurrently used by:\n    - Glue source\n    - SageMaker source",
+        "AwsConnectionConfig": {
+            "title": "AwsConnectionConfig",
+            "description": "Common AWS credentials config.\n\nCurrently used by:\n    - Glue source\n    - SageMaker source\n    - dbt source",
             "type": "object",
             "properties": {
                 "aws_access_key_id": {
@@ -10528,44 +10528,6 @@
                     "additionalProperties": {
                         "type": "string"
                     }
-                },
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "database_pattern": {
-                    "title": "Database Pattern",
-                    "description": "regex patterns for databases to filter in ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "table_pattern": {
-                    "title": "Table Pattern",
-                    "description": "regex patterns for tables to filter in ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
                 }
             },
             "required": [
@@ -10582,7 +10544,7 @@
                     "description": "AWS configuration",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/AwsSourceConfig"
+                            "$ref": "#/definitions/AwsConnectionConfig"
                         }
                     ]
                 },
@@ -11235,70 +11197,6 @@
                     ]
                 }
             }
-        },
-        "AwsConnectionConfig": {
-            "title": "AwsConnectionConfig",
-            "description": "Common AWS credentials config.\n\nCurrently used by:\n    - Glue source\n    - SageMaker source\n    - dbt source",
-            "type": "object",
-            "properties": {
-                "aws_access_key_id": {
-                    "title": "Aws Access Key Id",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
-                    "type": "string"
-                },
-                "aws_secret_access_key": {
-                    "title": "Aws Secret Access Key",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
-                    "type": "string"
-                },
-                "aws_session_token": {
-                    "title": "Aws Session Token",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
-                    "type": "string"
-                },
-                "aws_role": {
-                    "title": "Aws Role",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "aws_profile": {
-                    "title": "Aws Profile",
-                    "description": "Named AWS profile to use, if not set the default will be used",
-                    "type": "string"
-                },
-                "aws_region": {
-                    "title": "Aws Region",
-                    "description": "AWS region code.",
-                    "type": "string"
-                },
-                "aws_endpoint_url": {
-                    "title": "Aws Endpoint Url",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html",
-                    "type": "string"
-                },
-                "aws_proxy": {
-                    "title": "Aws Proxy",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
-                }
-            },
-            "required": [
-                "aws_region"
-            ],
-            "additionalProperties": false
         },
         "GitHubInfo": {
             "title": "GitHubInfo",
