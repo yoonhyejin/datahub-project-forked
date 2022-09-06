@@ -1664,7 +1664,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-06T20:11:52.266780+00:00",
+                        "end_time": "2022-09-06T22:05:26.467390+00:00",
                         "start_time": "2022-09-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -11964,7 +11964,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "description": "Transformer configs see at https://datahubproject.io/docs/metadata-ingestion/transformers",
+                "description": "Transformer configs see at https://datahubproject.io/docs/metadata-ingestion/docs/transformer",
                 "properties": {
                     "type": {
                         "type": "string",
