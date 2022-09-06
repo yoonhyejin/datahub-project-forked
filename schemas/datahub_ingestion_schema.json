@@ -1664,7 +1664,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-06T04:24:58.953128+00:00",
+                        "end_time": "2022-09-06T06:30:17.161743+00:00",
                         "start_time": "2022-09-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -5760,8 +5760,23 @@
         },
         "tableau_config": {
             "title": "TableauConfig",
+            "description": "Any non-Dataset source that produces lineage to Datasets should inherit this class.\ne.g. Orchestrators, Pipelines, BI Tools etc.",
             "type": "object",
             "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "Environment to use in namespace when constructing URNs.",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform_instance_map": {
+                    "title": "Platform Instance Map",
+                    "description": "A holder for platform -> platform_instance mappings to generate correct dataset urns",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
                 "connect_uri": {
                     "title": "Connect Uri",
                     "description": "Tableau host URL.",
@@ -5839,11 +5854,14 @@
                     "default": 10,
                     "type": "integer"
                 },
-                "env": {
-                    "title": "Env",
-                    "description": "Environment to use in namespace when constructing URNs.",
-                    "default": "PROD",
-                    "type": "string"
+                "lineage_overrides": {
+                    "title": "Lineage Overrides",
+                    "description": "Mappings to change generated dataset urns. Use only if you really know what you are doing.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TableauLineageOverrides"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -11363,6 +11381,21 @@
                     "description": "Maximum number of attempts to retry before failing",
                     "default": 5,
                     "type": "integer"
+                }
+            },
+            "additionalProperties": false
+        },
+        "TableauLineageOverrides": {
+            "title": "TableauLineageOverrides",
+            "type": "object",
+            "properties": {
+                "platform_override_map": {
+                    "title": "Platform Override Map",
+                    "description": "A holder for platform -> platform mappings to generate correct dataset urns",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 }
             },
             "additionalProperties": false
