@@ -1664,7 +1664,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-09T18:39:48.170790+00:00",
+                        "end_time": "2022-09-09T20:54:43.018784+00:00",
                         "start_time": "2022-09-08T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9366,14 +9366,14 @@
                 },
                 "extract_usage_history": {
                     "title": "Extract Usage History",
-                    "description": "Experimental (Subject to breaking change) -- Whether to ingest usage statistics for dashboards. Setting this to True will query looker system activity explores to fetch historical dashboard usage.",
+                    "description": "Whether to ingest usage statistics for dashboards. Setting this to True will query looker system activity explores to fetch historical dashboard usage.",
                     "default": false,
                     "type": "boolean"
                 },
                 "extract_usage_history_for_interval": {
                     "title": "Extract Usage History For Interval",
-                    "description": "Experimental (Subject to breaking change) -- Used only if extract_usage_history is set to True. Interval to extract looker dashboard usage history for . https://docs.looker.com/reference/filter-expressions#date_and_time",
-                    "default": "1 day ago",
+                    "description": "Used only if extract_usage_history is set to True. Interval to extract looker dashboard usage history for. See https://docs.looker.com/reference/filter-expressions#date_and_time.",
+                    "default": "30 days",
                     "type": "string"
                 }
             },
