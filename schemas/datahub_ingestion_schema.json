@@ -1664,7 +1664,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-12T12:57:32.379446+00:00",
+                        "end_time": "2022-09-12T18:01:12.797583+00:00",
                         "start_time": "2022-09-11T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10318,7 +10318,7 @@
                 },
                 "report_dropped_profiles": {
                     "title": "Report Dropped Profiles",
-                    "description": "If datasets which were not profiled are reported in source report or not. Set to `True` for debugging purposes.",
+                    "description": "Whether to report datasets or dataset columns which were not profiled. Set to `True` for debugging purposes.",
                     "default": false,
                     "type": "boolean"
                 },
