@@ -1629,7 +1629,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-13T18:46:23.765413+00:00",
+                        "end_time": "2022-09-13T23:50:44.116748+00:00",
                         "start_time": "2022-09-12T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9943,7 +9943,7 @@
                 },
                 "base_folder": {
                     "title": "Base Folder",
-                    "description": "Local filepath where the root of the LookML repo lives. This is typically the root folder where the `*.model.lkml` and `*.view.lkml` files are stored. e.g. If you have checked out your LookML repo under `/Users/jdoe/workspace/my-lookml-repo`, then set `base_folder` to `/Users/jdoe/workspace/my-lookml-repo`.",
+                    "description": "Required if not providing github configuration and deploy keys. A pointer to a local directory (accessible to the ingestion system) where the root of the LookML repo has been checked out (typically via a git clone). This is typically the root folder where the `*.model.lkml` and `*.view.lkml` files are stored. e.g. If you have checked out your LookML repo under `/Users/jdoe/workspace/my-lookml-repo`, then set `base_folder` to `/Users/jdoe/workspace/my-lookml-repo`.",
                     "format": "directory-path",
                     "type": "string"
                 },
@@ -10029,9 +10029,6 @@
                     "type": "boolean"
                 }
             },
-            "required": [
-                "base_folder"
-            ],
             "additionalProperties": false
         },
         "AllowDenyPattern": {
@@ -11012,7 +11009,7 @@
             "properties": {
                 "repo": {
                     "title": "Repo",
-                    "description": "Name of your github repo. e.g. repo for https://github.com/datahub-project/datahub is `datahub-project/datahub`.",
+                    "description": "Name of your github repository in org/repo format. e.g. repo for https://github.com/datahub-project/datahub is `datahub-project/datahub`.",
                     "type": "string"
                 },
                 "branch": {
@@ -11023,8 +11020,26 @@
                 },
                 "base_url": {
                     "title": "Base Url",
-                    "description": "Base url for Github",
+                    "description": "Base url for Github. Used to construct clickable links on the UI.",
                     "default": "https://github.com",
+                    "type": "string"
+                },
+                "deploy_key_file": {
+                    "title": "Deploy Key File",
+                    "description": "A private key file that contains an ssh key that has been configured as a deploy key for this repository. Use a file where possible, else see deploy_key for a config field that accepts a raw string.",
+                    "format": "file-path",
+                    "type": "string"
+                },
+                "deploy_key": {
+                    "title": "Deploy Key",
+                    "description": "A private key that contains an ssh key that has been configured as a deploy key for this repository. See deploy_key_file if you want to use a file that contains this key.",
+                    "type": "string",
+                    "writeOnly": true,
+                    "format": "password"
+                },
+                "repo_ssh_locator": {
+                    "title": "Repo Ssh Locator",
+                    "description": "Auto-inferred from repo as git@github.com:{repo}, but you can override this if needed.",
                     "type": "string"
                 }
             },
