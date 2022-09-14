@@ -1629,7 +1629,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-14T12:35:23.761556+00:00",
+                        "end_time": "2022-09-14T16:39:35.504920+00:00",
                         "start_time": "2022-09-13T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -4621,7 +4621,13 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/DBTStatefulIngestionConfig"
+                    "title": "Stateful Ingestion",
+                    "description": "DBT Stateful Ingestion Config.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/DBTStatefulIngestionConfig"
+                        }
+                    ]
                 },
                 "manifest_path": {
                     "title": "Manifest Path",
@@ -10086,7 +10092,7 @@
         },
         "SQLAlchemyStatefulIngestionConfig": {
             "title": "SQLAlchemyStatefulIngestionConfig",
-            "description": "Specialization of basic StatefulIngestionConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
+            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
             "type": "object",
             "properties": {
                 "enabled": {
@@ -10125,7 +10131,7 @@
                 },
                 "remove_stale_metadata": {
                     "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the tables and views that were found in the last successful run but missing in the current run with stateful_ingestion enabled.",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
                 }
@@ -10728,7 +10734,7 @@
         },
         "KafkaSourceStatefulIngestionConfig": {
             "title": "KafkaSourceStatefulIngestionConfig",
-            "description": "Specialization of the basic StatefulIngestionConfig to add custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the KafkaSourceConfig.",
+            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
             "type": "object",
             "properties": {
                 "enabled": {
@@ -10767,6 +10773,7 @@
                 },
                 "remove_stale_metadata": {
                     "title": "Remove Stale Metadata",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
                 }
@@ -10801,7 +10808,7 @@
         },
         "PulsarSourceStatefulIngestionConfig": {
             "title": "PulsarSourceStatefulIngestionConfig",
-            "description": "Specialization of the basic StatefulIngestionConfig to add custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the PulsarSourceConfig.",
+            "description": "Specialization of the StatefulStaleMetadataRemovalConfig to add custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the PulsarSourceConfig.",
             "type": "object",
             "properties": {
                 "enabled": {
@@ -10840,6 +10847,7 @@
                 },
                 "remove_stale_metadata": {
                     "title": "Remove Stale Metadata",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
                 }
@@ -10897,7 +10905,7 @@
         },
         "DBTStatefulIngestionConfig": {
             "title": "DBTStatefulIngestionConfig",
-            "description": "Specialization of basic StatefulIngestionConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
+            "description": "Specialization of basic StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
             "type": "object",
             "properties": {
                 "enabled": {
@@ -10936,6 +10944,7 @@
                 },
                 "remove_stale_metadata": {
                     "title": "Remove Stale Metadata",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
                 }
@@ -11207,7 +11216,7 @@
         },
         "GlueStatefulIngestionConfig": {
             "title": "GlueStatefulIngestionConfig",
-            "description": "Specialization of basic StatefulIngestionConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the GlueSourceConfig.",
+            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the GlueSourceConfig.",
             "type": "object",
             "properties": {
                 "enabled": {
@@ -11246,6 +11255,7 @@
                 },
                 "remove_stale_metadata": {
                     "title": "Remove Stale Metadata",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
                 }
