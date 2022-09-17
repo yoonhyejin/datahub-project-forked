@@ -1629,8 +1629,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-16T22:18:14.919490+00:00",
-                        "start_time": "2022-09-15T00:00:00+00:00",
+                        "end_time": "2022-09-17T07:55:35.476693+00:00",
+                        "start_time": "2022-09-16T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -1658,6 +1658,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "capture_table_label_as_tag": {
+                    "title": "Capture Table Label As Tag",
+                    "description": "Capture BigQuery table labels as tag",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "dataset_pattern": {
                     "title": "Dataset Pattern",
                     "description": "Regex patterns for dataset to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
@@ -1679,6 +1685,12 @@
                     "description": "Include full payload into events. It is only for debugging and internal use.",
                     "default": false,
                     "type": "boolean"
+                },
+                "number_of_datasets_process_in_batch": {
+                    "title": "Number Of Datasets Process In Batch",
+                    "description": "Number of table queried in batch when getting metadata. This is a low leve config propert which should be touched with care. This restriction needed because we query partitions system view which throws error if we try to touch too many tables.",
+                    "default": 50,
+                    "type": "integer"
                 }
             },
             "additionalProperties": false
