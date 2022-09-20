@@ -1629,8 +1629,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-19T21:53:10.401223+00:00",
-                        "start_time": "2022-09-18T00:00:00+00:00",
+                        "end_time": "2022-09-20T00:16:33.666749+00:00",
+                        "start_time": "2022-09-19T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -5047,6 +5047,12 @@
                 "meta_mapping": {
                     "title": "Meta Mapping",
                     "description": "mapping rules that will be executed against dbt meta properties. Refer to the section below on dbt meta automated mappings.",
+                    "default": {},
+                    "type": "object"
+                },
+                "column_meta_mapping": {
+                    "title": "Column Meta Mapping",
+                    "description": "mapping rules that will be executed against dbt column meta properties. Refer to the section below on dbt meta automated mappings.",
                     "default": {},
                     "type": "object"
                 },
