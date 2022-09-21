@@ -1629,7 +1629,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-21T16:11:15.642691+00:00",
+                        "end_time": "2022-09-21T17:56:56.647561+00:00",
                         "start_time": "2022-09-20T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -3040,7 +3040,7 @@
                 },
                 "schema_pattern": {
                     "title": "Schema Pattern",
-                    "description": "Deprecated in favour of database_pattern. Regex patterns for schemas to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
+                    "description": "Deprecated in favour of database_pattern.",
                     "default": {
                         "allow": [
                             ".*"
@@ -7123,7 +7123,7 @@
                 },
                 "schema_pattern": {
                     "title": "Schema Pattern",
-                    "description": "Deprecated in favour of database_pattern. Regex patterns for schemas to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
+                    "description": "Deprecated in favour of database_pattern.",
                     "default": {
                         "allow": [
                             ".*"
