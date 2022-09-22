@@ -1629,7 +1629,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-22T22:29:49.175830+00:00",
+                        "end_time": "2022-09-22T23:27:22.054765+00:00",
                         "start_time": "2022-09-21T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10181,6 +10181,14 @@
                     "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 95.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
                 }
             },
             "additionalProperties": false
@@ -10926,6 +10934,14 @@
                     "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 95.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
                 }
             },
             "additionalProperties": false
@@ -11000,6 +11016,14 @@
                     "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 95.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
                 }
             },
             "additionalProperties": false
@@ -11097,6 +11121,14 @@
                     "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 95.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
                 }
             },
             "additionalProperties": false
@@ -11305,6 +11337,14 @@
                     "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 95.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
                 }
             },
             "additionalProperties": false
