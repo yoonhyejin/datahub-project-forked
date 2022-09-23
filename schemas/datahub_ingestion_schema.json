@@ -218,22 +218,22 @@
             "properties": {
                 "aws_access_key_id": {
                     "title": "Aws Access Key Id",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS access key ID. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_secret_access_key": {
                     "title": "Aws Secret Access Key",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS secret access key. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_session_token": {
                     "title": "Aws Session Token",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS session token. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_role": {
                     "title": "Aws Role",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS roles to assume. If using the string format, the role ARN can be specified directly. If using the object format, the role can be specified in the RoleArn field and additional available arguments are documented at https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sts.html?highlight=assume_role#STS.Client.assume_role",
                     "anyOf": [
                         {
                             "type": "string"
@@ -241,14 +241,21 @@
                         {
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AwsAssumeRoleConfig"
+                                    }
+                                ]
                             }
                         }
                     ]
                 },
                 "aws_profile": {
                     "title": "Aws Profile",
-                    "description": "Named AWS profile to use, if not set the default will be used",
+                    "description": "Named AWS profile to use. Only used if access key / secret are unset. If not set the default will be used",
                     "type": "string"
                 },
                 "aws_region": {
@@ -1629,8 +1636,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-22T23:52:08.439254+00:00",
-                        "start_time": "2022-09-21T00:00:00+00:00",
+                        "end_time": "2022-09-23T00:54:56.895866+00:00",
+                        "start_time": "2022-09-22T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -6480,22 +6487,22 @@
                 },
                 "aws_access_key_id": {
                     "title": "Aws Access Key Id",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS access key ID. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_secret_access_key": {
                     "title": "Aws Secret Access Key",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS secret access key. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_session_token": {
                     "title": "Aws Session Token",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS session token. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_role": {
                     "title": "Aws Role",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS roles to assume. If using the string format, the role ARN can be specified directly. If using the object format, the role can be specified in the RoleArn field and additional available arguments are documented at https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sts.html?highlight=assume_role#STS.Client.assume_role",
                     "anyOf": [
                         {
                             "type": "string"
@@ -6503,14 +6510,21 @@
                         {
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AwsAssumeRoleConfig"
+                                    }
+                                ]
                             }
                         }
                     ]
                 },
                 "aws_profile": {
                     "title": "Aws Profile",
-                    "description": "Named AWS profile to use, if not set the default will be used",
+                    "description": "Named AWS profile to use. Only used if access key / secret are unset. If not set the default will be used",
                     "type": "string"
                 },
                 "aws_region": {
@@ -10084,6 +10098,25 @@
             },
             "additionalProperties": false
         },
+        "AwsAssumeRoleConfig": {
+            "title": "AwsAssumeRoleConfig",
+            "type": "object",
+            "properties": {
+                "RoleArn": {
+                    "title": "Rolearn",
+                    "description": "ARN of the role to assume.",
+                    "type": "string"
+                },
+                "ExternalId": {
+                    "title": "Externalid",
+                    "description": "External ID to use when assuming the role.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "RoleArn"
+            ]
+        },
         "AllowDenyPattern": {
             "title": "AllowDenyPattern",
             "description": "A class to store allow deny regexes",
@@ -10359,22 +10392,22 @@
             "properties": {
                 "aws_access_key_id": {
                     "title": "Aws Access Key Id",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS access key ID. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_secret_access_key": {
                     "title": "Aws Secret Access Key",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS secret access key. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_session_token": {
                     "title": "Aws Session Token",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS session token. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
                     "type": "string"
                 },
                 "aws_role": {
                     "title": "Aws Role",
-                    "description": "Autodetected. See https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html",
+                    "description": "AWS roles to assume. If using the string format, the role ARN can be specified directly. If using the object format, the role can be specified in the RoleArn field and additional available arguments are documented at https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sts.html?highlight=assume_role#STS.Client.assume_role",
                     "anyOf": [
                         {
                             "type": "string"
@@ -10382,14 +10415,21 @@
                         {
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AwsAssumeRoleConfig"
+                                    }
+                                ]
                             }
                         }
                     ]
                 },
                 "aws_profile": {
                     "title": "Aws Profile",
-                    "description": "Named AWS profile to use, if not set the default will be used",
+                    "description": "Named AWS profile to use. Only used if access key / secret are unset. If not set the default will be used",
                     "type": "string"
                 },
                 "aws_region": {
