@@ -8203,7 +8203,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-26T21:18:24.513849+00:00",
+                        "end_time": "2022-09-26T22:21:41.212322+00:00",
                         "start_time": "2022-09-25T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
