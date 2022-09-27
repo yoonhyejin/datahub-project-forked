@@ -1934,7 +1934,7 @@
                 "sharded_table_pattern": {
                     "title": "Sharded Table Pattern",
                     "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
-                    "default": "((.+)[_$])?(\\d{4,10})$",
+                    "default": "((.+)[_$])?(\\d{8})$",
                     "deprecated": true,
                     "type": "string"
                 },
@@ -7281,7 +7281,7 @@
                 "sharded_table_pattern": {
                     "title": "Sharded Table Pattern",
                     "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
-                    "default": "((.+)[_$])?(\\d{4,10})$",
+                    "default": "((.+)[_$])?(\\d{8})$",
                     "deprecated": true,
                     "type": "string"
                 },
@@ -8096,7 +8096,7 @@
                 "sharded_table_pattern": {
                     "title": "Sharded Table Pattern",
                     "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
-                    "default": "((.+)[_$])?(\\d{4,10})$",
+                    "default": "((.+)[_$])?(\\d{8})$",
                     "deprecated": true,
                     "type": "string"
                 },
@@ -8203,7 +8203,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-27T18:46:10.899105+00:00",
+                        "end_time": "2022-09-27T19:41:09.676893+00:00",
                         "start_time": "2022-09-26T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
