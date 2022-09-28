@@ -8107,13 +8107,12 @@
                 },
                 "project_id": {
                     "title": "Project Id",
-                    "description": "Project ID where you have rights to run queries and create tables. If `storage_project_id` is not specified then it is assumed this is the same project where data is stored. If not specified, will infer from environment.",
+                    "description": "[deprecated] Use project_id_pattern instead.",
                     "type": "string"
                 },
                 "storage_project_id": {
                     "title": "Storage Project Id",
-                    "description": "If your data is stored in a different project where you don't have rights to run jobs and create tables then specify this field. The same service account must have read rights in this GCP project and write rights in `project_id`.",
-                    "type": "string"
+                    "type": "null"
                 },
                 "log_page_size": {
                     "title": "Log Page Size",
@@ -8203,7 +8202,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-28T05:36:27.350984+00:00",
+                        "end_time": "2022-09-28T07:01:48.131530+00:00",
                         "start_time": "2022-09-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
