@@ -2968,6 +2968,12 @@
                         }
                     ]
                 },
+                "extract_column_level_lineage": {
+                    "title": "Extract Column Level Lineage",
+                    "description": "When enabled, extracts column-level lineage from Views and Explores",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "base_folder": {
                     "title": "Base Folder",
                     "description": "Required if not providing github configuration and deploy keys. A pointer to a local directory (accessible to the ingestion system) where the root of the LookML repo has been checked out (typically via a git clone). This is typically the root folder where the `*.model.lkml` and `*.view.lkml` files are stored. e.g. If you have checked out your LookML repo under `/Users/jdoe/workspace/my-lookml-repo`, then set `base_folder` to `/Users/jdoe/workspace/my-lookml-repo`.",
@@ -3925,6 +3931,12 @@
                             "$ref": "#/definitions/GitHubInfo"
                         }
                     ]
+                },
+                "extract_column_level_lineage": {
+                    "title": "Extract Column Level Lineage",
+                    "description": "When enabled, extracts column-level lineage from Views and Explores",
+                    "default": true,
+                    "type": "boolean"
                 },
                 "client_id": {
                     "title": "Client Id",
@@ -8202,8 +8214,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-28T23:41:05.742425+00:00",
-                        "start_time": "2022-09-27T00:00:00+00:00",
+                        "end_time": "2022-09-29T03:51:48.673431+00:00",
+                        "start_time": "2022-09-28T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
