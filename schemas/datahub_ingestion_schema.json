@@ -8214,7 +8214,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-09-29T10:22:43.357710+00:00",
+                        "end_time": "2022-09-29T11:24:26.833341+00:00",
                         "start_time": "2022-09-28T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
