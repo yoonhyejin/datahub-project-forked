@@ -4744,6 +4744,12 @@
                     "description": "Salesforce instance url. e.g. https://MyDomainName.my.salesforce.com",
                     "type": "string"
                 },
+                "is_sandbox": {
+                    "title": "Is Sandbox",
+                    "description": "Connect to Sandbox instance of your Salesforce",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "access_token": {
                     "title": "Access Token",
                     "description": "Access token for instance url",
@@ -8214,7 +8220,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-04T13:14:28.055343+00:00",
+                        "end_time": "2022-10-04T16:17:09.011834+00:00",
                         "start_time": "2022-10-03T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
