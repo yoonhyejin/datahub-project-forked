@@ -8220,7 +8220,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-04T18:36:56.990205+00:00",
+                        "end_time": "2022-10-04T19:22:30.229317+00:00",
                         "start_time": "2022-10-03T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9349,7 +9349,7 @@
                 },
                 "platform": {
                     "title": "Platform",
-                    "description": "The platform that this source connects to",
+                    "description": "The platform that this source connects to (either 's3' or 'file'). If not specified, the platform will be inferred from the path_specs.",
                     "default": "",
                     "type": "string"
                 },
@@ -9360,20 +9360,11 @@
                 },
                 "path_specs": {
                     "title": "Path Specs",
-                    "description": "List of PathSpec. See below the details about PathSpec",
+                    "description": "List of PathSpec. See [below](#path-spec) the details about PathSpec",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/PathSpec"
                     }
-                },
-                "path_spec": {
-                    "title": "Path Spec",
-                    "description": "Path spec will be deprecated in favour of path_specs option.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/PathSpec"
-                        }
-                    ]
                 },
                 "aws_config": {
                     "title": "Aws Config",
@@ -9447,6 +9438,9 @@
                     "type": "integer"
                 }
             },
+            "required": [
+                "path_specs"
+            ],
             "additionalProperties": false
         },
         "sagemaker": {
@@ -10781,12 +10775,12 @@
                 },
                 "table_name": {
                     "title": "Table Name",
-                    "description": "Display name of the dataset.Combination of named variableds from include path and strings",
+                    "description": "Display name of the dataset.Combination of named variables from include path and strings",
                     "type": "string"
                 },
                 "enable_compression": {
                     "title": "Enable Compression",
-                    "description": "Enable or disable processing compressed files. Currenly .gz and .bz files are supported.",
+                    "description": "Enable or disable processing compressed files. Currently .gz and .bz files are supported.",
                     "default": true,
                     "type": "boolean"
                 },
