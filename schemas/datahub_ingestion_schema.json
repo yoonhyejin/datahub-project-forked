@@ -2870,80 +2870,49 @@
                 },
                 "explore_naming_pattern": {
                     "title": "Explore Naming Pattern",
-                    "description": "Pattern for providing dataset names to explores. Allowed variables are {project}, {model}, {name}. Default is `{model}.explore.{name}`",
+                    "description": "Pattern for providing dataset names to explores. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "{model}.explore.{name}",
-                        "variables": null
+                        "pattern": "{model}.explore.{name}"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
                 "explore_browse_pattern": {
                     "title": "Explore Browse Pattern",
+                    "description": "Pattern for providing browse paths to explores. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "/{env}/{platform}/{project}/explores",
-                        "variables": null
+                        "pattern": "/{env}/{platform}/{project}/explores"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
                 "view_naming_pattern": {
                     "title": "View Naming Pattern",
-                    "description": "Pattern for providing dataset names to views. Allowed variables are `{project}`, `{model}`, `{name}`",
+                    "description": "Pattern for providing dataset names to views. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "{project}.view.{name}",
-                        "variables": null
+                        "pattern": "{project}.view.{name}"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
                 "view_browse_pattern": {
                     "title": "View Browse Pattern",
-                    "description": "Pattern for providing browse paths to views. Allowed variables are `{project}`, `{model}`, `{name}`, `{platform}` and `{env}`",
+                    "description": "Pattern for providing browse paths to views. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "/{env}/{platform}/{project}/views",
-                        "variables": null
+                        "pattern": "/{env}/{platform}/{project}/views"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
@@ -3834,80 +3803,49 @@
                 },
                 "explore_naming_pattern": {
                     "title": "Explore Naming Pattern",
-                    "description": "Pattern for providing dataset names to explores. Allowed variables are {project}, {model}, {name}. Default is `{model}.explore.{name}`",
+                    "description": "Pattern for providing dataset names to explores. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "{model}.explore.{name}",
-                        "variables": null
+                        "pattern": "{model}.explore.{name}"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
                 "explore_browse_pattern": {
                     "title": "Explore Browse Pattern",
+                    "description": "Pattern for providing browse paths to explores. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "/{env}/{platform}/{project}/explores",
-                        "variables": null
+                        "pattern": "/{env}/{platform}/{project}/explores"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
                 "view_naming_pattern": {
                     "title": "View Naming Pattern",
-                    "description": "Pattern for providing dataset names to views. Allowed variables are `{project}`, `{model}`, `{name}`",
+                    "description": "Pattern for providing dataset names to views. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "{project}.view.{name}",
-                        "variables": null
+                        "pattern": "{project}.view.{name}"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
                 "view_browse_pattern": {
                     "title": "View Browse Pattern",
-                    "description": "Pattern for providing browse paths to views. Allowed variables are `{project}`, `{model}`, `{name}`, `{platform}` and `{env}`",
+                    "description": "Pattern for providing browse paths to views. Allowed variables are ['platform', 'env', 'project', 'model', 'name']",
                     "default": {
-                        "allowed_vars": [
-                            "platform",
-                            "env",
-                            "project",
-                            "model",
-                            "name"
-                        ],
-                        "pattern": "/{env}/{platform}/{project}/views",
-                        "variables": null
+                        "pattern": "/{env}/{platform}/{project}/views"
                     },
                     "allOf": [
                         {
-                            "$ref": "#/definitions/NamingPattern"
+                            "$ref": "#/definitions/LookerNamingPattern"
                         }
                     ]
                 },
@@ -8220,7 +8158,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-05T03:49:34.842264+00:00",
+                        "end_time": "2022-10-05T04:36:25.346010+00:00",
                         "start_time": "2022-10-04T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10824,33 +10762,19 @@
                 "mixed"
             ]
         },
-        "NamingPattern": {
-            "title": "NamingPattern",
+        "LookerNamingPattern": {
+            "title": "LookerNamingPattern",
             "type": "object",
             "properties": {
-                "allowed_vars": {
-                    "title": "Allowed Vars",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "pattern": {
                     "title": "Pattern",
                     "type": "string"
-                },
-                "variables": {
-                    "title": "Variables",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 }
             },
             "required": [
-                "allowed_vars",
                 "pattern"
-            ]
+            ],
+            "additionalProperties": false
         },
         "LookerConnectionDefinition": {
             "title": "LookerConnectionDefinition",
