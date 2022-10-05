@@ -8220,8 +8220,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-04T23:00:40.350632+00:00",
-                        "start_time": "2022-10-03T00:00:00+00:00",
+                        "end_time": "2022-10-05T03:49:34.842264+00:00",
+                        "start_time": "2022-10-04T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -10177,7 +10177,7 @@
                 "fail_safe_threshold": {
                     "title": "Fail Safe Threshold",
                     "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 95.0,
+                    "default": 20.0,
                     "minimum": 0.0,
                     "maximum": 100.0,
                     "type": "number"
@@ -10446,7 +10446,7 @@
                 "fail_safe_threshold": {
                     "title": "Fail Safe Threshold",
                     "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 95.0,
+                    "default": 20.0,
                     "minimum": 0.0,
                     "maximum": 100.0,
                     "type": "number"
@@ -10990,7 +10990,7 @@
                 "fail_safe_threshold": {
                     "title": "Fail Safe Threshold",
                     "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 95.0,
+                    "default": 20.0,
                     "minimum": 0.0,
                     "maximum": 100.0,
                     "type": "number"
@@ -11124,7 +11124,7 @@
                 "fail_safe_threshold": {
                     "title": "Fail Safe Threshold",
                     "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 95.0,
+                    "default": 20.0,
                     "minimum": 0.0,
                     "maximum": 100.0,
                     "type": "number"
@@ -11494,7 +11494,7 @@
                 "fail_safe_threshold": {
                     "title": "Fail Safe Threshold",
                     "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 95.0,
+                    "default": 20.0,
                     "minimum": 0.0,
                     "maximum": 100.0,
                     "type": "number"
