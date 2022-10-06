@@ -904,6 +904,12 @@
                     "title": "Aspect",
                     "description": "Set to an aspect to only read this aspect for ingestion.",
                     "type": "string"
+                },
+                "count_all_before_starting": {
+                    "title": "Count All Before Starting",
+                    "description": "When enabled, counts total number of records in the file before starting. Used for accurate estimation of completion time. Turn it off if startup time is too high.",
+                    "default": true,
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -8158,7 +8164,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-06T16:31:35.665850+00:00",
+                        "end_time": "2022-10-06T17:35:23.454394+00:00",
                         "start_time": "2022-10-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
