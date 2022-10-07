@@ -1374,7 +1374,7 @@
                     "description": "Reference to your github location to enable easy navigation from DataHub to your dbt files.",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/GitHubInfo"
+                            "$ref": "#/definitions/GitHubReference"
                         }
                     ]
                 },
@@ -2954,6 +2954,23 @@
                     "description": "Required if not providing github configuration and deploy keys. A pointer to a local directory (accessible to the ingestion system) where the root of the LookML repo has been checked out (typically via a git clone). This is typically the root folder where the `*.model.lkml` and `*.view.lkml` files are stored. e.g. If you have checked out your LookML repo under `/Users/jdoe/workspace/my-lookml-repo`, then set `base_folder` to `/Users/jdoe/workspace/my-lookml-repo`.",
                     "format": "directory-path",
                     "type": "string"
+                },
+                "project_dependencies": {
+                    "title": "Project Dependencies",
+                    "description": "A map of project_name to local directory (accessible to the ingestion system) or Git credentials. Every local_dependencies or private remote_dependency listed in the main project's manifest.lkml file should have a corresponding entry here. If a deploy key is not provided, the ingestion system will use the same deploy key as the main project. ",
+                    "default": {},
+                    "type": "object",
+                    "additionalProperties": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "directory-path"
+                            },
+                            {
+                                "$ref": "#/definitions/GitHubInfo"
+                            }
+                        ]
+                    }
                 },
                 "connection_to_platform_map": {
                     "title": "Connection To Platform Map",
@@ -8164,7 +8181,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-07T19:27:24.496532+00:00",
+                        "end_time": "2022-10-07T20:23:27.047014+00:00",
                         "start_time": "2022-10-06T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10549,8 +10566,8 @@
             ],
             "additionalProperties": false
         },
-        "GitHubInfo": {
-            "title": "GitHubInfo",
+        "GitHubReference": {
+            "title": "GitHubReference",
             "type": "object",
             "properties": {
                 "repo": {
@@ -10568,24 +10585,6 @@
                     "title": "Base Url",
                     "description": "Base url for Github. Used to construct clickable links on the UI.",
                     "default": "https://github.com",
-                    "type": "string"
-                },
-                "deploy_key_file": {
-                    "title": "Deploy Key File",
-                    "description": "A private key file that contains an ssh key that has been configured as a deploy key for this repository. Use a file where possible, else see deploy_key for a config field that accepts a raw string.",
-                    "format": "file-path",
-                    "type": "string"
-                },
-                "deploy_key": {
-                    "title": "Deploy Key",
-                    "description": "A private key that contains an ssh key that has been configured as a deploy key for this repository. See deploy_key_file if you want to use a file that contains this key.",
-                    "type": "string",
-                    "writeOnly": true,
-                    "format": "password"
-                },
-                "repo_ssh_locator": {
-                    "title": "Repo Ssh Locator",
-                    "description": "Auto-inferred from repo as git@github.com:{repo}, but you can override this if needed.",
                     "type": "string"
                 }
             },
@@ -10779,6 +10778,51 @@
             },
             "required": [
                 "pattern"
+            ],
+            "additionalProperties": false
+        },
+        "GitHubInfo": {
+            "title": "GitHubInfo",
+            "type": "object",
+            "properties": {
+                "repo": {
+                    "title": "Repo",
+                    "description": "Name of your github repository in org/repo format. e.g. repo for https://github.com/datahub-project/datahub is `datahub-project/datahub`.",
+                    "type": "string"
+                },
+                "branch": {
+                    "title": "Branch",
+                    "description": "Branch on which your files live by default. Typically main or master.",
+                    "default": "main",
+                    "type": "string"
+                },
+                "base_url": {
+                    "title": "Base Url",
+                    "description": "Base url for Github. Used to construct clickable links on the UI.",
+                    "default": "https://github.com",
+                    "type": "string"
+                },
+                "deploy_key_file": {
+                    "title": "Deploy Key File",
+                    "description": "A private key file that contains an ssh key that has been configured as a deploy key for this repository. Use a file where possible, else see deploy_key for a config field that accepts a raw string.",
+                    "format": "file-path",
+                    "type": "string"
+                },
+                "deploy_key": {
+                    "title": "Deploy Key",
+                    "description": "A private key that contains an ssh key that has been configured as a deploy key for this repository. See deploy_key_file if you want to use a file that contains this key.",
+                    "type": "string",
+                    "writeOnly": true,
+                    "format": "password"
+                },
+                "repo_ssh_locator": {
+                    "title": "Repo Ssh Locator",
+                    "description": "Auto-inferred from repo as git@github.com:{repo}, but you can override this if needed.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "repo"
             ],
             "additionalProperties": false
         },
