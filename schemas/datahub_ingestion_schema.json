@@ -8181,7 +8181,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-10T15:30:29.645708+00:00",
+                        "end_time": "2022-10-10T23:03:29.419609+00:00",
                         "start_time": "2022-10-09T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9167,20 +9167,6 @@
             "description": "Any non-Dataset source that produces lineage to Datasets should inherit this class.\ne.g. Orchestrators, Pipelines, BI Tools etc.",
             "type": "object",
             "properties": {
-                "env": {
-                    "title": "Env",
-                    "description": "Environment to use in namespace when constructing URNs.",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "platform_instance_map": {
-                    "title": "Platform Instance Map",
-                    "description": "A holder for platform -> platform_instance mappings to generate correct dataset urns",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
-                },
                 "connect_uri": {
                     "title": "Connect Uri",
                     "description": "Tableau host URL.",
@@ -9208,9 +9194,23 @@
                 },
                 "site": {
                     "title": "Site",
-                    "description": "Tableau Site. Always required for Tableau Online. Use emptystring  to connect with Default site on Tableau Server.",
+                    "description": "Tableau Site. Always required for Tableau Online. Use emptystring to connect with Default site on Tableau Server.",
                     "default": "",
                     "type": "string"
+                },
+                "env": {
+                    "title": "Env",
+                    "description": "Environment to use in namespace when constructing URNs.",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform_instance_map": {
+                    "title": "Platform Instance Map",
+                    "description": "A holder for platform -> platform_instance mappings to generate correct dataset urns",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 },
                 "projects": {
                     "title": "Projects",
@@ -9246,11 +9246,6 @@
                     "description": "Ingest details for tables external to (not embedded in) tableau as entities.",
                     "default": false,
                     "type": "boolean"
-                },
-                "workbooks_page_size": {
-                    "title": "Workbooks Page Size",
-                    "description": "@deprecated(use page_size instead) Number of workbooks to query at a time using Tableau api.",
-                    "type": "integer"
                 },
                 "page_size": {
                     "title": "Page Size",
