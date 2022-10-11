@@ -8181,8 +8181,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-10T23:03:29.419609+00:00",
-                        "start_time": "2022-10-09T00:00:00+00:00",
+                        "end_time": "2022-10-11T03:39:26.833226+00:00",
+                        "start_time": "2022-10-10T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -8243,6 +8243,18 @@
                     "description": "Number of table queried in batch when getting metadata. This is a low leve config propert which should be touched with care. This restriction needed because we query partitions system view which throws error if we try to touch too many tables.",
                     "default": 50,
                     "type": "integer"
+                },
+                "column_limit": {
+                    "title": "Column Limit",
+                    "description": "Maximum number of columns to process in a table",
+                    "default": 1000,
+                    "type": "integer"
+                },
+                "lineage_use_sql_parser": {
+                    "title": "Lineage Use Sql Parser",
+                    "description": "Experimental. Use sql parser to resolve view/table lineage. If there is a view being referenced then bigquery sends both the view as well as underlying tablein the references. There is no distinction between direct/base objects accessed. So doing sql parsing to ensure we only use direct objects accessed for lineage.",
+                    "default": false,
+                    "type": "boolean"
                 }
             },
             "additionalProperties": false
