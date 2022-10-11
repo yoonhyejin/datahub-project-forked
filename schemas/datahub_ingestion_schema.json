@@ -8137,7 +8137,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-11T20:44:49.650697+00:00",
+                        "end_time": "2022-10-11T23:05:10.535242+00:00",
                         "start_time": "2022-10-10T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9160,6 +9160,19 @@
                     "description": "Environment to use in namespace when constructing URNs.",
                     "default": "PROD",
                     "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/TableauStatefulIngestionConfig"
                 },
                 "platform_instance_map": {
                     "title": "Platform Instance Map",
@@ -11540,6 +11553,62 @@
                     "description": "# Whether or not to create tags in datahub from the s3 object",
                     "default": false,
                     "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
+        "TableauStatefulIngestionConfig": {
+            "title": "TableauStatefulIngestionConfig",
+            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the TableauConfig.",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "title": "Enabled",
+                    "description": "The type of the ingestion state provider registered with datahub.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "max_checkpoint_state_size": {
+                    "title": "Max Checkpoint State Size",
+                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
+                    "default": 16777216,
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "state_provider": {
+                    "title": "State Provider",
+                    "description": "The ingestion state provider configuration.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
+                        }
+                    ]
+                },
+                "ignore_old_state": {
+                    "title": "Ignore Old State",
+                    "description": "If set to True, ignores the previous checkpoint state.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "ignore_new_state": {
+                    "title": "Ignore New State",
+                    "description": "If set to True, ignores the current checkpoint state.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "remove_stale_metadata": {
+                    "title": "Remove Stale Metadata",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 20.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
                 }
             },
             "additionalProperties": false
