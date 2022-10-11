@@ -837,11 +837,6 @@
                     "description": "Alias to apply to database when ingesting.",
                     "type": "string"
                 },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "trino",
-                    "type": "string"
-                },
                 "sqlalchemy_uri": {
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
@@ -1111,11 +1106,6 @@
                 "database_alias": {
                     "title": "Database Alias",
                     "description": "Alias to apply to database when ingesting.",
-                    "type": "string"
-                },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "mysql+pymysql",
                     "type": "string"
                 },
                 "sqlalchemy_uri": {
@@ -2263,11 +2253,6 @@
                     "description": "Alias to apply to database when ingesting.",
                     "type": "string"
                 },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "redshift+psycopg2",
-                    "type": "string"
-                },
                 "sqlalchemy_uri": {
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
@@ -2798,11 +2783,6 @@
                 "database_alias": {
                     "title": "Database Alias",
                     "description": "Alias to apply to database when ingesting.",
-                    "type": "string"
-                },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "trino",
                     "type": "string"
                 },
                 "sqlalchemy_uri": {
@@ -5740,11 +5720,6 @@
                     "description": "Alias to apply to database when ingesting.",
                     "type": "string"
                 },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "redshift+psycopg2",
-                    "type": "string"
-                },
                 "sqlalchemy_uri": {
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
@@ -6269,11 +6244,6 @@
                     "description": "Alias to apply to database when ingesting. Ignored when `database` is not set.",
                     "type": "string"
                 },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "mssql+pytds",
-                    "type": "string"
-                },
                 "sqlalchemy_uri": {
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
@@ -6787,11 +6757,6 @@
                 "database_alias": {
                     "title": "Database Alias",
                     "description": "Alias to apply to database when ingesting.",
-                    "type": "string"
-                },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "clickhouse",
                     "type": "string"
                 },
                 "sqlalchemy_uri": {
@@ -7821,11 +7786,6 @@
                     "description": "Alias to apply to database when ingesting.",
                     "type": "string"
                 },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "clickhouse",
-                    "type": "string"
-                },
                 "sqlalchemy_uri": {
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
@@ -8089,10 +8049,6 @@
                     "description": "[deprecated] Use project_id_pattern instead.",
                     "type": "string"
                 },
-                "storage_project_id": {
-                    "title": "Storage Project Id",
-                    "type": "null"
-                },
                 "log_page_size": {
                     "title": "Log Page Size",
                     "description": "The number of log item will be queried per page for lineage collection",
@@ -8181,7 +8137,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-11T03:39:26.833226+00:00",
+                        "end_time": "2022-10-11T03:55:21.900160+00:00",
                         "start_time": "2022-10-10T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -8592,12 +8548,6 @@
                         "$ref": "#/definitions/AllowDenyPattern"
                     }
                 },
-                "include_views": {
-                    "title": "Include Views",
-                    "description": "Hive SQLAlchemy connector returns views as tables. See https://github.com/dropbox/PyHive/blob/b21c507a24ed2f2b0cf15b0b6abb1c43f31d3ee0/pyhive/sqlalchemy_hive.py#L270-L273. Disabling views helps us prevent this duplication.",
-                    "default": false,
-                    "type": "boolean"
-                },
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
@@ -8665,11 +8615,6 @@
                 "database_alias": {
                     "title": "Database Alias",
                     "description": "Alias to apply to database when ingesting.",
-                    "type": "string"
-                },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "hive",
                     "type": "string"
                 },
                 "sqlalchemy_uri": {
