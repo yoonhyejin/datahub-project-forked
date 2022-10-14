@@ -4541,6 +4541,11 @@
                     "default": "",
                     "type": "string"
                 },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
                 "ssl_verify": {
                     "title": "Ssl Verify",
                     "description": "Whether to verify SSL certificates. If using self-signed certificates, set to false or provide the path to the .pem certificate bundle.",
@@ -4563,11 +4568,6 @@
                 "platform": {
                     "title": "Platform",
                     "description": "The platform that this source connects to",
-                    "type": "string"
-                },
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "The instance of the platform that all assets produced by this recipe belong to",
                     "type": "string"
                 },
                 "stateful_ingestion": {
@@ -7183,8 +7183,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-13T23:02:29.337975+00:00",
-                        "start_time": "2022-10-12T00:00:00+00:00",
+                        "end_time": "2022-10-14T01:53:52.720234+00:00",
+                        "start_time": "2022-10-13T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
