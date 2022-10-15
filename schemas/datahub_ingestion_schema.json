@@ -8137,7 +8137,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-15T00:28:25.661170+00:00",
+                        "end_time": "2022-10-15T02:09:46.613760+00:00",
                         "start_time": "2022-10-14T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9381,6 +9381,19 @@
                     "description": "Maximum number of rows to use when inferring schemas for TSV and CSV files.",
                     "default": 100,
                     "type": "integer"
+                },
+                "verify_ssl": {
+                    "title": "Verify Ssl",
+                    "description": "Either a boolean, in which case it controls whether we verify the server's TLS certificate, or a string, in which case it must be a path to a CA bundle to use.",
+                    "default": true,
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 }
             },
             "required": [
