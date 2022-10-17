@@ -7196,7 +7196,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-17T17:40:11.715151+00:00",
+                        "end_time": "2022-10-17T20:25:20.629553+00:00",
                         "start_time": "2022-10-16T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
