@@ -3086,7 +3086,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-20T18:10:14.225267+00:00",
+                        "end_time": "2022-10-20T21:23:14.044944+00:00",
                         "start_time": "2022-10-19T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -3680,6 +3680,22 @@
                     "title": "Ingestion Job Id",
                     "default": "",
                     "type": "string"
+                },
+                "database_pattern": {
+                    "title": "Database Pattern",
+                    "description": "Regex patterns for hive/presto database to filter in ingestion. Specify regex to only match the database name. e.g. to match all tables in database analytics, use the regex 'analytics'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
                 },
                 "metastore_db_name": {
                     "title": "Metastore Db Name",
