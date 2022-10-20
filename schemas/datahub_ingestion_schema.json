@@ -3086,7 +3086,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-20T21:23:14.044944+00:00",
+                        "end_time": "2022-10-20T23:50:24.998070+00:00",
                         "start_time": "2022-10-19T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -5301,6 +5301,12 @@
                 "emit_reachable_views_only": {
                     "title": "Emit Reachable Views Only",
                     "description": "When enabled, only views that are reachable from explores defined in the model files are emitted",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "populate_sql_logic_for_missing_descriptions": {
+                    "title": "Populate Sql Logic For Missing Descriptions",
+                    "description": "When enabled, field descriptions will include the sql logic for computed fields if descriptions are missing",
                     "default": false,
                     "type": "boolean"
                 }
