@@ -3086,7 +3086,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-24T04:56:22.960321+00:00",
+                        "end_time": "2022-10-24T06:47:39.410239+00:00",
                         "start_time": "2022-10-23T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -5308,6 +5308,12 @@
                     "title": "Populate Sql Logic For Missing Descriptions",
                     "description": "When enabled, field descriptions will include the sql logic for computed fields if descriptions are missing",
                     "default": false,
+                    "type": "boolean"
+                },
+                "process_isolation_for_sql_parsing": {
+                    "title": "Process Isolation For Sql Parsing",
+                    "description": "When enabled, sql parsing will be executed in a separate process to prevent memory leaks.",
+                    "default": true,
                     "type": "boolean"
                 }
             },
