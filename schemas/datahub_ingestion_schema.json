@@ -1860,6 +1860,15 @@
                     "title": "Connect To Platform Map",
                     "description": "Platform instance mapping when multiple instances for a platform is available. Entry for a platform should be in either `platform_instance_map` or `connect_to_platform_map`. e.g.`connect_to_platform_map: { \"postgres-connector-finance-db\": \"postgres\": \"core_finance_instance\" }`",
                     "type": "object"
+                },
+                "generic_connectors": {
+                    "title": "Generic Connectors",
+                    "description": "Provide lineage graph for sources connectors other than Confluent JDBC Source Connector or Debezium Source Connector",
+                    "default": [],
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GenericConnectorConfig"
+                    }
                 }
             },
             "additionalProperties": false
@@ -3086,8 +3095,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-24T19:05:40.093619+00:00",
-                        "start_time": "2022-10-23T00:00:00+00:00",
+                        "end_time": "2022-10-25T17:47:24.598262+00:00",
+                        "start_time": "2022-10-24T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -10647,6 +10656,30 @@
                 "provider",
                 "path_key",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "GenericConnectorConfig": {
+            "title": "GenericConnectorConfig",
+            "type": "object",
+            "properties": {
+                "connector_name": {
+                    "title": "Connector Name",
+                    "type": "string"
+                },
+                "source_dataset": {
+                    "title": "Source Dataset",
+                    "type": "string"
+                },
+                "source_platform": {
+                    "title": "Source Platform",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "connector_name",
+                "source_dataset",
+                "source_platform"
             ],
             "additionalProperties": false
         },
