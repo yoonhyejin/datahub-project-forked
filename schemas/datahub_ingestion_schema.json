@@ -670,6 +670,305 @@
             },
             "additionalProperties": false
         },
+        "bigquery-legacy": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "bigquery-legacy"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/bigquery-legacy_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "bigquery-legacy_config": {
+            "title": "BigQueryConfig",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
+            "type": "object",
+            "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                },
+                "options": {
+                    "title": "Options",
+                    "default": {},
+                    "type": "object"
+                },
+                "schema_pattern": {
+                    "title": "Schema Pattern",
+                    "description": "Regex patterns for schemas to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "table_pattern": {
+                    "title": "Table Pattern",
+                    "description": "Regex patterns for tables to filter in ingestion. Specify regex to match the entire table name in database.schema.table format. e.g. to match all tables starting with customer in Customer database and public schema, use the regex 'Customer.public.customer.*'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "view_pattern": {
+                    "title": "View Pattern",
+                    "description": "Regex patterns for views to filter in ingestion. Note: Defaults to table_pattern if not specified. Specify regex to match the entire view name in database.schema.view format. e.g. to match all views starting with customer in Customer database and public schema, use the regex 'Customer.public.customer.*'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "profile_pattern": {
+                    "title": "Profile Pattern",
+                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "domain": {
+                    "title": "Domain",
+                    "description": "Attach domains to databases, schemas or tables during ingestion using regex patterns. Domain key can be a guid like *urn:li:domain:ec428203-ce86-4db3-985d-5a8ee6df32ba* or a string like \"Marketing\".) If you provide strings, then datahub will attempt to resolve this name to a guid, and will error out if this fails. There can be multiple domain keys specified.",
+                    "default": {},
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/AllowDenyPattern"
+                    }
+                },
+                "include_views": {
+                    "title": "Include Views",
+                    "description": "Whether views should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_tables": {
+                    "title": "Include Tables",
+                    "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "profiling": {
+                    "title": "Profiling",
+                    "default": {
+                        "enabled": false,
+                        "limit": null,
+                        "offset": null,
+                        "report_dropped_profiles": false,
+                        "turn_off_expensive_profiling_metrics": false,
+                        "profile_table_level_only": false,
+                        "include_field_null_count": true,
+                        "include_field_min_value": true,
+                        "include_field_max_value": true,
+                        "include_field_mean_value": true,
+                        "include_field_median_value": true,
+                        "include_field_stddev_value": true,
+                        "include_field_quantiles": false,
+                        "include_field_distinct_value_frequencies": false,
+                        "include_field_histogram": false,
+                        "include_field_sample_values": true,
+                        "max_number_of_fields_to_profile": null,
+                        "profile_if_updated_since_days": 1,
+                        "profile_table_size_limit": 1,
+                        "profile_table_row_limit": 50000,
+                        "max_workers": 10,
+                        "query_combiner_enabled": true,
+                        "catch_exceptions": true,
+                        "partition_profiling_enabled": true,
+                        "bigquery_temp_table_schema": null,
+                        "partition_datetime": null
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/GEProfilingConfig"
+                        }
+                    ]
+                },
+                "bucket_duration": {
+                    "description": "Size of the time window to aggregate usage stats.",
+                    "default": "DAY",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BucketDuration"
+                        }
+                    ]
+                },
+                "end_time": {
+                    "title": "End Time",
+                    "description": "Latest date of usage to consider. Default: Current time in UTC",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "start_time": {
+                    "title": "Start Time",
+                    "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "rate_limit": {
+                    "title": "Rate Limit",
+                    "description": "Should we rate limit requests made to API.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "requests_per_min": {
+                    "title": "Requests Per Min",
+                    "description": "Used to control number of API calls made per min. Only used when `rate_limit` is set to `True`.",
+                    "default": 60,
+                    "type": "integer"
+                },
+                "temp_table_dataset_prefix": {
+                    "title": "Temp Table Dataset Prefix",
+                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
+                    "default": "_",
+                    "type": "string"
+                },
+                "sharded_table_pattern": {
+                    "title": "Sharded Table Pattern",
+                    "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
+                    "default": "((.+)[_$])?(\\d{8})$",
+                    "deprecated": true,
+                    "type": "string"
+                },
+                "scheme": {
+                    "title": "Scheme",
+                    "default": "bigquery",
+                    "type": "string"
+                },
+                "project_id": {
+                    "title": "Project Id",
+                    "description": "Project ID where you have rights to run queries and create tables. If `storage_project_id` is not specified then it is assumed this is the same project where data is stored. If not specified, will infer from environment.",
+                    "type": "string"
+                },
+                "storage_project_id": {
+                    "title": "Storage Project Id",
+                    "description": "If your data is stored in a different project where you don't have rights to run jobs and create tables then specify this field. The same service account must have read rights in this GCP project and write rights in `project_id`.",
+                    "type": "string"
+                },
+                "log_page_size": {
+                    "title": "Log Page Size",
+                    "description": "The number of log item will be queried per page for lineage collection",
+                    "default": 1000,
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "credential": {
+                    "title": "Credential",
+                    "description": "BigQuery credential informations",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BigQueryCredential"
+                        }
+                    ]
+                },
+                "extra_client_options": {
+                    "title": "Extra Client Options",
+                    "description": "Additional options to pass to google.cloud.logging_v2.client.Client.",
+                    "default": {},
+                    "type": "object"
+                },
+                "include_table_lineage": {
+                    "title": "Include Table Lineage",
+                    "description": "Option to enable/disable lineage generation. Is enabled by default.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "max_query_duration": {
+                    "title": "Max Query Duration",
+                    "description": "Correction to pad start_time and end_time with. For handling the case where the read happens within our time range but the query completion event is delayed and happens after the configured end time.",
+                    "default": 900.0,
+                    "type": "number",
+                    "format": "time-delta"
+                },
+                "bigquery_audit_metadata_datasets": {
+                    "title": "Bigquery Audit Metadata Datasets",
+                    "description": "A list of datasets that contain a table named cloudaudit_googleapis_com_data_access which contain BigQuery audit logs, specifically, those containing BigQueryAuditMetadata. It is recommended that the project of the dataset is also specified, for example, projectA.datasetB.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "use_exported_bigquery_audit_metadata": {
+                    "title": "Use Exported Bigquery Audit Metadata",
+                    "description": "When configured, use BigQueryAuditMetadata in bigquery_audit_metadata_datasets to compute lineage information.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "use_date_sharded_audit_log_tables": {
+                    "title": "Use Date Sharded Audit Log Tables",
+                    "description": "Whether to read date sharded tables or time partitioned tables when extracting usage from exported audit logs.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "use_v2_audit_metadata": {
+                    "title": "Use V2 Audit Metadata",
+                    "description": "Whether to ingest logs using the v2 format.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "upstream_lineage_in_report": {
+                    "title": "Upstream Lineage In Report",
+                    "description": "Useful for debugging lineage information. Set to True to see the raw lineage created internally.",
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
         "postgres": {
             "type": "object",
             "properties": {
@@ -2781,408 +3080,6 @@
             "required": [
                 "file"
             ],
-            "additionalProperties": false
-        },
-        "bigquery-beta": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "bigquery-beta"
-                    ]
-                },
-                "config": {
-                    "$ref": "#/definitions/bigquery-beta_config"
-                }
-            },
-            "required": [
-                "type",
-                "config"
-            ]
-        },
-        "bigquery-beta_config": {
-            "title": "BigQueryV2Config",
-            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
-            "type": "object",
-            "properties": {
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "The instance of the platform that all assets produced by this recipe belong to",
-                    "type": "string"
-                },
-                "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
-                },
-                "options": {
-                    "title": "Options",
-                    "default": {},
-                    "type": "object"
-                },
-                "schema_pattern": {
-                    "title": "Schema Pattern",
-                    "description": "Regex patterns for schemas to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "table_pattern": {
-                    "title": "Table Pattern",
-                    "description": "Regex patterns for tables to filter in ingestion. Specify regex to match the entire table name in database.schema.table format. e.g. to match all tables starting with customer in Customer database and public schema, use the regex 'Customer.public.customer.*'",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "view_pattern": {
-                    "title": "View Pattern",
-                    "description": "Regex patterns for views to filter in ingestion. Note: Defaults to table_pattern if not specified. Specify regex to match the entire view name in database.schema.view format. e.g. to match all views starting with customer in Customer database and public schema, use the regex 'Customer.public.customer.*'",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "profile_pattern": {
-                    "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "domain": {
-                    "title": "Domain",
-                    "description": "Attach domains to databases, schemas or tables during ingestion using regex patterns. Domain key can be a guid like *urn:li:domain:ec428203-ce86-4db3-985d-5a8ee6df32ba* or a string like \"Marketing\".) If you provide strings, then datahub will attempt to resolve this name to a guid, and will error out if this fails. There can be multiple domain keys specified.",
-                    "default": {},
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/AllowDenyPattern"
-                    }
-                },
-                "include_views": {
-                    "title": "Include Views",
-                    "description": "Whether views should be ingested.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "include_tables": {
-                    "title": "Include Tables",
-                    "description": "Whether tables should be ingested.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "profiling": {
-                    "title": "Profiling",
-                    "default": {
-                        "enabled": false,
-                        "limit": null,
-                        "offset": null,
-                        "report_dropped_profiles": false,
-                        "turn_off_expensive_profiling_metrics": false,
-                        "profile_table_level_only": false,
-                        "include_field_null_count": true,
-                        "include_field_min_value": true,
-                        "include_field_max_value": true,
-                        "include_field_mean_value": true,
-                        "include_field_median_value": true,
-                        "include_field_stddev_value": true,
-                        "include_field_quantiles": false,
-                        "include_field_distinct_value_frequencies": false,
-                        "include_field_histogram": false,
-                        "include_field_sample_values": true,
-                        "max_number_of_fields_to_profile": null,
-                        "profile_if_updated_since_days": 1,
-                        "profile_table_size_limit": 1,
-                        "profile_table_row_limit": 50000,
-                        "max_workers": 10,
-                        "query_combiner_enabled": true,
-                        "catch_exceptions": true,
-                        "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
-                        "partition_datetime": null
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/GEProfilingConfig"
-                        }
-                    ]
-                },
-                "bucket_duration": {
-                    "description": "Size of the time window to aggregate usage stats.",
-                    "default": "DAY",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/BucketDuration"
-                        }
-                    ]
-                },
-                "end_time": {
-                    "title": "End Time",
-                    "description": "Latest date of usage to consider. Default: Current time in UTC",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "start_time": {
-                    "title": "Start Time",
-                    "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "rate_limit": {
-                    "title": "Rate Limit",
-                    "description": "Should we rate limit requests made to API.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "requests_per_min": {
-                    "title": "Requests Per Min",
-                    "description": "Used to control number of API calls made per min. Only used when `rate_limit` is set to `True`.",
-                    "default": 60,
-                    "type": "integer"
-                },
-                "temp_table_dataset_prefix": {
-                    "title": "Temp Table Dataset Prefix",
-                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
-                    "default": "_",
-                    "type": "string"
-                },
-                "sharded_table_pattern": {
-                    "title": "Sharded Table Pattern",
-                    "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
-                    "default": "((.+)[_$])?(\\d{8})$",
-                    "deprecated": true,
-                    "type": "string"
-                },
-                "scheme": {
-                    "title": "Scheme",
-                    "default": "bigquery",
-                    "type": "string"
-                },
-                "project_id": {
-                    "title": "Project Id",
-                    "description": "[deprecated] Use project_id_pattern instead.",
-                    "type": "string"
-                },
-                "log_page_size": {
-                    "title": "Log Page Size",
-                    "description": "The number of log item will be queried per page for lineage collection",
-                    "default": 1000,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "credential": {
-                    "title": "Credential",
-                    "description": "BigQuery credential informations",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/BigQueryCredential"
-                        }
-                    ]
-                },
-                "extra_client_options": {
-                    "title": "Extra Client Options",
-                    "description": "Additional options to pass to google.cloud.logging_v2.client.Client.",
-                    "default": {},
-                    "type": "object"
-                },
-                "include_table_lineage": {
-                    "title": "Include Table Lineage",
-                    "description": "Option to enable/disable lineage generation. Is enabled by default.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "max_query_duration": {
-                    "title": "Max Query Duration",
-                    "description": "Correction to pad start_time and end_time with. For handling the case where the read happens within our time range but the query completion event is delayed and happens after the configured end time.",
-                    "default": 900.0,
-                    "type": "number",
-                    "format": "time-delta"
-                },
-                "bigquery_audit_metadata_datasets": {
-                    "title": "Bigquery Audit Metadata Datasets",
-                    "description": "A list of datasets that contain a table named cloudaudit_googleapis_com_data_access which contain BigQuery audit logs, specifically, those containing BigQueryAuditMetadata. It is recommended that the project of the dataset is also specified, for example, projectA.datasetB.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "use_exported_bigquery_audit_metadata": {
-                    "title": "Use Exported Bigquery Audit Metadata",
-                    "description": "When configured, use BigQueryAuditMetadata in bigquery_audit_metadata_datasets to compute lineage information.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "use_date_sharded_audit_log_tables": {
-                    "title": "Use Date Sharded Audit Log Tables",
-                    "description": "Whether to read date sharded tables or time partitioned tables when extracting usage from exported audit logs.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "use_v2_audit_metadata": {
-                    "title": "Use V2 Audit Metadata",
-                    "description": "Whether to ingest logs using the v2 format.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "upstream_lineage_in_report": {
-                    "title": "Upstream Lineage In Report",
-                    "description": "Useful for debugging lineage information. Set to True to see the raw lineage created internally.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "project_id_pattern": {
-                    "title": "Project Id Pattern",
-                    "description": "Regex patterns for project_id to filter in ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "usage": {
-                    "title": "Usage",
-                    "description": "Usage related configs",
-                    "default": {
-                        "bucket_duration": "DAY",
-                        "end_time": "2022-10-26T18:08:03.763198+00:00",
-                        "start_time": "2022-10-25T00:00:00+00:00",
-                        "top_n_queries": 10,
-                        "user_email_pattern": {
-                            "allow": [
-                                ".*"
-                            ],
-                            "deny": [],
-                            "ignoreCase": true
-                        },
-                        "include_operational_stats": true,
-                        "include_read_operational_stats": false,
-                        "format_sql_queries": false,
-                        "include_top_n_queries": true,
-                        "query_log_delay": null,
-                        "max_query_duration": 900.0
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/BigQueryUsageConfig"
-                        }
-                    ]
-                },
-                "include_usage_statistics": {
-                    "title": "Include Usage Statistics",
-                    "description": "Generate usage statistic",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "capture_table_label_as_tag": {
-                    "title": "Capture Table Label As Tag",
-                    "description": "Capture BigQuery table labels as tag",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "dataset_pattern": {
-                    "title": "Dataset Pattern",
-                    "description": "Regex patterns for dataset to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "debug_include_full_payloads": {
-                    "title": "Debug Include Full Payloads",
-                    "description": "Include full payload into events. It is only for debugging and internal use.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "number_of_datasets_process_in_batch": {
-                    "title": "Number Of Datasets Process In Batch",
-                    "description": "Number of table queried in batch when getting metadata. This is a low level config property which should be touched with care. This restriction is needed because we query partitions system view which throws error if we try to touch too many tables.",
-                    "default": 80,
-                    "type": "integer"
-                },
-                "column_limit": {
-                    "title": "Column Limit",
-                    "description": "Maximum number of columns to process in a table. This is a low level config property which should be touched with care. This restriction is needed because excessively wide tables can result in failure to ingest the schema.",
-                    "default": 300,
-                    "type": "integer"
-                },
-                "lineage_use_sql_parser": {
-                    "title": "Lineage Use Sql Parser",
-                    "description": "Experimental. Use sql parser to resolve view/table lineage. If there is a view being referenced then bigquery sends both the view as well as underlying tablein the references. There is no distinction between direct/base objects accessed. So doing sql parsing to ensure we only use direct objects accessed for lineage.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "lineage_parse_view_ddl": {
-                    "title": "Lineage Parse View Ddl",
-                    "description": "Sql parse view ddl to get lineage.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "convert_urns_to_lowercase": {
-                    "title": "Convert Urns To Lowercase",
-                    "description": "Convert urns to lowercase.",
-                    "default": false,
-                    "type": "boolean"
-                }
-            },
             "additionalProperties": false
         },
         "glue": {
@@ -5324,245 +5221,6 @@
                     "description": "When enabled, sql parsing will be executed in a separate process to prevent memory leaks.",
                     "default": true,
                     "type": "boolean"
-                }
-            },
-            "additionalProperties": false
-        },
-        "bigquery-usage": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "bigquery-usage"
-                    ]
-                },
-                "config": {
-                    "$ref": "#/definitions/bigquery-usage_config"
-                }
-            },
-            "required": [
-                "type",
-                "config"
-            ]
-        },
-        "bigquery-usage_config": {
-            "title": "BigQueryUsageConfig",
-            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
-            "type": "object",
-            "properties": {
-                "bucket_duration": {
-                    "description": "Size of the time window to aggregate usage stats.",
-                    "default": "DAY",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/BucketDuration"
-                        }
-                    ]
-                },
-                "end_time": {
-                    "title": "End Time",
-                    "description": "Latest date of usage to consider. Default: Current time in UTC",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "start_time": {
-                    "title": "Start Time",
-                    "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "top_n_queries": {
-                    "title": "Top N Queries",
-                    "description": "Number of top queries to save to each table.",
-                    "default": 10,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "user_email_pattern": {
-                    "title": "User Email Pattern",
-                    "description": "regex patterns for user emails to filter in usage.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "include_operational_stats": {
-                    "title": "Include Operational Stats",
-                    "description": "Whether to display operational stats.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "include_read_operational_stats": {
-                    "title": "Include Read Operational Stats",
-                    "description": "Whether to report read operational stats. Experimental.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "format_sql_queries": {
-                    "title": "Format Sql Queries",
-                    "description": "Whether to format sql queries",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "include_top_n_queries": {
-                    "title": "Include Top N Queries",
-                    "description": "Whether to ingest the top_n_queries.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "The instance of the platform that all assets produced by this recipe belong to",
-                    "type": "string"
-                },
-                "rate_limit": {
-                    "title": "Rate Limit",
-                    "description": "Should we rate limit requests made to API.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "requests_per_min": {
-                    "title": "Requests Per Min",
-                    "description": "Used to control number of API calls made per min. Only used when `rate_limit` is set to `True`.",
-                    "default": 60,
-                    "type": "integer"
-                },
-                "temp_table_dataset_prefix": {
-                    "title": "Temp Table Dataset Prefix",
-                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
-                    "default": "_",
-                    "type": "string"
-                },
-                "sharded_table_pattern": {
-                    "title": "Sharded Table Pattern",
-                    "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
-                    "default": "((.+)[_$])?(\\d{8})$",
-                    "deprecated": true,
-                    "type": "string"
-                },
-                "projects": {
-                    "title": "Projects",
-                    "description": "List of project ids to ingest usage from. If not specified, will infer from environment.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "project_id": {
-                    "title": "Project Id",
-                    "description": "Project ID to ingest usage from. If not specified, will infer from environment. Deprecated in favour of projects ",
-                    "type": "string"
-                },
-                "extra_client_options": {
-                    "title": "Extra Client Options",
-                    "description": "Additional options to pass to google.cloud.logging_v2.client.Client.",
-                    "type": "object"
-                },
-                "use_v2_audit_metadata": {
-                    "title": "Use V2 Audit Metadata",
-                    "description": "Whether to ingest logs using the v2 format. Required if use_exported_bigquery_audit_metadata is set to True.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "bigquery_audit_metadata_datasets": {
-                    "title": "Bigquery Audit Metadata Datasets",
-                    "description": "A list of datasets that contain a table named cloudaudit_googleapis_com_data_access which contain BigQuery audit logs, specifically, those containing BigQueryAuditMetadata. It is recommended that the project of the dataset is also specified, for example, projectA.datasetB.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "use_exported_bigquery_audit_metadata": {
-                    "title": "Use Exported Bigquery Audit Metadata",
-                    "description": "When configured, use BigQueryAuditMetadata in bigquery_audit_metadata_datasets to compute usage information.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "use_date_sharded_audit_log_tables": {
-                    "title": "Use Date Sharded Audit Log Tables",
-                    "description": "Whether to read date sharded tables or time partitioned tables when extracting usage from exported audit logs.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "table_pattern": {
-                    "title": "Table Pattern",
-                    "description": "List of regex patterns for tables to include/exclude from ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "dataset_pattern": {
-                    "title": "Dataset Pattern",
-                    "description": "List of regex patterns for datasets to include/exclude from ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "log_page_size": {
-                    "title": "Log Page Size",
-                    "default": 1000,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "query_log_delay": {
-                    "title": "Query Log Delay",
-                    "description": "To account for the possibility that the query event arrives after the read event in the audit logs, we wait for at least query_log_delay additional events to be processed before attempting to resolve BigQuery job information from the logs. If query_log_delay is None, it gets treated as an unlimited delay, which prioritizes correctness at the expense of memory usage.",
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "max_query_duration": {
-                    "title": "Max Query Duration",
-                    "description": "Correction to pad start_time and end_time with. For handling the case where the read happens within our time range but the query completion event is delayed and happens after the configured end time.",
-                    "default": 900.0,
-                    "type": "number",
-                    "format": "time-delta"
-                },
-                "credential": {
-                    "title": "Credential",
-                    "description": "Bigquery credential. Required if GOOGLE_APPLICATION_CREDENTIALS environment variable is not set. See this example recipe for details",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/BigQueryCredential"
-                        }
-                    ]
                 }
             },
             "additionalProperties": false
@@ -8787,7 +8445,7 @@
             ]
         },
         "bigquery_config": {
-            "title": "BigQueryConfig",
+            "title": "BigQueryV2Config",
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
@@ -8989,12 +8647,7 @@
                 },
                 "project_id": {
                     "title": "Project Id",
-                    "description": "Project ID where you have rights to run queries and create tables. If `storage_project_id` is not specified then it is assumed this is the same project where data is stored. If not specified, will infer from environment.",
-                    "type": "string"
-                },
-                "storage_project_id": {
-                    "title": "Storage Project Id",
-                    "description": "If your data is stored in a different project where you don't have rights to run jobs and create tables then specify this field. The same service account must have read rights in this GCP project and write rights in `project_id`.",
+                    "description": "[deprecated] Use project_id_pattern instead.",
                     "type": "string"
                 },
                 "log_page_size": {
@@ -9061,6 +8714,114 @@
                 "upstream_lineage_in_report": {
                     "title": "Upstream Lineage In Report",
                     "description": "Useful for debugging lineage information. Set to True to see the raw lineage created internally.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "project_id_pattern": {
+                    "title": "Project Id Pattern",
+                    "description": "Regex patterns for project_id to filter in ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "usage": {
+                    "title": "Usage",
+                    "description": "Usage related configs",
+                    "default": {
+                        "bucket_duration": "DAY",
+                        "end_time": "2022-10-26T18:26:30.613474+00:00",
+                        "start_time": "2022-10-25T00:00:00+00:00",
+                        "top_n_queries": 10,
+                        "user_email_pattern": {
+                            "allow": [
+                                ".*"
+                            ],
+                            "deny": [],
+                            "ignoreCase": true
+                        },
+                        "include_operational_stats": true,
+                        "include_read_operational_stats": false,
+                        "format_sql_queries": false,
+                        "include_top_n_queries": true,
+                        "query_log_delay": null,
+                        "max_query_duration": 900.0
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BigQueryUsageConfig"
+                        }
+                    ]
+                },
+                "include_usage_statistics": {
+                    "title": "Include Usage Statistics",
+                    "description": "Generate usage statistic",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "capture_table_label_as_tag": {
+                    "title": "Capture Table Label As Tag",
+                    "description": "Capture BigQuery table labels as tag",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "dataset_pattern": {
+                    "title": "Dataset Pattern",
+                    "description": "Regex patterns for dataset to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "debug_include_full_payloads": {
+                    "title": "Debug Include Full Payloads",
+                    "description": "Include full payload into events. It is only for debugging and internal use.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "number_of_datasets_process_in_batch": {
+                    "title": "Number Of Datasets Process In Batch",
+                    "description": "Number of table queried in batch when getting metadata. This is a low level config property which should be touched with care. This restriction is needed because we query partitions system view which throws error if we try to touch too many tables.",
+                    "default": 80,
+                    "type": "integer"
+                },
+                "column_limit": {
+                    "title": "Column Limit",
+                    "description": "Maximum number of columns to process in a table. This is a low level config property which should be touched with care. This restriction is needed because excessively wide tables can result in failure to ingest the schema.",
+                    "default": 300,
+                    "type": "integer"
+                },
+                "lineage_use_sql_parser": {
+                    "title": "Lineage Use Sql Parser",
+                    "description": "Experimental. Use sql parser to resolve view/table lineage. If there is a view being referenced then bigquery sends both the view as well as underlying tablein the references. There is no distinction between direct/base objects accessed. So doing sql parsing to ensure we only use direct objects accessed for lineage.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "lineage_parse_view_ddl": {
+                    "title": "Lineage Parse View Ddl",
+                    "description": "Sql parse view ddl to get lineage.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "convert_urns_to_lowercase": {
+                    "title": "Convert Urns To Lowercase",
+                    "description": "Convert urns to lowercase.",
                     "default": false,
                     "type": "boolean"
                 }
@@ -10117,6 +9878,245 @@
             ],
             "additionalProperties": false
         },
+        "bigquery-usage-legacy": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "bigquery-usage-legacy"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/bigquery-usage-legacy_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "bigquery-usage-legacy_config": {
+            "title": "BigQueryUsageConfig",
+            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
+            "type": "object",
+            "properties": {
+                "bucket_duration": {
+                    "description": "Size of the time window to aggregate usage stats.",
+                    "default": "DAY",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BucketDuration"
+                        }
+                    ]
+                },
+                "end_time": {
+                    "title": "End Time",
+                    "description": "Latest date of usage to consider. Default: Current time in UTC",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "start_time": {
+                    "title": "Start Time",
+                    "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "top_n_queries": {
+                    "title": "Top N Queries",
+                    "description": "Number of top queries to save to each table.",
+                    "default": 10,
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "user_email_pattern": {
+                    "title": "User Email Pattern",
+                    "description": "regex patterns for user emails to filter in usage.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "include_operational_stats": {
+                    "title": "Include Operational Stats",
+                    "description": "Whether to display operational stats.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "format_sql_queries": {
+                    "title": "Format Sql Queries",
+                    "description": "Whether to format sql queries",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "include_top_n_queries": {
+                    "title": "Include Top N Queries",
+                    "description": "Whether to ingest the top_n_queries.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "rate_limit": {
+                    "title": "Rate Limit",
+                    "description": "Should we rate limit requests made to API.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "requests_per_min": {
+                    "title": "Requests Per Min",
+                    "description": "Used to control number of API calls made per min. Only used when `rate_limit` is set to `True`.",
+                    "default": 60,
+                    "type": "integer"
+                },
+                "temp_table_dataset_prefix": {
+                    "title": "Temp Table Dataset Prefix",
+                    "description": "If you are creating temp tables in a dataset with a particular prefix you can use this config to set the prefix for the dataset. This is to support workflows from before bigquery's introduction of temp tables. By default we use `_` because of datasets that begin with an underscore are hidden by default https://cloud.google.com/bigquery/docs/datasets#dataset-naming.",
+                    "default": "_",
+                    "type": "string"
+                },
+                "sharded_table_pattern": {
+                    "title": "Sharded Table Pattern",
+                    "description": "The regex pattern to match sharded tables and group as one table. This is a very low level config parameter, only change if you know what you are doing, ",
+                    "default": "((.+)[_$])?(\\d{8})$",
+                    "deprecated": true,
+                    "type": "string"
+                },
+                "projects": {
+                    "title": "Projects",
+                    "description": "List of project ids to ingest usage from. If not specified, will infer from environment.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "project_id": {
+                    "title": "Project Id",
+                    "description": "Project ID to ingest usage from. If not specified, will infer from environment. Deprecated in favour of projects ",
+                    "type": "string"
+                },
+                "extra_client_options": {
+                    "title": "Extra Client Options",
+                    "description": "Additional options to pass to google.cloud.logging_v2.client.Client.",
+                    "type": "object"
+                },
+                "use_v2_audit_metadata": {
+                    "title": "Use V2 Audit Metadata",
+                    "description": "Whether to ingest logs using the v2 format. Required if use_exported_bigquery_audit_metadata is set to True.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "bigquery_audit_metadata_datasets": {
+                    "title": "Bigquery Audit Metadata Datasets",
+                    "description": "A list of datasets that contain a table named cloudaudit_googleapis_com_data_access which contain BigQuery audit logs, specifically, those containing BigQueryAuditMetadata. It is recommended that the project of the dataset is also specified, for example, projectA.datasetB.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "use_exported_bigquery_audit_metadata": {
+                    "title": "Use Exported Bigquery Audit Metadata",
+                    "description": "When configured, use BigQueryAuditMetadata in bigquery_audit_metadata_datasets to compute usage information.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "use_date_sharded_audit_log_tables": {
+                    "title": "Use Date Sharded Audit Log Tables",
+                    "description": "Whether to read date sharded tables or time partitioned tables when extracting usage from exported audit logs.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "table_pattern": {
+                    "title": "Table Pattern",
+                    "description": "List of regex patterns for tables to include/exclude from ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "dataset_pattern": {
+                    "title": "Dataset Pattern",
+                    "description": "List of regex patterns for datasets to include/exclude from ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "log_page_size": {
+                    "title": "Log Page Size",
+                    "default": 1000,
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "query_log_delay": {
+                    "title": "Query Log Delay",
+                    "description": "To account for the possibility that the query event arrives after the read event in the audit logs, we wait for at least query_log_delay additional events to be processed before attempting to resolve BigQuery job information from the logs. If query_log_delay is None, it gets treated as an unlimited delay, which prioritizes correctness at the expense of memory usage.",
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "max_query_duration": {
+                    "title": "Max Query Duration",
+                    "description": "Correction to pad start_time and end_time with. For handling the case where the read happens within our time range but the query completion event is delayed and happens after the configured end time.",
+                    "default": 900.0,
+                    "type": "number",
+                    "format": "time-delta"
+                },
+                "credential": {
+                    "title": "Credential",
+                    "description": "Bigquery credential. Required if GOOGLE_APPLICATION_CREDENTIALS environment variable is not set. See this example recipe for details",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BigQueryCredential"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": false
+        },
         "AllowDenyPattern": {
             "title": "AllowDenyPattern",
             "description": "A class to store allow deny regexes",
@@ -10532,6 +10532,74 @@
             ],
             "type": "string"
         },
+        "BigQueryCredential": {
+            "title": "BigQueryCredential",
+            "type": "object",
+            "properties": {
+                "project_id": {
+                    "title": "Project Id",
+                    "description": "Project id to set the credentials",
+                    "type": "string"
+                },
+                "private_key_id": {
+                    "title": "Private Key Id",
+                    "description": "Private key id",
+                    "type": "string"
+                },
+                "private_key": {
+                    "title": "Private Key",
+                    "description": "Private key in a form of '-----BEGIN PRIVATE KEY-----\\nprivate-key\\n-----END PRIVATE KEY-----\\n'",
+                    "type": "string"
+                },
+                "client_email": {
+                    "title": "Client Email",
+                    "description": "Client email",
+                    "type": "string"
+                },
+                "client_id": {
+                    "title": "Client Id",
+                    "description": "Client Id",
+                    "type": "string"
+                },
+                "auth_uri": {
+                    "title": "Auth Uri",
+                    "description": "Authentication uri",
+                    "default": "https://accounts.google.com/o/oauth2/auth",
+                    "type": "string"
+                },
+                "token_uri": {
+                    "title": "Token Uri",
+                    "description": "Token uri",
+                    "default": "https://oauth2.googleapis.com/token",
+                    "type": "string"
+                },
+                "auth_provider_x509_cert_url": {
+                    "title": "Auth Provider X509 Cert Url",
+                    "description": "Auth provider x509 certificate url",
+                    "default": "https://www.googleapis.com/oauth2/v1/certs",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "Type",
+                    "description": "Authentication type",
+                    "default": "service_account",
+                    "type": "string"
+                },
+                "client_x509_cert_url": {
+                    "title": "Client X509 Cert Url",
+                    "description": "If not set it will be default to https://www.googleapis.com/robot/v1/metadata/x509/client_email",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "project_id",
+                "private_key_id",
+                "private_key",
+                "client_email",
+                "client_id"
+            ],
+            "additionalProperties": false
+        },
         "OauthConfiguration": {
             "title": "OauthConfiguration",
             "type": "object",
@@ -10681,162 +10749,6 @@
                 "source_dataset",
                 "source_platform"
             ],
-            "additionalProperties": false
-        },
-        "BigQueryCredential": {
-            "title": "BigQueryCredential",
-            "type": "object",
-            "properties": {
-                "project_id": {
-                    "title": "Project Id",
-                    "description": "Project id to set the credentials",
-                    "type": "string"
-                },
-                "private_key_id": {
-                    "title": "Private Key Id",
-                    "description": "Private key id",
-                    "type": "string"
-                },
-                "private_key": {
-                    "title": "Private Key",
-                    "description": "Private key in a form of '-----BEGIN PRIVATE KEY-----\\nprivate-key\\n-----END PRIVATE KEY-----\\n'",
-                    "type": "string"
-                },
-                "client_email": {
-                    "title": "Client Email",
-                    "description": "Client email",
-                    "type": "string"
-                },
-                "client_id": {
-                    "title": "Client Id",
-                    "description": "Client Id",
-                    "type": "string"
-                },
-                "auth_uri": {
-                    "title": "Auth Uri",
-                    "description": "Authentication uri",
-                    "default": "https://accounts.google.com/o/oauth2/auth",
-                    "type": "string"
-                },
-                "token_uri": {
-                    "title": "Token Uri",
-                    "description": "Token uri",
-                    "default": "https://oauth2.googleapis.com/token",
-                    "type": "string"
-                },
-                "auth_provider_x509_cert_url": {
-                    "title": "Auth Provider X509 Cert Url",
-                    "description": "Auth provider x509 certificate url",
-                    "default": "https://www.googleapis.com/oauth2/v1/certs",
-                    "type": "string"
-                },
-                "type": {
-                    "title": "Type",
-                    "description": "Authentication type",
-                    "default": "service_account",
-                    "type": "string"
-                },
-                "client_x509_cert_url": {
-                    "title": "Client X509 Cert Url",
-                    "description": "If not set it will be default to https://www.googleapis.com/robot/v1/metadata/x509/client_email",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "project_id",
-                "private_key_id",
-                "private_key",
-                "client_email",
-                "client_id"
-            ],
-            "additionalProperties": false
-        },
-        "BigQueryUsageConfig": {
-            "title": "BigQueryUsageConfig",
-            "type": "object",
-            "properties": {
-                "bucket_duration": {
-                    "description": "Size of the time window to aggregate usage stats.",
-                    "default": "DAY",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/BucketDuration"
-                        }
-                    ]
-                },
-                "end_time": {
-                    "title": "End Time",
-                    "description": "Latest date of usage to consider. Default: Current time in UTC",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "start_time": {
-                    "title": "Start Time",
-                    "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "top_n_queries": {
-                    "title": "Top N Queries",
-                    "description": "Number of top queries to save to each table.",
-                    "default": 10,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "user_email_pattern": {
-                    "title": "User Email Pattern",
-                    "description": "regex patterns for user emails to filter in usage.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
-                },
-                "include_operational_stats": {
-                    "title": "Include Operational Stats",
-                    "description": "Whether to display operational stats.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "include_read_operational_stats": {
-                    "title": "Include Read Operational Stats",
-                    "description": "Whether to report read operational stats. Experimental.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "format_sql_queries": {
-                    "title": "Format Sql Queries",
-                    "description": "Whether to format sql queries",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "include_top_n_queries": {
-                    "title": "Include Top N Queries",
-                    "description": "Whether to ingest the top_n_queries.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "query_log_delay": {
-                    "title": "Query Log Delay",
-                    "description": "To account for the possibility that the query event arrives after the read event in the audit logs, we wait for at least query_log_delay additional events to be processed before attempting to resolve BigQuery job information from the logs. If query_log_delay is None, it gets treated as an unlimited delay, which prioritizes correctness at the expense of memory usage.",
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "max_query_duration": {
-                    "title": "Max Query Duration",
-                    "description": "Correction to pad start_time and end_time with. For handling the case where the read happens within our time range but the query completion event is delayed and happens after the configured end time.",
-                    "default": 900.0,
-                    "type": "number",
-                    "format": "time-delta"
-                }
-            },
             "additionalProperties": false
         },
         "GlueStatefulIngestionConfig": {
@@ -11801,6 +11713,94 @@
             },
             "additionalProperties": false
         },
+        "BigQueryUsageConfig": {
+            "title": "BigQueryUsageConfig",
+            "type": "object",
+            "properties": {
+                "bucket_duration": {
+                    "description": "Size of the time window to aggregate usage stats.",
+                    "default": "DAY",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BucketDuration"
+                        }
+                    ]
+                },
+                "end_time": {
+                    "title": "End Time",
+                    "description": "Latest date of usage to consider. Default: Current time in UTC",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "start_time": {
+                    "title": "Start Time",
+                    "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "top_n_queries": {
+                    "title": "Top N Queries",
+                    "description": "Number of top queries to save to each table.",
+                    "default": 10,
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "user_email_pattern": {
+                    "title": "User Email Pattern",
+                    "description": "regex patterns for user emails to filter in usage.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "include_operational_stats": {
+                    "title": "Include Operational Stats",
+                    "description": "Whether to display operational stats.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_read_operational_stats": {
+                    "title": "Include Read Operational Stats",
+                    "description": "Whether to report read operational stats. Experimental.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "format_sql_queries": {
+                    "title": "Format Sql Queries",
+                    "description": "Whether to format sql queries",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "include_top_n_queries": {
+                    "title": "Include Top N Queries",
+                    "description": "Whether to ingest the top_n_queries.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "query_log_delay": {
+                    "title": "Query Log Delay",
+                    "description": "To account for the possibility that the query event arrives after the read event in the audit logs, we wait for at least query_log_delay additional events to be processed before attempting to resolve BigQuery job information from the logs. If query_log_delay is None, it gets treated as an unlimited delay, which prioritizes correctness at the expense of memory usage.",
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "max_query_duration": {
+                    "title": "Max Query Duration",
+                    "description": "Correction to pad start_time and end_time with. For handling the case where the read happens within our time range but the query completion event is delayed and happens after the configured end time.",
+                    "default": 900.0,
+                    "type": "number",
+                    "format": "time-delta"
+                }
+            },
+            "additionalProperties": false
+        },
         "SnowflakeStatefulIngestionConfig": {
             "title": "SnowflakeStatefulIngestionConfig",
             "description": "Specialization of basic StatefulIngestionConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SnowflakeUsageConfig.",
@@ -11860,6 +11860,9 @@
                     "$ref": "#/definitions/pulsar"
                 },
                 {
+                    "$ref": "#/definitions/bigquery-legacy"
+                },
+                {
                     "$ref": "#/definitions/postgres"
                 },
                 {
@@ -11896,9 +11899,6 @@
                     "$ref": "#/definitions/datahub-business-glossary"
                 },
                 {
-                    "$ref": "#/definitions/bigquery-beta"
-                },
-                {
                     "$ref": "#/definitions/glue"
                 },
                 {
@@ -11927,9 +11927,6 @@
                 },
                 {
                     "$ref": "#/definitions/lookml"
-                },
-                {
-                    "$ref": "#/definitions/bigquery-usage"
                 },
                 {
                     "$ref": "#/definitions/trino"
@@ -12011,6 +12008,9 @@
                 },
                 {
                     "$ref": "#/definitions/csv-enricher"
+                },
+                {
+                    "$ref": "#/definitions/bigquery-usage-legacy"
                 }
             ]
         },
