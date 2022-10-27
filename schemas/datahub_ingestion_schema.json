@@ -3710,6 +3710,12 @@
                         }
                     ]
                 },
+                "extract_column_level_lineage": {
+                    "title": "Extract Column Level Lineage",
+                    "description": "When enabled, extracts column-level lineage from Tableau Datasources",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "env": {
                     "title": "Env",
                     "description": "Environment to use in namespace when constructing URNs.",
@@ -4559,22 +4565,6 @@
                     "description": "Use model identifier instead of model name if defined (if not, default to model name).",
                     "default": false,
                     "type": "boolean"
-                },
-                "node_type_pattern": {
-                    "title": "Node Type Pattern",
-                    "description": "Deprecated: use entities_enabled instead. Regex patterns for dbt nodes to filter in ingestion.",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
                 },
                 "entities_enabled": {
                     "title": "Entities Enabled",
@@ -8738,8 +8728,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-26T23:47:25.983152+00:00",
-                        "start_time": "2022-10-25T00:00:00+00:00",
+                        "end_time": "2022-10-27T03:38:28.913992+00:00",
+                        "start_time": "2022-10-26T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -11101,7 +11091,8 @@
                         }
                     ]
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "AwsConnectionConfig": {
             "title": "AwsConnectionConfig",
