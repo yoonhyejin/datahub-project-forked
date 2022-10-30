@@ -8278,6 +8278,161 @@
             },
             "additionalProperties": false
         },
+        "unity-catalog": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "unity-catalog"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/unity-catalog_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "unity-catalog_config": {
+            "title": "UnityCatalogSourceConfig",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
+            "type": "object",
+            "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "title": "Stateful Ingestion",
+                    "description": "Unity Catalog Stateful Ingestion Config.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/UnityCatalogStatefulIngestionConfig"
+                        }
+                    ]
+                },
+                "token": {
+                    "title": "Token",
+                    "description": "Databricks personal access token",
+                    "type": "string"
+                },
+                "workspace_url": {
+                    "title": "Workspace Url",
+                    "description": "Databricks workspace url",
+                    "type": "string"
+                },
+                "workspace_name": {
+                    "title": "Workspace Name",
+                    "description": "Name of the workspace. Default to deployment name present in workspace_url",
+                    "type": "string"
+                },
+                "metastore_id_pattern": {
+                    "title": "Metastore Id Pattern",
+                    "description": "Regex patterns for metastore id to filter in ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "catalog_pattern": {
+                    "title": "Catalog Pattern",
+                    "description": "Regex patterns for catalogs to filter in ingestion. Specify regex to match the catalog name",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "schema_pattern": {
+                    "title": "Schema Pattern",
+                    "description": "Regex patterns for schemas to filter in ingestion. Specify regex to only match the schema name. e.g. to match all tables in schema analytics, use the regex 'analytics'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "table_pattern": {
+                    "title": "Table Pattern",
+                    "description": "Regex patterns for tables to filter in ingestion. Specify regex to match the entire table name in catalog.schema.table format. e.g. to match all tables starting with customer in Customer catalog and public schema, use the regex 'Customer.public.customer.*'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "domain": {
+                    "title": "Domain",
+                    "description": "Attach domains to catalogs, schemas or tables during ingestion using regex patterns. Domain key can be a guid like *urn:li:domain:ec428203-ce86-4db3-985d-5a8ee6df32ba* or a string like \"Marketing\".) If you provide strings, then datahub will attempt to resolve this name to a guid, and will error out if this fails. There can be multiple domain keys specified.",
+                    "default": {},
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/AllowDenyPattern"
+                    }
+                },
+                "include_table_lineage": {
+                    "title": "Include Table Lineage",
+                    "description": "Option to enable/disable lineage generation.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_column_lineage": {
+                    "title": "Include Column Lineage",
+                    "description": "Option to enable/disable lineage generation. Currently we have to call a rest call per column to get column level lineage due to the Databrick api which can slow down ingestion. ",
+                    "default": true,
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "token",
+                "workspace_url"
+            ],
+            "additionalProperties": false
+        },
         "s3": {
             "type": "object",
             "properties": {
@@ -8728,8 +8883,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-10-29T00:23:03.324150+00:00",
-                        "start_time": "2022-10-28T00:00:00+00:00",
+                        "end_time": "2022-10-30T04:53:46.666930+00:00",
+                        "start_time": "2022-10-29T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -11619,6 +11774,62 @@
             },
             "additionalProperties": false
         },
+        "UnityCatalogStatefulIngestionConfig": {
+            "title": "UnityCatalogStatefulIngestionConfig",
+            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the UnityCatalogConfig.",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "title": "Enabled",
+                    "description": "The type of the ingestion state provider registered with datahub.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "max_checkpoint_state_size": {
+                    "title": "Max Checkpoint State Size",
+                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
+                    "default": 16777216,
+                    "exclusiveMinimum": 0,
+                    "type": "integer"
+                },
+                "state_provider": {
+                    "title": "State Provider",
+                    "description": "The ingestion state provider configuration.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
+                        }
+                    ]
+                },
+                "ignore_old_state": {
+                    "title": "Ignore Old State",
+                    "description": "If set to True, ignores the previous checkpoint state.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "ignore_new_state": {
+                    "title": "Ignore New State",
+                    "description": "If set to True, ignores the current checkpoint state.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "remove_stale_metadata": {
+                    "title": "Remove Stale Metadata",
+                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "fail_safe_threshold": {
+                    "title": "Fail Safe Threshold",
+                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
+                    "default": 20.0,
+                    "minimum": 0.0,
+                    "maximum": 100.0,
+                    "type": "number"
+                }
+            },
+            "additionalProperties": false
+        },
         "DataLakeProfilerConfig": {
             "title": "DataLakeProfilerConfig",
             "type": "object",
@@ -11978,6 +12189,9 @@
                 },
                 {
                     "$ref": "#/definitions/salesforce"
+                },
+                {
+                    "$ref": "#/definitions/unity-catalog"
                 },
                 {
                     "$ref": "#/definitions/s3"
