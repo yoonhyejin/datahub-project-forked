@@ -3075,6 +3075,12 @@
                     "title": "File",
                     "description": "Path to business glossary file to ingest.",
                     "type": "string"
+                },
+                "enable_auto_id": {
+                    "title": "Enable Auto Id",
+                    "description": "Generate id field from GlossaryNode and GlossaryTerm's name field",
+                    "default": false,
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -8883,7 +8889,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-01T21:46:27.555923+00:00",
+                        "end_time": "2022-11-01T22:32:54.259682+00:00",
                         "start_time": "2022-10-31T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
