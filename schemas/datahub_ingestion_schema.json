@@ -8889,7 +8889,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-01T22:32:54.259682+00:00",
+                        "end_time": "2022-11-01T23:13:00.231400+00:00",
                         "start_time": "2022-10-31T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9975,6 +9975,140 @@
             },
             "required": [
                 "host_port"
+            ],
+            "additionalProperties": false
+        },
+        "powerbi-report-server": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "powerbi-report-server"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/powerbi-report-server_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "powerbi-report-server_config": {
+            "title": "PowerBiReportServerDashboardSourceConfig",
+            "description": "Any source that produces dataset urns in a single environment should inherit this class",
+            "type": "object",
+            "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "username": {
+                    "title": "Username",
+                    "description": "Windows account username",
+                    "type": "string"
+                },
+                "password": {
+                    "title": "Password",
+                    "description": "Windows account password",
+                    "type": "string"
+                },
+                "workstation_name": {
+                    "title": "Workstation Name",
+                    "description": "Workstation name",
+                    "default": "localhost",
+                    "type": "string"
+                },
+                "host_port": {
+                    "title": "Host Port",
+                    "description": "Power BI Report Server host URL",
+                    "type": "string"
+                },
+                "server_alias": {
+                    "title": "Server Alias",
+                    "description": "Alias for Power BI Report Server host URL",
+                    "default": "",
+                    "type": "string"
+                },
+                "graphql_url": {
+                    "title": "Graphql Url",
+                    "description": "GraphQL API URL",
+                    "type": "string"
+                },
+                "report_virtual_directory_name": {
+                    "title": "Report Virtual Directory Name",
+                    "description": "Report Virtual Directory URL name",
+                    "type": "string"
+                },
+                "report_server_virtual_directory_name": {
+                    "title": "Report Server Virtual Directory Name",
+                    "description": "Report Server Virtual Directory URL name",
+                    "type": "string"
+                },
+                "extract_ownership": {
+                    "title": "Extract Ownership",
+                    "description": "Whether ownership should be ingested",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "ownership_type": {
+                    "title": "Ownership Type",
+                    "description": "Ownership type of owner",
+                    "default": "NONE",
+                    "type": "string"
+                },
+                "platform_name": {
+                    "title": "Platform Name",
+                    "default": "powerbi",
+                    "type": "string"
+                },
+                "platform_urn": {
+                    "title": "Platform Urn",
+                    "default": "urn:li:dataPlatform:powerbi",
+                    "type": "string"
+                },
+                "report_pattern": {
+                    "title": "Report Pattern",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "chart_pattern": {
+                    "title": "Chart Pattern",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "username",
+                "password",
+                "host_port",
+                "graphql_url",
+                "report_virtual_directory_name",
+                "report_server_virtual_directory_name"
             ],
             "additionalProperties": false
         },
@@ -12216,6 +12350,9 @@
                 },
                 {
                     "$ref": "#/definitions/redshift"
+                },
+                {
+                    "$ref": "#/definitions/powerbi-report-server"
                 },
                 {
                     "$ref": "#/definitions/csv-enricher"
