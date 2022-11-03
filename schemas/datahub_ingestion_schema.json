@@ -5766,6 +5766,11 @@
                     "description": "Path to Feast repository",
                     "type": "string"
                 },
+                "fs_yaml_file": {
+                    "title": "Fs Yaml File",
+                    "description": "Path to the `feature_store.yaml` file used to configure the feature store",
+                    "type": "string"
+                },
                 "environment": {
                     "title": "Environment",
                     "description": "Environment to use when constructing URNs",
@@ -8889,7 +8894,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-03T17:33:59.001394+00:00",
+                        "end_time": "2022-11-03T18:31:39.692134+00:00",
                         "start_time": "2022-11-02T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
