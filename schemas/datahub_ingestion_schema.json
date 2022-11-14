@@ -4522,6 +4522,12 @@
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
+                "incremental_lineage": {
+                    "title": "Incremental Lineage",
+                    "description": "When enabled, emits lineage as incremental to existing lineage already in DataHub. When disabled, re-states lineage on each run.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "env": {
                     "title": "Env",
                     "description": "Environment to use in namespace when constructing URNs.",
@@ -8920,7 +8926,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-14T17:05:23.760826+00:00",
+                        "end_time": "2022-11-14T18:27:05.259936+00:00",
                         "start_time": "2022-11-13T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
