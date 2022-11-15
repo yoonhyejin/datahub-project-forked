@@ -8926,7 +8926,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-15T18:12:28.103492+00:00",
+                        "end_time": "2022-11-15T19:32:51.283281+00:00",
                         "start_time": "2022-11-14T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10800,20 +10800,20 @@
                 },
                 "profile_if_updated_since_days": {
                     "title": "Profile If Updated Since Days",
-                    "description": "Profile table only if it has been updated since these many number of days. If set to `null`, no constraint of last modified time for tables to profile. Supported only in `snowflake`, `snowflake-beta` and `BigQuery`.",
+                    "description": "Profile table only if it has been updated since these many number of days. If set to `null`, no constraint of last modified time for tables to profile. Supported only in `snowflake` and `BigQuery`.",
                     "default": 1,
                     "exclusiveMinimum": 0,
                     "type": "number"
                 },
                 "profile_table_size_limit": {
                     "title": "Profile Table Size Limit",
-                    "description": "Profile tables only if their size is less then specified GBs. If set to `null`, no limit on the size of tables to profile. Supported only in `snowflake-beta` and `BigQuery`",
+                    "description": "Profile tables only if their size is less then specified GBs. If set to `null`, no limit on the size of tables to profile. Supported only in `snowflake` and `BigQuery`",
                     "default": 1,
                     "type": "integer"
                 },
                 "profile_table_row_limit": {
                     "title": "Profile Table Row Limit",
-                    "description": "Profile tables only if their row count is less then specified count. If set to `null`, no limit on the row count of tables to profile. Supported only in `snowflake-beta` and `BigQuery`",
+                    "description": "Profile tables only if their row count is less then specified count. If set to `null`, no limit on the row count of tables to profile. Supported only in `snowflake` and `BigQuery`",
                     "default": 50000,
                     "type": "integer"
                 },
