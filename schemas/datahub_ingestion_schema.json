@@ -427,7 +427,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/KafkaSourceStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "connection": {
                     "title": "Connection",
@@ -536,7 +536,7 @@
                     "description": "see Stateful Ingestion",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/PulsarSourceStatefulIngestionConfig"
+                            "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                         }
                     ]
                 },
@@ -710,7 +710,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -1010,7 +1010,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -1224,7 +1224,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -1647,7 +1647,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -1883,7 +1883,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -2217,7 +2217,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -2540,7 +2540,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -2783,7 +2783,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -3142,7 +3142,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/GlueStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "row_count": {
                     "title": "Row Count",
@@ -3423,7 +3423,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -3749,7 +3749,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/TableauStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "platform_instance_map": {
                     "title": "Platform Instance Map",
@@ -3861,7 +3861,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -4079,7 +4079,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -4555,7 +4555,7 @@
                     "description": "DBT Stateful Ingestion Config.",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/DBTStatefulIngestionConfig"
+                            "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                         }
                     ]
                 },
@@ -4826,7 +4826,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -5285,7 +5285,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -5936,7 +5936,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -6391,7 +6391,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -6683,7 +6683,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -6884,7 +6884,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -7110,7 +7110,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -7984,7 +7984,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -8364,7 +8364,7 @@
                     "description": "Unity Catalog Stateful Ingestion Config.",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/UnityCatalogStatefulIngestionConfig"
+                            "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                         }
                     ]
                 },
@@ -8659,7 +8659,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -8932,7 +8932,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-18T00:49:41.387377+00:00",
+                        "end_time": "2022-11-18T05:16:02.282396+00:00",
                         "start_time": "2022-11-17T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9062,7 +9062,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "bucket_duration": {
                     "description": "Size of the time window to aggregate usage stats.",
@@ -9822,7 +9822,7 @@
                     "type": "string"
                 },
                 "stateful_ingestion": {
-                    "$ref": "#/definitions/SQLAlchemyStatefulIngestionConfig"
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -10500,9 +10500,9 @@
             ],
             "additionalProperties": false
         },
-        "KafkaSourceStatefulIngestionConfig": {
-            "title": "KafkaSourceStatefulIngestionConfig",
-            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
+        "StatefulStaleMetadataRemovalConfig": {
+            "title": "StatefulStaleMetadataRemovalConfig",
+            "description": "Base specialized config for Stateful Ingestion with stale metadata removal capability.",
             "type": "object",
             "properties": {
                 "enabled": {
@@ -10510,22 +10510,6 @@
                     "description": "The type of the ingestion state provider registered with datahub.",
                     "default": false,
                     "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
                 },
                 "ignore_old_state": {
                     "title": "Ignore Old State",
@@ -10541,7 +10525,7 @@
                 },
                 "remove_stale_metadata": {
                     "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
+                    "description": "Soft-deletes the entities present in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -10578,118 +10562,6 @@
                 "consumer_config": {
                     "title": "Consumer Config",
                     "type": "object"
-                }
-            },
-            "additionalProperties": false
-        },
-        "PulsarSourceStatefulIngestionConfig": {
-            "title": "PulsarSourceStatefulIngestionConfig",
-            "description": "Specialization of the StatefulStaleMetadataRemovalConfig to add custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the PulsarSourceConfig.",
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "title": "Enabled",
-                    "description": "The type of the ingestion state provider registered with datahub.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
-                },
-                "ignore_old_state": {
-                    "title": "Ignore Old State",
-                    "description": "If set to True, ignores the previous checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_new_state": {
-                    "title": "Ignore New State",
-                    "description": "If set to True, ignores the current checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "remove_stale_metadata": {
-                    "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
-                }
-            },
-            "additionalProperties": false
-        },
-        "SQLAlchemyStatefulIngestionConfig": {
-            "title": "SQLAlchemyStatefulIngestionConfig",
-            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "title": "Enabled",
-                    "description": "The type of the ingestion state provider registered with datahub.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
-                },
-                "ignore_old_state": {
-                    "title": "Ignore Old State",
-                    "description": "If set to True, ignores the previous checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_new_state": {
-                    "title": "Ignore New State",
-                    "description": "If set to True, ignores the current checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "remove_stale_metadata": {
-                    "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
                 }
             },
             "additionalProperties": false
@@ -11087,62 +10959,6 @@
             ],
             "additionalProperties": false
         },
-        "GlueStatefulIngestionConfig": {
-            "title": "GlueStatefulIngestionConfig",
-            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the GlueSourceConfig.",
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "title": "Enabled",
-                    "description": "The type of the ingestion state provider registered with datahub.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
-                },
-                "ignore_old_state": {
-                    "title": "Ignore Old State",
-                    "description": "If set to True, ignores the previous checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_new_state": {
-                    "title": "Ignore New State",
-                    "description": "If set to True, ignores the current checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "remove_stale_metadata": {
-                    "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
-                }
-            },
-            "additionalProperties": false
-        },
         "AwsAssumeRoleConfig": {
             "title": "AwsAssumeRoleConfig",
             "type": "object",
@@ -11251,62 +11067,6 @@
             ],
             "type": "string"
         },
-        "TableauStatefulIngestionConfig": {
-            "title": "TableauStatefulIngestionConfig",
-            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the TableauConfig.",
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "title": "Enabled",
-                    "description": "The type of the ingestion state provider registered with datahub.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
-                },
-                "ignore_old_state": {
-                    "title": "Ignore Old State",
-                    "description": "If set to True, ignores the previous checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_new_state": {
-                    "title": "Ignore New State",
-                    "description": "If set to True, ignores the current checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "remove_stale_metadata": {
-                    "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
-                }
-            },
-            "additionalProperties": false
-        },
         "TableauLineageOverrides": {
             "title": "TableauLineageOverrides",
             "type": "object",
@@ -11318,62 +11078,6 @@
                     "additionalProperties": {
                         "type": "string"
                     }
-                }
-            },
-            "additionalProperties": false
-        },
-        "DBTStatefulIngestionConfig": {
-            "title": "DBTStatefulIngestionConfig",
-            "description": "Specialization of basic StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the SQLAlchemyConfig.",
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "title": "Enabled",
-                    "description": "The type of the ingestion state provider registered with datahub.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
-                },
-                "ignore_old_state": {
-                    "title": "Ignore Old State",
-                    "description": "If set to True, ignores the previous checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_new_state": {
-                    "title": "Ignore New State",
-                    "description": "If set to True, ignores the current checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "remove_stale_metadata": {
-                    "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
                 }
             },
             "additionalProperties": false
@@ -11965,62 +11669,6 @@
             },
             "additionalProperties": false
         },
-        "UnityCatalogStatefulIngestionConfig": {
-            "title": "UnityCatalogStatefulIngestionConfig",
-            "description": "Specialization of StatefulStaleMetadataRemovalConfig to adding custom config.\nThis will be used to override the stateful_ingestion config param of StatefulIngestionConfigBase\nin the UnityCatalogConfig.",
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "title": "Enabled",
-                    "description": "The type of the ingestion state provider registered with datahub.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
-                },
-                "ignore_old_state": {
-                    "title": "Ignore Old State",
-                    "description": "If set to True, ignores the previous checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "ignore_new_state": {
-                    "title": "Ignore New State",
-                    "description": "If set to True, ignores the current checkpoint state.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "remove_stale_metadata": {
-                    "title": "Remove Stale Metadata",
-                    "description": "Soft-deletes the entities of type  in the last successful run but missing in the current run with stateful_ingestion enabled.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
-                }
-            },
-            "additionalProperties": false
-        },
         "DataLakeProfilerConfig": {
             "title": "DataLakeProfilerConfig",
             "type": "object",
@@ -12204,22 +11852,6 @@
                     "description": "The type of the ingestion state provider registered with datahub.",
                     "default": false,
                     "type": "boolean"
-                },
-                "max_checkpoint_state_size": {
-                    "title": "Max Checkpoint State Size",
-                    "description": "The maximum size of the checkpoint state in bytes. Default is 16MB",
-                    "default": 16777216,
-                    "exclusiveMinimum": 0,
-                    "type": "integer"
-                },
-                "state_provider": {
-                    "title": "State Provider",
-                    "description": "The ingestion state provider configuration.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/DynamicTypedStateProviderConfig"
-                        }
-                    ]
                 },
                 "force_rerun": {
                     "title": "Force Rerun",
