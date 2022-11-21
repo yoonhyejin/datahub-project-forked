@@ -2024,8 +2024,8 @@
                 },
                 "uri_args": {
                     "title": "Uri Args",
+                    "description": "Arguments to URL-encode when connecting. See https://docs.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute?view=sql-server-ver15.",
                     "default": {},
-                    "desscription": "Arguments to URL-encode when connecting. See https://docs.microsoft.com/en-us/sql/connect/odbc/dsn-connection-string-attribute?view=sql-server-ver15.",
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
@@ -4712,17 +4712,17 @@
             ],
             "additionalProperties": false
         },
-        "dbt": {
+        "dbt-cloud": {
             "type": "object",
             "properties": {
                 "type": {
                     "type": "string",
                     "enum": [
-                        "dbt"
+                        "dbt-cloud"
                     ]
                 },
                 "config": {
-                    "$ref": "#/definitions/dbt_config"
+                    "$ref": "#/definitions/dbt-cloud_config"
                 }
             },
             "required": [
@@ -4730,8 +4730,8 @@
                 "config"
             ]
         },
-        "dbt_config": {
-            "title": "DBTConfig",
+        "dbt-cloud_config": {
+            "title": "DBTCloudConfig",
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
@@ -4765,26 +4765,6 @@
                             "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                         }
                     ]
-                },
-                "manifest_path": {
-                    "title": "Manifest Path",
-                    "description": "Path to dbt manifest JSON. See https://docs.getdbt.com/reference/artifacts/manifest-json Note this can be a local file or a URI.",
-                    "type": "string"
-                },
-                "catalog_path": {
-                    "title": "Catalog Path",
-                    "description": "Path to dbt catalog JSON. See https://docs.getdbt.com/reference/artifacts/catalog-json Note this can be a local file or a URI.",
-                    "type": "string"
-                },
-                "sources_path": {
-                    "title": "Sources Path",
-                    "description": "Path to dbt sources JSON. See https://docs.getdbt.com/reference/artifacts/sources-json. If not specified, last-modified fields will not be populated. Note this can be a local file or a URI.",
-                    "type": "string"
-                },
-                "test_results_path": {
-                    "title": "Test Results Path",
-                    "description": "Path to output of dbt test run as run_results file in JSON format. See https://docs.getdbt.com/reference/artifacts/run-results-json. If not specified, test execution results will not be populated in DataHub.",
-                    "type": "string"
                 },
                 "target_platform": {
                     "title": "Target Platform",
@@ -4881,29 +4861,11 @@
                     "description": "Regex string to extract owner from the dbt node using the `(?P<name>...) syntax` of the [match object](https://docs.python.org/3/library/re.html#match-objects), where the group name must be `owner`. Examples: (1)`r\"(?P<owner>(.*)): (\\w+) (\\w+)\"` will extract `jdoe` as the owner from `\"jdoe: John Doe\"` (2) `r\"@(?P<owner>(.*))\"` will extract `alice` as the owner from `\"@alice\"`.",
                     "type": "string"
                 },
-                "aws_connection": {
-                    "title": "Aws Connection",
-                    "description": "When fetching manifest files from s3, configuration for aws connection details",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AwsConnectionConfig"
-                        }
-                    ]
-                },
                 "backcompat_skip_source_on_lineage_edge": {
                     "title": "Backcompat Skip Source On Lineage Edge",
                     "description": "Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
                     "default": false,
                     "type": "boolean"
-                },
-                "github_info": {
-                    "title": "Github Info",
-                    "description": "Reference to your github location to enable easy navigation from DataHub to your dbt files.",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/GitHubReference"
-                        }
-                    ]
                 },
                 "enable_meta_mapping": {
                     "title": "Enable Meta Mapping",
@@ -4916,12 +4878,258 @@
                     "description": "When enabled, applies the mappings that are defined through the `query_tag_mapping` directives.",
                     "default": true,
                     "type": "boolean"
+                },
+                "metadata_endpoint": {
+                    "title": "Metadata Endpoint",
+                    "description": "The dbt Cloud metadata API endpoint.",
+                    "default": "https://metadata.cloud.getdbt.com/graphql",
+                    "type": "string"
+                },
+                "token": {
+                    "title": "Token",
+                    "description": "The API token to use to authenticate with DBT Cloud.",
+                    "type": "string"
+                },
+                "account_id": {
+                    "title": "Account Id",
+                    "description": "The DBT Cloud account ID to use.",
+                    "type": "integer"
+                },
+                "project_id": {
+                    "title": "Project Id",
+                    "description": "The dbt Cloud project ID to use.",
+                    "type": "integer"
+                },
+                "job_id": {
+                    "title": "Job Id",
+                    "description": "The ID of the job to ingest metadata from.",
+                    "type": "integer"
+                },
+                "run_id": {
+                    "title": "Run Id",
+                    "description": "The ID of the run to ingest metadata from. If not specified, we'll default to the latest run.",
+                    "type": "integer"
                 }
             },
             "required": [
+                "target_platform",
+                "token",
+                "account_id",
+                "project_id",
+                "job_id"
+            ],
+            "additionalProperties": false
+        },
+        "dbt": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "dbt"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/dbt_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "dbt_config": {
+            "title": "DBTCoreConfig",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
+            "type": "object",
+            "properties": {
+                "incremental_lineage": {
+                    "title": "Incremental Lineage",
+                    "description": "When enabled, emits lineage as incremental to existing lineage already in DataHub. When disabled, re-states lineage on each run.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "env": {
+                    "title": "Env",
+                    "description": "Environment to use in namespace when constructing URNs.",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "title": "Stateful Ingestion",
+                    "description": "DBT Stateful Ingestion Config.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
+                        }
+                    ]
+                },
+                "target_platform": {
+                    "title": "Target Platform",
+                    "description": "The platform that dbt is loading onto. (e.g. bigquery / redshift / postgres etc.)",
+                    "type": "string"
+                },
+                "target_platform_instance": {
+                    "title": "Target Platform Instance",
+                    "description": "The platform instance for the platform that dbt is operating on. Use this if you have multiple instances of the same platform (e.g. redshift) and need to distinguish between them.",
+                    "type": "string"
+                },
+                "use_identifiers": {
+                    "title": "Use Identifiers",
+                    "description": "Use model identifier instead of model name if defined (if not, default to model name).",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "entities_enabled": {
+                    "title": "Entities Enabled",
+                    "description": "Controls for enabling / disabling metadata emission for different dbt entities (models, test definitions, test results, etc.)",
+                    "default": {
+                        "models": "YES",
+                        "sources": "YES",
+                        "seeds": "YES",
+                        "test_definitions": "YES",
+                        "test_results": "YES"
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/DBTEntitiesEnabled"
+                        }
+                    ]
+                },
+                "tag_prefix": {
+                    "title": "Tag Prefix",
+                    "description": "Prefix added to tags during ingestion.",
+                    "default": "dbt:",
+                    "type": "string"
+                },
+                "node_name_pattern": {
+                    "title": "Node Name Pattern",
+                    "description": "regex patterns for dbt model names to filter in ingestion.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "meta_mapping": {
+                    "title": "Meta Mapping",
+                    "description": "mapping rules that will be executed against dbt meta properties. Refer to the section below on dbt meta automated mappings.",
+                    "default": {},
+                    "type": "object"
+                },
+                "column_meta_mapping": {
+                    "title": "Column Meta Mapping",
+                    "description": "mapping rules that will be executed against dbt column meta properties. Refer to the section below on dbt meta automated mappings.",
+                    "default": {},
+                    "type": "object"
+                },
+                "query_tag_mapping": {
+                    "title": "Query Tag Mapping",
+                    "description": "mapping rules that will be executed against dbt query_tag meta properties. Refer to the section below on dbt meta automated mappings.",
+                    "default": {},
+                    "type": "object"
+                },
+                "write_semantics": {
+                    "title": "Write Semantics",
+                    "description": "Whether the new tags, terms and owners to be added will override the existing ones added only by this source or not. Value for this config can be \"PATCH\" or \"OVERRIDE\"",
+                    "default": "PATCH",
+                    "type": "string"
+                },
+                "strip_user_ids_from_email": {
+                    "title": "Strip User Ids From Email",
+                    "description": "Whether or not to strip email id while adding owners using dbt meta actions.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "enable_owner_extraction": {
+                    "title": "Enable Owner Extraction",
+                    "description": "When enabled, ownership info will be extracted from the dbt meta",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "owner_extraction_pattern": {
+                    "title": "Owner Extraction Pattern",
+                    "description": "Regex string to extract owner from the dbt node using the `(?P<name>...) syntax` of the [match object](https://docs.python.org/3/library/re.html#match-objects), where the group name must be `owner`. Examples: (1)`r\"(?P<owner>(.*)): (\\w+) (\\w+)\"` will extract `jdoe` as the owner from `\"jdoe: John Doe\"` (2) `r\"@(?P<owner>(.*))\"` will extract `alice` as the owner from `\"@alice\"`.",
+                    "type": "string"
+                },
+                "backcompat_skip_source_on_lineage_edge": {
+                    "title": "Backcompat Skip Source On Lineage Edge",
+                    "description": "Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "enable_meta_mapping": {
+                    "title": "Enable Meta Mapping",
+                    "description": "When enabled, applies the mappings that are defined through the meta_mapping directives.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "enable_query_tag_mapping": {
+                    "title": "Enable Query Tag Mapping",
+                    "description": "When enabled, applies the mappings that are defined through the `query_tag_mapping` directives.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "manifest_path": {
+                    "title": "Manifest Path",
+                    "description": "Path to dbt manifest JSON. See https://docs.getdbt.com/reference/artifacts/manifest-json Note this can be a local file or a URI.",
+                    "type": "string"
+                },
+                "catalog_path": {
+                    "title": "Catalog Path",
+                    "description": "Path to dbt catalog JSON. See https://docs.getdbt.com/reference/artifacts/catalog-json Note this can be a local file or a URI.",
+                    "type": "string"
+                },
+                "sources_path": {
+                    "title": "Sources Path",
+                    "description": "Path to dbt sources JSON. See https://docs.getdbt.com/reference/artifacts/sources-json. If not specified, last-modified fields will not be populated. Note this can be a local file or a URI.",
+                    "type": "string"
+                },
+                "test_results_path": {
+                    "title": "Test Results Path",
+                    "description": "Path to output of dbt test run as run_results file in JSON format. See https://docs.getdbt.com/reference/artifacts/run-results-json. If not specified, test execution results will not be populated in DataHub.",
+                    "type": "string"
+                },
+                "aws_connection": {
+                    "title": "Aws Connection",
+                    "description": "When fetching manifest files from s3, configuration for aws connection details",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AwsConnectionConfig"
+                        }
+                    ]
+                },
+                "github_info": {
+                    "title": "Github Info",
+                    "description": "Reference to your github location to enable easy navigation from DataHub to your dbt files.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/GitHubReference"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "target_platform",
                 "manifest_path",
-                "catalog_path",
-                "target_platform"
+                "catalog_path"
             ],
             "additionalProperties": false
         },
@@ -9145,7 +9353,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-21T18:51:39.631640+00:00",
+                        "end_time": "2022-11-21T19:31:47.634122+00:00",
                         "start_time": "2022-11-20T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -12159,6 +12367,9 @@
                 },
                 {
                     "$ref": "#/definitions/azure-ad"
+                },
+                {
+                    "$ref": "#/definitions/dbt-cloud"
                 },
                 {
                     "$ref": "#/definitions/dbt"
