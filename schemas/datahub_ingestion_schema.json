@@ -5239,7 +5239,7 @@
         },
         "lookml_config": {
             "title": "LookMLSourceConfig",
-            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
                 "env": {
@@ -5257,6 +5257,9 @@
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
                     "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "explore_naming_pattern": {
                     "title": "Explore Naming Pattern",
@@ -7865,7 +7868,7 @@
         },
         "looker_config": {
             "title": "LookerDashboardSourceConfig",
-            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
                 "env": {
@@ -7883,6 +7886,9 @@
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
                     "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "explore_naming_pattern": {
                     "title": "Explore Naming Pattern",
@@ -9139,7 +9145,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-21T17:01:41.124309+00:00",
+                        "end_time": "2022-11-21T18:51:39.631640+00:00",
                         "start_time": "2022-11-20T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
