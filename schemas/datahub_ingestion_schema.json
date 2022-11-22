@@ -9353,8 +9353,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-21T22:15:06.547791+00:00",
-                        "start_time": "2022-11-20T00:00:00+00:00",
+                        "end_time": "2022-11-22T06:16:39.039548+00:00",
+                        "start_time": "2022-11-21T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
