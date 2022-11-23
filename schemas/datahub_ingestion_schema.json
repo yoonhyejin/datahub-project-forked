@@ -9359,8 +9359,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-22T22:05:56.628276+00:00",
-                        "start_time": "2022-11-21T00:00:00+00:00",
+                        "end_time": "2022-11-23T05:50:53.012849+00:00",
+                        "start_time": "2022-11-22T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -9838,6 +9838,9 @@
                     "description": "If enabled, populates the snowflake technical schema and descriptions.",
                     "default": true,
                     "type": "boolean"
+                },
+                "classification": {
+                    "$ref": "#/definitions/ClassificationConfig"
                 }
             },
             "additionalProperties": false
@@ -12265,6 +12268,93 @@
                     "default": 900.0,
                     "type": "number",
                     "format": "time-delta"
+                }
+            },
+            "additionalProperties": false
+        },
+        "DynamicTypedClassifierConfig": {
+            "title": "DynamicTypedClassifierConfig",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "title": "Type",
+                    "description": "The type of the classifier to use. For DataHub,  use `datahub`",
+                    "type": "string"
+                },
+                "config": {
+                    "title": "Config",
+                    "description": "The configuration required for initializing the classifier. If not specified, uses defaults for classifer type."
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "additionalProperties": false
+        },
+        "ClassificationConfig": {
+            "title": "ClassificationConfig",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "title": "Enabled",
+                    "description": "Whether classification should be used to auto-detect glossary terms",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "table_pattern": {
+                    "title": "Table Pattern",
+                    "description": "Regex patterns to filter tables for classification. This is used in combination with other patterns in parent config. Specify regex to match the entire table name in `database.schema.table` format. e.g. to match all tables starting with customer in Customer database and public schema, use the regex 'Customer.public.customer.*'",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "column_pattern": {
+                    "title": "Column Pattern",
+                    "description": "Regex patterns to filter columns for classification. This is used in combination with other patterns in parent config. Specify regex to match the column name in `database.schema.table.column` format.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "info_type_to_term": {
+                    "title": "Info Type To Term",
+                    "description": "Optional mapping to provide glossary term identifier for info type",
+                    "default": {},
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "classifiers": {
+                    "title": "Classifiers",
+                    "description": "Classifiers to use to auto-detect glossary terms. If more than one classifier, infotype predictions from the classifier defined later in sequence take precedance.",
+                    "default": [
+                        {
+                            "type": "datahub",
+                            "config": null
+                        }
+                    ],
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DynamicTypedClassifierConfig"
+                    }
                 }
             },
             "additionalProperties": false
