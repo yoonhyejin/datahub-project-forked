@@ -9359,7 +9359,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-23T17:29:01.739435+00:00",
+                        "end_time": "2022-11-23T20:00:15.422131+00:00",
                         "start_time": "2022-11-22T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10924,14 +10924,6 @@
                     "description": "Soft-deletes the entities present in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
-                },
-                "fail_safe_threshold": {
-                    "title": "Fail Safe Threshold",
-                    "description": "Prevents large amount of soft deletes & the state from committing from accidental changes to the source configuration if the relative change percent in entities compared to the previous state is above the 'fail_safe_threshold'.",
-                    "default": 20.0,
-                    "minimum": 0.0,
-                    "maximum": 100.0,
-                    "type": "number"
                 }
             },
             "additionalProperties": false
