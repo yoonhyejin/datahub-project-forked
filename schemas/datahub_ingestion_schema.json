@@ -9359,7 +9359,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-23T20:57:18.655028+00:00",
+                        "end_time": "2022-11-23T21:42:55.160691+00:00",
                         "start_time": "2022-11-22T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
