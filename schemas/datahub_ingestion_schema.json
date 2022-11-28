@@ -784,7 +784,7 @@
                 },
                 "project_id": {
                     "title": "Project Id",
-                    "description": "[deprecated] Use project_id_pattern instead.",
+                    "description": "[deprecated] Use project_id_pattern instead. You can use this property if you only want to ingest one project and don't want to give project resourcemanager.projects.list to your service account",
                     "type": "string"
                 },
                 "log_page_size": {
@@ -875,7 +875,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-28T16:33:44.467305+00:00",
+                        "end_time": "2022-11-28T17:38:18.715790+00:00",
                         "start_time": "2022-11-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
