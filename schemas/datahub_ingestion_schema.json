@@ -875,7 +875,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-28T22:16:46.955961+00:00",
+                        "end_time": "2022-11-28T22:46:47.791733+00:00",
                         "start_time": "2022-11-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -11814,10 +11814,12 @@
                 },
                 "schema_registry_config": {
                     "title": "Schema Registry Config",
+                    "description": "Extra schema registry config serialized as JSON. These options will be passed into Kafka's SchemaRegistryClient. https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html?#schemaregistryclient",
                     "type": "object"
                 },
                 "consumer_config": {
                     "title": "Consumer Config",
+                    "description": "Extra consumer config serialized as JSON. These options will be passed into Kafka's DeserializingConsumer. See https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#deserializingconsumer and https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md .",
                     "type": "object"
                 }
             },
