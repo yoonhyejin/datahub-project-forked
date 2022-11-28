@@ -875,8 +875,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-11-26T17:57:07.306778+00:00",
-                        "start_time": "2022-11-25T00:00:00+00:00",
+                        "end_time": "2022-11-28T16:33:44.467305+00:00",
+                        "start_time": "2022-11-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -9260,9 +9260,25 @@
                     "description": "PowerBI tenant identifier",
                     "type": "string"
                 },
+                "workspace_id_pattern": {
+                    "title": "Workspace Id Pattern",
+                    "description": "Regex patterns to filter PowerBI workspaces in ingestion",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
                 "workspace_id": {
                     "title": "Workspace Id",
-                    "description": "PowerBI workspace identifier",
+                    "description": "[deprecated] Use workspace_id_pattern instead",
                     "type": "string"
                 },
                 "dataset_type_mapping": {
@@ -9314,7 +9330,6 @@
             },
             "required": [
                 "tenant_id",
-                "workspace_id",
                 "dataset_type_mapping",
                 "client_id",
                 "client_secret"
