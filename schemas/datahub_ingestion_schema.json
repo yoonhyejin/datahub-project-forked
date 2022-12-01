@@ -353,7 +353,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -722,7 +721,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -875,7 +873,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-01T09:59:09.100320+00:00",
+                        "end_time": "2022-12-01T19:17:15.636020+00:00",
                         "start_time": "2022-11-30T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -1125,7 +1123,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -1564,7 +1561,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -1772,7 +1768,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -2023,7 +2018,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -2908,7 +2902,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -3887,7 +3880,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -4124,7 +4116,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -4525,7 +4516,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -5253,7 +5243,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -5470,7 +5459,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -5764,7 +5752,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -6379,7 +6366,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -6691,7 +6677,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -6872,7 +6857,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -7388,7 +7372,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -7912,7 +7895,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -8440,7 +8422,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -9185,7 +9166,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -9502,7 +9482,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -9959,7 +9938,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -10740,7 +10718,6 @@
                         "query_combiner_enabled": true,
                         "catch_exceptions": true,
                         "partition_profiling_enabled": true,
-                        "bigquery_temp_table_schema": null,
                         "partition_datetime": null
                     },
                     "allOf": [
@@ -11133,11 +11110,6 @@
                     "title": "Partition Profiling Enabled",
                     "default": true,
                     "type": "boolean"
-                },
-                "bigquery_temp_table_schema": {
-                    "title": "Bigquery Temp Table Schema",
-                    "description": "On bigquery for profiling partitioned tables needs to create temporary views. You have to define a dataset where these will be created. Views will be cleaned up after profiler runs. (Great expectation tech details about this (https://legacy.docs.greatexpectations.io/en/0.9.0/reference/integrations/bigquery.html#custom-queries-with-sql-datasource).",
-                    "type": "string"
                 },
                 "partition_datetime": {
                     "title": "Partition Datetime",
