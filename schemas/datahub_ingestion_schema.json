@@ -873,7 +873,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-02T18:00:01.431834+00:00",
+                        "end_time": "2022-12-02T18:47:17.494698+00:00",
                         "start_time": "2022-12-01T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -5295,6 +5295,12 @@
                             "$ref": "#/definitions/ClassificationConfig"
                         }
                     ]
+                },
+                "include_external_url": {
+                    "title": "Include External Url",
+                    "description": "Whether to populate Snowsight url for Snowflake Objects",
+                    "default": true,
+                    "type": "boolean"
                 }
             },
             "additionalProperties": false
