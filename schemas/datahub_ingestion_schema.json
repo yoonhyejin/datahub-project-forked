@@ -873,8 +873,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-03T03:38:13.773737+00:00",
-                        "start_time": "2022-12-02T00:00:00+00:00",
+                        "end_time": "2022-12-04T07:09:41.078374+00:00",
+                        "start_time": "2022-12-03T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
