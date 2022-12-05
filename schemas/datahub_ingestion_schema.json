@@ -873,7 +873,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-05T19:20:18.550389+00:00",
+                        "end_time": "2022-12-05T19:35:24.750825+00:00",
                         "start_time": "2022-12-04T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -5296,6 +5296,18 @@
                     "title": "Include External Url",
                     "description": "Whether to populate Snowsight url for Snowflake Objects",
                     "default": true,
+                    "type": "boolean"
+                },
+                "match_fully_qualified_names": {
+                    "title": "Match Fully Qualified Names",
+                    "description": "Whether `schema_pattern` is matched against fully qualified schema name `<catalog>.<schema>`.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "bool": {
+                    "title": "Bool",
+                    "description": "Whether `schema_pattern` is matched against fully qualified schema name `<catalog>.<schema>`.",
+                    "default": false,
                     "type": "boolean"
                 }
             },
