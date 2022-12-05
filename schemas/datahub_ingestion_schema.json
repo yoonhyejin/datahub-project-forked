@@ -873,7 +873,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-05T19:35:24.750825+00:00",
+                        "end_time": "2022-12-05T21:18:24.314123+00:00",
                         "start_time": "2022-12-04T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10889,7 +10889,7 @@
                 },
                 "generic_connectors": {
                     "title": "Generic Connectors",
-                    "description": "Provide lineage graph for sources connectors other than Confluent JDBC Source Connector or Debezium Source Connector",
+                    "description": "Provide lineage graph for sources connectors other than Confluent JDBC Source Connector, Debezium Source Connector, and Mongo Source Connector",
                     "default": [],
                     "type": "array",
                     "items": {
