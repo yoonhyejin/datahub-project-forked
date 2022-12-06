@@ -873,7 +873,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-06T18:50:01.492505+00:00",
+                        "end_time": "2022-12-06T21:18:22.611346+00:00",
                         "start_time": "2022-12-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -2733,6 +2733,30 @@
             },
             "additionalProperties": false
         },
+        "demo-data": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "demo-data"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/demo-data_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "demo-data_config": {
+            "title": "ConfigModel",
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+        },
         "presto": {
             "type": "object",
             "properties": {
@@ -3633,30 +3657,6 @@
                 "manifest_path",
                 "catalog_path"
             ],
-            "additionalProperties": false
-        },
-        "dummy-data": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "dummy-data"
-                    ]
-                },
-                "config": {
-                    "$ref": "#/definitions/dummy-data_config"
-                }
-            },
-            "required": [
-                "type",
-                "config"
-            ]
-        },
-        "dummy-data_config": {
-            "title": "ConfigModel",
-            "type": "object",
-            "properties": {},
             "additionalProperties": false
         },
         "clickhouse-usage": {
@@ -12461,6 +12461,9 @@
                     "$ref": "#/definitions/lookml"
                 },
                 {
+                    "$ref": "#/definitions/demo-data"
+                },
+                {
                     "$ref": "#/definitions/presto"
                 },
                 {
@@ -12477,9 +12480,6 @@
                 },
                 {
                     "$ref": "#/definitions/dbt"
-                },
-                {
-                    "$ref": "#/definitions/dummy-data"
                 },
                 {
                     "$ref": "#/definitions/clickhouse-usage"
