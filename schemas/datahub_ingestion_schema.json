@@ -873,7 +873,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-06T06:28:38.081548+00:00",
+                        "end_time": "2022-12-06T11:34:53.613011+00:00",
                         "start_time": "2022-12-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -2963,7 +2963,7 @@
             "properties": {
                 "filename": {
                     "title": "Filename",
-                    "description": "[deprecated in favor or `path`] The file to ingest.",
+                    "description": "[deprecated in favor of `path`] The file to ingest.",
                     "type": "string"
                 },
                 "path": {
@@ -3633,6 +3633,30 @@
                 "manifest_path",
                 "catalog_path"
             ],
+            "additionalProperties": false
+        },
+        "dummy-data": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "dummy-data"
+                    ]
+                },
+                "config": {
+                    "$ref": "#/definitions/dummy-data_config"
+                }
+            },
+            "required": [
+                "type",
+                "config"
+            ]
+        },
+        "dummy-data_config": {
+            "title": "ConfigModel",
+            "type": "object",
+            "properties": {},
             "additionalProperties": false
         },
         "clickhouse-usage": {
@@ -12453,6 +12477,9 @@
                 },
                 {
                     "$ref": "#/definitions/dbt"
+                },
+                {
+                    "$ref": "#/definitions/dummy-data"
                 },
                 {
                     "$ref": "#/definitions/clickhouse-usage"
