@@ -3679,7 +3679,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-07T23:02:12.784140+00:00",
+                        "end_time": "2022-12-07T23:26:13.988587+00:00",
                         "start_time": "2022-12-06T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -6744,6 +6744,7 @@
                 "file": {
                     "title": "File",
                     "description": "Path to business glossary file to ingest.",
+                    "format": "file-path",
                     "type": "string"
                 },
                 "enable_auto_id": {
