@@ -879,7 +879,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-07T03:00:27.776180+00:00",
+                        "end_time": "2022-12-07T06:22:00.671068+00:00",
                         "start_time": "2022-12-06T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -3091,7 +3091,7 @@
                 },
                 "graphql_url": {
                     "title": "Graphql Url",
-                    "description": "GraphQL API URL",
+                    "description": "[deprecated] Not used",
                     "type": "string"
                 },
                 "report_virtual_directory_name": {
@@ -3161,7 +3161,6 @@
                 "username",
                 "password",
                 "host_port",
-                "graphql_url",
                 "report_virtual_directory_name",
                 "report_server_virtual_directory_name"
             ],
