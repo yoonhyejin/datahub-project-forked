@@ -2561,7 +2561,7 @@
         },
         "iceberg_config": {
             "title": "IcebergSourceConfig",
-            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
                 "env": {
@@ -2579,6 +2579,15 @@
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
                     "type": "string"
+                },
+                "stateful_ingestion": {
+                    "title": "Stateful Ingestion",
+                    "description": "Iceberg Stateful Ingestion Config.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
+                        }
+                    ]
                 },
                 "adls": {
                     "title": "Adls",
@@ -3679,7 +3688,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-12T17:21:09.583899+00:00",
+                        "end_time": "2022-12-12T18:15:51.769385+00:00",
                         "start_time": "2022-12-11T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
