@@ -3679,7 +3679,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-12T10:23:29.636243+00:00",
+                        "end_time": "2022-12-12T14:42:14.918432+00:00",
                         "start_time": "2022-12-11T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9319,6 +9319,12 @@
                 "include_technical_schema": {
                     "title": "Include Technical Schema",
                     "description": "If enabled, populates the snowflake technical schema and descriptions.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_column_lineage": {
+                    "title": "Include Column Lineage",
+                    "description": "If enabled, populates the column lineage. Supported only for snowflake table-to-table and view-to-table lineage edge (not supported in table-to-view or view-to-view lineage edge yet). Requires appropriate grants given to the role.",
                     "default": true,
                     "type": "boolean"
                 },
