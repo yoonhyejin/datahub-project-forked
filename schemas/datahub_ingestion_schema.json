@@ -809,6 +809,25 @@
             "description": "Config used by the LDAP Source.",
             "type": "object",
             "properties": {
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
+                },
                 "ldap_server": {
                     "title": "Ldap Server",
                     "description": "LDAP server URL.",
@@ -3688,7 +3707,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-13T05:31:31.379540+00:00",
+                        "end_time": "2022-12-13T06:23:01.109370+00:00",
                         "start_time": "2022-12-12T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
