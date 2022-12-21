@@ -1317,6 +1317,10 @@
                     ]
                 }
             },
+            "required": [
+                "token",
+                "password"
+            ],
             "additionalProperties": false
         },
         "redash": {
@@ -2104,7 +2108,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-21T04:14:03.618104+00:00",
+                        "end_time": "2022-12-21T04:40:45.659689+00:00",
                         "start_time": "2022-12-20T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -2212,6 +2216,12 @@
                     "title": "Convert Urns To Lowercase",
                     "description": "Convert urns to lowercase.",
                     "default": false,
+                    "type": "boolean"
+                },
+                "enable_legacy_sharded_table_support": {
+                    "title": "Enable Legacy Sharded Table Support",
+                    "description": "Use the legacy sharded table urn suffix added.",
+                    "default": true,
                     "type": "boolean"
                 }
             },
