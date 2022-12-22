@@ -2108,7 +2108,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-22T15:14:38.977656+00:00",
+                        "end_time": "2022-12-22T16:21:25.126170+00:00",
                         "start_time": "2022-12-21T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9204,6 +9204,7 @@
                         "bootstrap": "localhost:9092",
                         "schema_registry_url": "http://localhost:8081",
                         "schema_registry_config": {},
+                        "client_timeout_seconds": 60,
                         "consumer_config": {}
                     },
                     "allOf": [
@@ -11610,6 +11611,12 @@
                     "title": "Schema Registry Config",
                     "description": "Extra schema registry config serialized as JSON. These options will be passed into Kafka's SchemaRegistryClient. https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html?#schemaregistryclient",
                     "type": "object"
+                },
+                "client_timeout_seconds": {
+                    "title": "Client Timeout Seconds",
+                    "description": "The request timeout used when interacting with the Kafka APIs.",
+                    "default": 60,
+                    "type": "integer"
                 },
                 "consumer_config": {
                     "title": "Consumer Config",
