@@ -2114,7 +2114,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-27T21:47:17.156427+00:00",
+                        "end_time": "2022-12-27T22:19:57.466803+00:00",
                         "start_time": "2022-12-26T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -8388,6 +8388,7 @@
                 "platform": {
                     "title": "Platform",
                     "description": "The platform that this source connects to",
+                    "default": "delta-lake",
                     "const": "delta-lake",
                     "type": "string"
                 },
