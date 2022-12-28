@@ -1812,18 +1812,6 @@
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
-                "incremental_lineage": {
-                    "title": "Incremental Lineage",
-                    "description": "When enabled, emits lineage as incremental to existing lineage already in DataHub. When disabled, re-states lineage on each run.",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "sql_parser_use_external_process": {
-                    "title": "Sql Parser Use External Process",
-                    "description": "When enabled, sql parser will run in isolated in a separate process. This can affect processing time but can protect from sql parser's mem leak.",
-                    "default": false,
-                    "type": "boolean"
-                },
                 "env": {
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
@@ -1842,6 +1830,36 @@
                 },
                 "stateful_ingestion": {
                     "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
+                },
+                "store_last_profiling_timestamps": {
+                    "title": "Store Last Profiling Timestamps",
+                    "description": "Enable storing last profile timestamp in store.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "store_last_usage_extraction_timestamp": {
+                    "title": "Store Last Usage Extraction Timestamp",
+                    "description": "Enable checking last usage timestamp in store.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "incremental_lineage": {
+                    "title": "Incremental Lineage",
+                    "description": "When enabled, emits lineage as incremental to existing lineage already in DataHub. When disabled, re-states lineage on each run.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "sql_parser_use_external_process": {
+                    "title": "Sql Parser Use External Process",
+                    "description": "When enabled, sql parser will run in isolated in a separate process. This can affect processing time but can protect from sql parser's mem leak.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "store_last_lineage_extraction_timestamp": {
+                    "title": "Store Last Lineage Extraction Timestamp",
+                    "description": "Enable checking last lineage extraction date in store.",
+                    "default": false,
+                    "type": "boolean"
                 },
                 "options": {
                     "title": "Options",
@@ -2114,8 +2132,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-27T23:57:00.506804+00:00",
-                        "start_time": "2022-12-26T00:00:00+00:00",
+                        "end_time": "2022-12-28T11:18:42.724357+00:00",
+                        "start_time": "2022-12-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -9620,6 +9638,18 @@
                 "stateful_ingestion": {
                     "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
+                "store_last_profiling_timestamps": {
+                    "title": "Store Last Profiling Timestamps",
+                    "description": "Enable storing last profile timestamp in store.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "store_last_usage_extraction_timestamp": {
+                    "title": "Store Last Usage Extraction Timestamp",
+                    "description": "Enable checking last usage timestamp in store.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "bucket_duration": {
                     "description": "Size of the time window to aggregate usage stats.",
                     "default": "DAY",
@@ -9996,12 +10026,6 @@
                 },
                 "match_fully_qualified_names": {
                     "title": "Match Fully Qualified Names",
-                    "description": "Whether `schema_pattern` is matched against fully qualified schema name `<catalog>.<schema>`.",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "bool": {
-                    "title": "Bool",
                     "description": "Whether `schema_pattern` is matched against fully qualified schema name `<catalog>.<schema>`.",
                     "default": false,
                     "type": "boolean"
