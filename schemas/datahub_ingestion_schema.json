@@ -2132,7 +2132,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2022-12-28T19:16:50.453981+00:00",
+                        "end_time": "2022-12-28T19:44:31.884779+00:00",
                         "start_time": "2022-12-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -4384,7 +4384,13 @@
                 },
                 "backcompat_skip_source_on_lineage_edge": {
                     "title": "Backcompat Skip Source On Lineage Edge",
-                    "description": "Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
+                    "description": "[deprecated] Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "include_env_in_assertion_guid": {
+                    "title": "Include Env In Assertion Guid",
+                    "description": "Prior to version 0.9.4.2, the assertion GUIDs did not include the environment. If you're using multiple dbt ingestion that are only distinguished by env, then you should set this flag to True.",
                     "default": false,
                     "type": "boolean"
                 },
@@ -4799,7 +4805,13 @@
                 },
                 "backcompat_skip_source_on_lineage_edge": {
                     "title": "Backcompat Skip Source On Lineage Edge",
-                    "description": "Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
+                    "description": "[deprecated] Prior to version 0.8.41, lineage edges to sources were directed to the target platform node rather than the dbt source node. This contradicted the established pattern for other lineage edges to point to upstream dbt nodes. To revert lineage logic to this legacy approach, set this flag to true.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "include_env_in_assertion_guid": {
+                    "title": "Include Env In Assertion Guid",
+                    "description": "Prior to version 0.9.4.2, the assertion GUIDs did not include the environment. If you're using multiple dbt ingestion that are only distinguished by env, then you should set this flag to True.",
                     "default": false,
                     "type": "boolean"
                 },
