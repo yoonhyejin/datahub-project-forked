@@ -2055,7 +2055,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-03T15:42:15.422715+00:00",
+                        "end_time": "2023-01-03T16:32:17.367593+00:00",
                         "start_time": "2023-01-02T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -3541,6 +3541,11 @@
                     "description": "PowerBI tenant identifier",
                     "type": "string"
                 },
+                "workspace_id": {
+                    "title": "Workspace Id",
+                    "description": "[deprecated] Use workspace_id_pattern instead",
+                    "type": "string"
+                },
                 "workspace_id_pattern": {
                     "title": "Workspace Id Pattern",
                     "description": "Regex patterns to filter PowerBI workspaces in ingestion",
@@ -3557,18 +3562,23 @@
                         }
                     ]
                 },
-                "workspace_id": {
-                    "title": "Workspace Id",
-                    "description": "[deprecated] Use workspace_id_pattern instead",
-                    "type": "string"
-                },
                 "dataset_type_mapping": {
                     "title": "Dataset Type Mapping",
                     "description": "Mapping of PowerBI datasource type to DataHub supported data-sources. See Quickstart Recipe for mapping",
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": {
+                                "$ref": "#/definitions/PlatformDetail"
+                            }
+                        }
+                    ]
                 },
                 "client_id": {
                     "title": "Client Id",
@@ -3595,6 +3605,30 @@
                 "extract_reports": {
                     "title": "Extract Reports",
                     "description": "Whether reports should be ingested",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "extract_lineage": {
+                    "title": "Extract Lineage",
+                    "description": "Whether lineage should be ingested",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "native_query_parsing": {
+                    "title": "Native Query Parsing",
+                    "description": "Whether PowerBI native query should be parsed to extract lineage",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "convert_urns_to_lowercase": {
+                    "title": "Convert Urns To Lowercase",
+                    "description": "Whether to convert the PowerBI assets urns to lowercase",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "convert_lineage_urns_to_lowercase": {
+                    "title": "Convert Lineage Urns To Lowercase",
+                    "description": "Whether to convert the urns of ingested lineage dataset to lowercase",
                     "default": true,
                     "type": "boolean"
                 },
@@ -10616,6 +10650,24 @@
                 "stl_scan_based",
                 "mixed"
             ]
+        },
+        "PlatformDetail": {
+            "title": "PlatformDetail",
+            "type": "object",
+            "properties": {
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "DataHub platform instance name. It should be same as you have used in ingestion receipe of DataHub platform ingestion source of particular platform",
+                    "type": "string"
+                },
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by DataHub platform ingestion source belong to",
+                    "default": "PROD",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
         },
         "EmitDirective": {
             "title": "EmitDirective",
