@@ -2091,7 +2091,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-04T19:43:51.302923+00:00",
+                        "end_time": "2023-01-04T21:13:14.785193+00:00",
                         "start_time": "2023-01-03T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9636,6 +9636,15 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "extract_tags": {
+                    "description": "Optional. Allowed values are `without_lineage`, `with_lineage`, and `skip` (default).\n        `without_lineage` only extracts tags that have been applied directly to the given entity.\n        `with_lineage` extracts both directly applied and propagated tags, but will be significantly slower.\n        See the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/object-tagging.html#tag-lineage) for information about tag lineage/propagation. ",
+                    "default": "skip",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TagOption"
+                        }
+                    ]
+                },
                 "classification": {
                     "title": "Classification",
                     "description": "For details, refer [Classification](../../../../metadata-ingestion/docs/dev_guides/classification.md).",
@@ -9656,6 +9665,22 @@
                     "description": "Whether `schema_pattern` is matched against fully qualified schema name `<catalog>.<schema>`.",
                     "default": false,
                     "type": "boolean"
+                },
+                "tag_pattern": {
+                    "title": "Tag Pattern",
+                    "description": "List of regex patterns for tags to include in ingestion. Only used if `extract_tags` is enabled.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
                 }
             },
             "additionalProperties": false
@@ -11425,6 +11450,16 @@
                 "admin_username"
             ],
             "additionalProperties": false
+        },
+        "TagOption": {
+            "title": "TagOption",
+            "description": "An enumeration.",
+            "enum": [
+                "with_lineage",
+                "without_lineage",
+                "skip"
+            ],
+            "type": "string"
         },
         "DynamicTypedClassifierConfig": {
             "title": "DynamicTypedClassifierConfig",
