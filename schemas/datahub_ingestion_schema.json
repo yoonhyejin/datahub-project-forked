@@ -325,6 +325,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -603,6 +609,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -812,6 +824,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -1157,6 +1175,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -1709,6 +1733,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -1972,6 +2002,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -2055,7 +2091,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-04T13:13:05.813118+00:00",
+                        "end_time": "2023-01-04T19:43:51.302923+00:00",
                         "start_time": "2023-01-03T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -2377,6 +2413,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -2649,6 +2691,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -2965,6 +3013,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -3370,6 +3424,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -3784,6 +3844,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -3997,6 +4063,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -4203,6 +4275,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -4598,6 +4676,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -5059,6 +5143,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -5966,6 +6056,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -6457,6 +6553,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
@@ -7904,6 +8006,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -8536,6 +8644,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -9003,6 +9117,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "profiling": {
                     "title": "Profiling",
                     "default": {
@@ -9317,6 +9437,12 @@
                 "include_tables": {
                     "title": "Include Tables",
                     "description": "Whether tables should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_table_location_lineage": {
+                    "title": "Include Table Location Lineage",
+                    "description": "If the source supports it, include table lineage to the underlying storage location.",
                     "default": true,
                     "type": "boolean"
                 },
