@@ -2091,7 +2091,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-05T00:38:33.027813+00:00",
+                        "end_time": "2023-01-05T01:00:22.565885+00:00",
                         "start_time": "2023-01-04T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10893,7 +10893,7 @@
                 },
                 "branch": {
                     "title": "Branch",
-                    "description": "Branch on which your files live by default. Typically main or master.",
+                    "description": "Branch on which your files live by default. Typically main or master. This can also be a commit hash.",
                     "default": "main",
                     "type": "string"
                 },
@@ -10934,7 +10934,7 @@
                 },
                 "branch": {
                     "title": "Branch",
-                    "description": "Branch on which your files live by default. Typically main or master.",
+                    "description": "Branch on which your files live by default. Typically main or master. This can also be a commit hash.",
                     "default": "main",
                     "type": "string"
                 },
