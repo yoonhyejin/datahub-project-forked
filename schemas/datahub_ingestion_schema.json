@@ -1812,6 +1812,52 @@
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
                     "type": "string"
+                },
+                "models_pattern": {
+                    "title": "Models Pattern",
+                    "description": "Regex patterns for ml models to filter in ingestion. ",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "include_projections": {
+                    "title": "Include Projections",
+                    "description": "Whether projections should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_models": {
+                    "title": "Include Models",
+                    "description": "Whether Models should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_oauth": {
+                    "title": "Include Oauth",
+                    "description": "Whether Oauth should be ingested.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_view_lineage": {
+                    "title": "Include View Lineage",
+                    "description": "If the source supports it, include view lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_projection_lineage": {
+                    "title": "Include Projection Lineage",
+                    "description": "If the source supports it, include view lineage to the underlying storage location.",
+                    "default": true,
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -2091,7 +2137,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-06T21:01:03.630573+00:00",
+                        "end_time": "2023-01-06T21:26:48.267680+00:00",
                         "start_time": "2023-01-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
