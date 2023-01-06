@@ -2091,7 +2091,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-06T19:06:39.453500+00:00",
+                        "end_time": "2023-01-06T21:01:03.630573+00:00",
                         "start_time": "2023-01-05T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -2768,6 +2768,12 @@
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
                     "type": "string"
+                },
+                "include_view_lineage": {
+                    "title": "Include View Lineage",
+                    "description": "Include table lineage for views",
+                    "default": false,
+                    "type": "boolean"
                 },
                 "default_schema": {
                     "title": "Default Schema",
@@ -3924,6 +3930,12 @@
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
                     "type": "string"
+                },
+                "include_view_lineage": {
+                    "title": "Include View Lineage",
+                    "description": "Include table lineage for views",
+                    "default": false,
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -6130,6 +6142,12 @@
                     "title": "Sqlalchemy Uri",
                     "description": "URI of database to connect to. See https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls. Takes precedence over other connection parameters.",
                     "type": "string"
+                },
+                "include_view_lineage": {
+                    "title": "Include View Lineage",
+                    "description": "Include table lineage for views",
+                    "default": false,
+                    "type": "boolean"
                 },
                 "default_schema": {
                     "title": "Default Schema",
