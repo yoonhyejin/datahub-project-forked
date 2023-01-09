@@ -2137,7 +2137,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-09T12:36:48.517203+00:00",
+                        "end_time": "2023-01-09T14:48:09.385700+00:00",
                         "start_time": "2023-01-08T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -2527,7 +2527,7 @@
                 },
                 "database_alias": {
                     "title": "Database Alias",
-                    "description": "Alias to apply to database when ingesting. Ignored when `database` is not set.",
+                    "description": "Alias to apply to database when ingesting.",
                     "type": "string"
                 },
                 "sqlalchemy_uri": {
@@ -8900,6 +8900,7 @@
             "properties": {
                 "env": {
                     "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
                     "type": "string"
                 },
