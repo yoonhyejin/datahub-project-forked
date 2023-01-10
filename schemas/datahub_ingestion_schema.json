@@ -2137,7 +2137,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-10T00:17:12.122397+00:00",
+                        "end_time": "2023-01-10T17:54:31.757906+00:00",
                         "start_time": "2023-01-09T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9702,7 +9702,7 @@
                     "type": "boolean"
                 },
                 "extract_tags": {
-                    "description": "Optional. Allowed values are `without_lineage`, `with_lineage`, and `skip` (default).\n        `without_lineage` only extracts tags that have been applied directly to the given entity.\n        `with_lineage` extracts both directly applied and propagated tags, but will be significantly slower.\n        See the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/object-tagging.html#tag-lineage) for information about tag lineage/propagation. ",
+                    "description": "Optional. Allowed values are `without_lineage`, `with_lineage`, and `skip` (default). `without_lineage` only extracts tags that have been applied directly to the given entity. `with_lineage` extracts both directly applied and propagated tags, but will be significantly slower. See the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/object-tagging.html#tag-lineage) for information about tag lineage/propagation. ",
                     "default": "skip",
                     "allOf": [
                         {
