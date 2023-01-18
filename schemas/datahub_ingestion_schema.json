@@ -4011,8 +4011,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-17T23:09:26.005154+00:00",
-                        "start_time": "2023-01-16T00:00:00+00:00",
+                        "end_time": "2023-01-18T00:40:10.650276+00:00",
+                        "start_time": "2023-01-17T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
