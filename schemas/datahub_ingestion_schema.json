@@ -575,6 +575,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "extract_endorsements_to_tags": {
+                    "title": "Extract Endorsements To Tags",
+                    "description": "Whether to extract endorsements to tags, note that this may overwrite existing tags",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "native_query_parsing": {
                     "title": "Native Query Parsing",
                     "description": "Whether PowerBI native query should be parsed to extract lineage",
@@ -4011,7 +4017,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-18T00:40:10.650276+00:00",
+                        "end_time": "2023-01-18T04:50:31.910533+00:00",
                         "start_time": "2023-01-17T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
