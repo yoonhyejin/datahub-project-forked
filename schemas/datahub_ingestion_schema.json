@@ -4018,7 +4018,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-18T18:35:29.388907+00:00",
+                        "end_time": "2023-01-18T21:44:55.579940+00:00",
                         "start_time": "2023-01-17T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10604,11 +10604,12 @@
         },
         "GitHubReference": {
             "title": "GitHubReference",
+            "description": "Reference to a hosted Git repository. Used to generate \"view source\" links.",
             "type": "object",
             "properties": {
                 "repo": {
                     "title": "Repo",
-                    "description": "Name of your github repository in org/repo format. e.g. repo for https://github.com/datahub-project/datahub is `datahub-project/datahub`.",
+                    "description": "Name of your Git repo e.g. https://github.com/datahub-project/datahub or https://gitlab.com/gitlab-org/gitlab. If organization/repo is provided, we assume it is a GitHub repo.",
                     "type": "string"
                 },
                 "branch": {
@@ -10617,10 +10618,9 @@
                     "default": "main",
                     "type": "string"
                 },
-                "base_url": {
-                    "title": "Base Url",
-                    "description": "Base url for Github. Used to construct clickable links on the UI.",
-                    "default": "https://github.com",
+                "url_template": {
+                    "title": "Url Template",
+                    "description": "Template for generating a URL to a file in the repo e.g. '{repo_url}/blob/{branch}/{file_path}'. We can infer this for GitHub and GitLab repos, and it is otherwise required.It supports the following variables: {repo_url}, {branch}, {file_path}",
                     "type": "string"
                 }
             },
@@ -11459,11 +11459,12 @@
         },
         "GitHubInfo": {
             "title": "GitHubInfo",
+            "description": "A reference to a Git repository, including a deploy key that can be used to clone it.",
             "type": "object",
             "properties": {
                 "repo": {
                     "title": "Repo",
-                    "description": "Name of your github repository in org/repo format. e.g. repo for https://github.com/datahub-project/datahub is `datahub-project/datahub`.",
+                    "description": "Name of your Git repo e.g. https://github.com/datahub-project/datahub or https://gitlab.com/gitlab-org/gitlab. If organization/repo is provided, we assume it is a GitHub repo.",
                     "type": "string"
                 },
                 "branch": {
@@ -11472,10 +11473,9 @@
                     "default": "main",
                     "type": "string"
                 },
-                "base_url": {
-                    "title": "Base Url",
-                    "description": "Base url for Github. Used to construct clickable links on the UI.",
-                    "default": "https://github.com",
+                "url_template": {
+                    "title": "Url Template",
+                    "description": "Template for generating a URL to a file in the repo e.g. '{repo_url}/blob/{branch}/{file_path}'. We can infer this for GitHub and GitLab repos, and it is otherwise required.It supports the following variables: {repo_url}, {branch}, {file_path}",
                     "type": "string"
                 },
                 "deploy_key_file": {
@@ -11493,7 +11493,7 @@
                 },
                 "repo_ssh_locator": {
                     "title": "Repo Ssh Locator",
-                    "description": "Auto-inferred from repo as git@github.com:{repo}, but you can override this if needed.",
+                    "description": "The url to call `git clone` on. We infer this for github and gitlab repos, but it is required for other hosts.",
                     "type": "string"
                 }
             },
