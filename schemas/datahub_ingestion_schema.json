@@ -610,7 +610,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -1128,7 +1128,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -1695,7 +1695,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -1977,7 +1977,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -2229,7 +2229,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -2611,7 +2611,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -3268,7 +3268,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -3638,7 +3638,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -4202,7 +4202,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -4326,7 +4326,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-20T01:11:18.613003+00:00",
+                        "end_time": "2023-01-20T09:35:23.469113+00:00",
                         "start_time": "2023-01-19T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -4714,7 +4714,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -5076,7 +5076,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -5631,7 +5631,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -6148,7 +6148,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -6897,7 +6897,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -7155,7 +7155,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -7501,7 +7501,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -8192,7 +8192,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -8783,7 +8783,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -9325,7 +9325,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -9768,7 +9768,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
@@ -10000,7 +10000,7 @@
                 },
                 "profile_pattern": {
                     "title": "Profile Pattern",
-                    "description": "Regex patterns to filter tables for profiling during ingestion. Allowed by the `table_pattern`.",
+                    "description": "Regex patterns to filter tables (or specific columns) for profiling during ingestion. Note that only tables allowed by the `table_pattern` will be considered.",
                     "default": {
                         "allow": [
                             ".*"
