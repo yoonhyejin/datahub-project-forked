@@ -2111,6 +2111,12 @@
                     "default": true,
                     "type": "boolean"
                 },
+                "include_unload_lineage": {
+                    "title": "Include Unload Lineage",
+                    "description": "Whether lineage should be collected from unload commands",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "capture_lineage_query_parser_failures": {
                     "title": "Capture Lineage Query Parser Failures",
                     "description": "Whether to capture lineage query parser errors with dataset properties for debuggings",
@@ -4326,7 +4332,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-24T08:48:41.206691+00:00",
+                        "end_time": "2023-01-24T11:29:02.775177+00:00",
                         "start_time": "2023-01-23T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -7030,6 +7036,12 @@
                 "include_copy_lineage": {
                     "title": "Include Copy Lineage",
                     "description": "Whether lineage should be collected from copy commands",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "include_unload_lineage": {
+                    "title": "Include Unload Lineage",
+                    "description": "Whether lineage should be collected from unload commands",
                     "default": true,
                     "type": "boolean"
                 },
