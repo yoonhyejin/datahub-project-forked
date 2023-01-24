@@ -474,6 +474,12 @@
                     "default": false,
                     "type": "boolean"
                 },
+                "extract_workspaces_to_containers": {
+                    "title": "Extract Workspaces To Containers",
+                    "description": "Extract workspaces to DataHub containers",
+                    "default": true,
+                    "type": "boolean"
+                },
                 "native_query_parsing": {
                     "title": "Native Query Parsing",
                     "description": "Whether PowerBI native query should be parsed to extract lineage",
@@ -4332,7 +4338,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-24T20:33:05.424727+00:00",
+                        "end_time": "2023-01-24T23:25:35.890457+00:00",
                         "start_time": "2023-01-23T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
