@@ -4338,7 +4338,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-01-30T17:04:30.943579+00:00",
+                        "end_time": "2023-01-30T20:09:28.819421+00:00",
                         "start_time": "2023-01-29T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -7744,77 +7744,6 @@
                 },
                 "stateful_ingestion": {
                     "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
-                },
-                "row_count": {
-                    "title": "Row Count",
-                    "description": "The parameter name for row count in glue table.",
-                    "type": "string"
-                },
-                "column_count": {
-                    "title": "Column Count",
-                    "description": "The parameter name for column count in glue table.",
-                    "type": "string"
-                },
-                "unique_count": {
-                    "title": "Unique Count",
-                    "description": "The parameter name for the count of unique value in a column.",
-                    "type": "string"
-                },
-                "unique_proportion": {
-                    "title": "Unique Proportion",
-                    "description": "The parameter name for the proportion of unique values in a column.",
-                    "type": "string"
-                },
-                "null_count": {
-                    "title": "Null Count",
-                    "description": "The parameter name for the count of null values in a column.",
-                    "type": "string"
-                },
-                "null_proportion": {
-                    "title": "Null Proportion",
-                    "description": "The parameter name for the proportion of null values in a column.",
-                    "type": "string"
-                },
-                "min": {
-                    "title": "Min",
-                    "description": "The parameter name for the min value of a column.",
-                    "type": "string"
-                },
-                "max": {
-                    "title": "Max",
-                    "description": "The parameter name for the max value of a column.",
-                    "type": "string"
-                },
-                "mean": {
-                    "title": "Mean",
-                    "description": "The parameter name for the mean value of a column.",
-                    "type": "string"
-                },
-                "median": {
-                    "title": "Median",
-                    "description": "The parameter name for the median value of a column.",
-                    "type": "string"
-                },
-                "stdev": {
-                    "title": "Stdev",
-                    "description": "The parameter name for the standard deviation of a column.",
-                    "type": "string"
-                },
-                "partition_patterns": {
-                    "title": "Partition Patterns",
-                    "description": "Regex patterns for filtering partitions for profile. The pattern should be a string like: \"{'key':'value'}\".",
-                    "default": {
-                        "allow": [
-                            ".*"
-                        ],
-                        "deny": [],
-                        "ignoreCase": true
-                    },
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/AllowDenyPattern"
-                        }
-                    ]
                 },
                 "aws_access_key_id": {
                     "title": "Aws Access Key Id",
