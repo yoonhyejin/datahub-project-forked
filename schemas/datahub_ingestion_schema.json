@@ -4346,7 +4346,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-02T19:12:06.053592+00:00",
+                        "end_time": "2023-02-02T20:52:17.920838+00:00",
                         "start_time": "2023-02-01T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -9160,8 +9160,14 @@
                 },
                 "page_size": {
                     "title": "Page Size",
-                    "description": "Number of metadata objects (e.g. CustomSQLTable, PublishedDatasource, etc) to query at a time using Tableau api.",
+                    "description": "[advanced] Number of metadata objects (e.g. CustomSQLTable, PublishedDatasource, etc) to query at a time using the Tableau API.",
                     "default": 10,
+                    "type": "integer"
+                },
+                "workbook_page_size": {
+                    "title": "Workbook Page Size",
+                    "description": "[advanced] Number of workbooks to query at a time using the Tableau API.",
+                    "default": 1,
                     "type": "integer"
                 },
                 "lineage_overrides": {
