@@ -3012,12 +3012,12 @@
                     "default": true,
                     "type": "boolean"
                 },
-                "github_info": {
-                    "title": "Github Info",
-                    "description": "Reference to your github location. If present, supplies handy links to your lookml on the dataset entity page.",
+                "git_info": {
+                    "title": "Git Info",
+                    "description": "Reference to your git location. If present, supplies handy links to your lookml on the dataset entity page.",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/GitHubInfo"
+                            "$ref": "#/definitions/GitInfo"
                         }
                     ]
                 },
@@ -3039,7 +3039,7 @@
                                 "format": "directory-path"
                             },
                             {
-                                "$ref": "#/definitions/GitHubInfo"
+                                "$ref": "#/definitions/GitInfo"
                             }
                         ]
                     }
@@ -4346,7 +4346,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-10T09:11:29.330411+00:00",
+                        "end_time": "2023-02-10T18:10:19.706167+00:00",
                         "start_time": "2023-02-09T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -6724,12 +6724,12 @@
                         }
                     ]
                 },
-                "github_info": {
-                    "title": "Github Info",
-                    "description": "Reference to your github location to enable easy navigation from DataHub to your dbt files.",
+                "git_info": {
+                    "title": "Git Info",
+                    "description": "Reference to your git location to enable easy navigation from DataHub to your dbt files.",
                     "allOf": [
                         {
-                            "$ref": "#/definitions/GitHubReference"
+                            "$ref": "#/definitions/GitReference"
                         }
                     ]
                 }
@@ -10668,8 +10668,8 @@
             ],
             "additionalProperties": false
         },
-        "GitHubInfo": {
-            "title": "GitHubInfo",
+        "GitInfo": {
+            "title": "GitInfo",
             "description": "A reference to a Git repository, including a deploy key that can be used to clone it.",
             "type": "object",
             "properties": {
@@ -11401,8 +11401,8 @@
             },
             "additionalProperties": false
         },
-        "GitHubReference": {
-            "title": "GitHubReference",
+        "GitReference": {
+            "title": "GitReference",
             "description": "Reference to a hosted Git repository. Used to generate \"view source\" links.",
             "type": "object",
             "properties": {
