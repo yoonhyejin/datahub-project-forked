@@ -381,7 +381,7 @@
         },
         "powerbi_config": {
             "title": "PowerBiDashboardSourceConfig",
-            "description": "Any source that produces dataset urns in a single environment should inherit this class",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
                 "env": {
@@ -389,6 +389,25 @@
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
                     "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "title": "Stateful Ingestion",
+                    "description": "PowerBI Stateful Ingestion Config.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
+                        }
+                    ]
                 },
                 "tenant_id": {
                     "title": "Tenant Id",
@@ -452,8 +471,8 @@
                 },
                 "extract_ownership": {
                     "title": "Extract Ownership",
-                    "description": "Whether ownership should be ingested",
-                    "default": true,
+                    "description": "Whether ownership should be ingested. Admin API access is required if this setting is enabled. Note that enabling this may overwrite owners that you've added inside DataHub's web application.",
+                    "default": false,
                     "type": "boolean"
                 },
                 "extract_reports": {
@@ -464,13 +483,13 @@
                 },
                 "extract_lineage": {
                     "title": "Extract Lineage",
-                    "description": "Whether lineage should be ingested",
+                    "description": "Whether lineage should be ingested between X and Y. Admin API access is required if this setting is enabled",
                     "default": true,
                     "type": "boolean"
                 },
                 "extract_endorsements_to_tags": {
                     "title": "Extract Endorsements To Tags",
-                    "description": "Whether to extract endorsements to tags, note that this may overwrite existing tags",
+                    "description": "Whether to extract endorsements to tags, note that this may overwrite existing tags. Admin API access is required is this setting is enabled",
                     "default": false,
                     "type": "boolean"
                 },
@@ -498,15 +517,11 @@
                     "default": true,
                     "type": "boolean"
                 },
-                "platform_name": {
-                    "title": "Platform Name",
-                    "default": "powerbi",
-                    "type": "string"
-                },
-                "platform_urn": {
-                    "title": "Platform Urn",
-                    "default": "urn:li:dataPlatform:powerbi",
-                    "type": "string"
+                "admin_apis_only": {
+                    "title": "Admin Apis Only",
+                    "description": "Retrieve metadata using PowerBI Admin API only. If this is enabled, then Report Pages will not be extracted. Admin API access is required if this setting is enabled",
+                    "default": false,
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -4346,7 +4361,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-14T16:34:20.002928+00:00",
+                        "end_time": "2023-02-14T18:08:08.545559+00:00",
                         "start_time": "2023-02-13T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -10148,24 +10163,6 @@
             },
             "additionalProperties": false
         },
-        "PlatformDetail": {
-            "title": "PlatformDetail",
-            "type": "object",
-            "properties": {
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "DataHub platform instance name. It should be same as you have used in ingestion receipe of DataHub platform ingestion source of particular platform",
-                    "type": "string"
-                },
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by DataHub platform ingestion source belong to",
-                    "default": "PROD",
-                    "type": "string"
-                }
-            },
-            "additionalProperties": false
-        },
         "DynamicTypedStateProviderConfig": {
             "title": "DynamicTypedStateProviderConfig",
             "type": "object",
@@ -10213,6 +10210,24 @@
                     "description": "Soft-deletes the entities present in the last successful run but missing in the current run with stateful_ingestion enabled.",
                     "default": true,
                     "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
+        "PlatformDetail": {
+            "title": "PlatformDetail",
+            "type": "object",
+            "properties": {
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "DataHub platform instance name. It should be same as you have used in ingestion receipe of DataHub platform ingestion source of particular platform",
+                    "type": "string"
+                },
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by DataHub platform ingestion source belong to",
+                    "default": "PROD",
+                    "type": "string"
                 }
             },
             "additionalProperties": false
