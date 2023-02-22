@@ -4104,10 +4104,10 @@
                     "default": "connect-cluster",
                     "type": "string"
                 },
-                "construct_lineage_workunits": {
-                    "title": "Construct Lineage Workunits",
-                    "description": "Whether to create the input and output Dataset entities",
-                    "default": true,
+                "convert_lineage_urns_to_lowercase": {
+                    "title": "Convert Lineage Urns To Lowercase",
+                    "description": "Whether to convert the urns of ingested lineage dataset to lowercase",
+                    "default": false,
                     "type": "boolean"
                 },
                 "connector_patterns": {
@@ -7675,7 +7675,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-22T17:45:26.710004+00:00",
+                        "end_time": "2023-02-22T19:49:33.327352+00:00",
                         "start_time": "2023-02-21T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
