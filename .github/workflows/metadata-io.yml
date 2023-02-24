@@ -51,6 +51,13 @@ jobs:
             **/build/reports/tests/test/**
             **/build/test-results/test/**
             **/junit.*.xml
+      - uses: testspace-com/setup-testspace@v1
+        with:
+          domain: ${{github.repository_owner}}
+          token: ${{ secrets.TESTSPACE_TOKEN }}
+      - name: Publish Results to Testspace
+        run: |
+          testspace **/junit*.xml
       - name: Ensure codegen is updated
         uses: ./.github/actions/ensure-codegen-updated
 
