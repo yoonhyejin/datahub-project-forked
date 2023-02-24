@@ -7675,8 +7675,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-23T16:21:26.721665+00:00",
-                        "start_time": "2023-02-22T00:00:00+00:00",
+                        "end_time": "2023-02-24T00:48:06.366963+00:00",
+                        "start_time": "2023-02-23T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -7752,12 +7752,20 @@
                 },
                 "project_id": {
                     "title": "Project Id",
-                    "description": "[deprecated] Use project_id_pattern instead. You can use this property if you only want to ingest one project and don't want to give project resourcemanager.projects.list to your service account",
+                    "description": "[deprecated] Use project_id_pattern or project_ids instead.",
                     "type": "string"
+                },
+                "project_ids": {
+                    "title": "Project Ids",
+                    "description": "Ingests specified project_ids. Use this property if you only want to ingest one project and don't want to give project resourcemanager.projects.list to your service account.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "project_on_behalf": {
                     "title": "Project On Behalf",
-                    "description": "[Advanced] The BigQuery project in which queries are executed. Will be passed when creating a job. If not passed, falls back to the project associated with the service account..",
+                    "description": "[Advanced] The BigQuery project in which queries are executed. Will be passed when creating a job. If not passed, falls back to the project associated with the service account.",
                     "type": "string"
                 },
                 "lineage_use_sql_parser": {
