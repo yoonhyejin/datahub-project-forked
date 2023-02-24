@@ -53,7 +53,7 @@ jobs:
             **/junit.*.xml
       - uses: testspace-com/setup-testspace@v1
         with:
-          domain: ${{github.repository_owner}}
+          domain: ${{ secrets.TESTSPACE_DOMAIN }}
           token: ${{ secrets.TESTSPACE_TOKEN }}
       - name: Publish Results to Testspace
         run: |
