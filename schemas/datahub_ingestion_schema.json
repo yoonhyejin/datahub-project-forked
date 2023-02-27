@@ -7675,7 +7675,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-27T00:11:31.147517+00:00",
+                        "end_time": "2023-02-27T10:16:59.405966+00:00",
                         "start_time": "2023-02-26T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -7743,6 +7743,12 @@
                     "description": "Include full payload into events. It is only for debugging and internal use.",
                     "default": false,
                     "type": "boolean"
+                },
+                "number_of_datasets_process_in_batch_if_profiling_enabled": {
+                    "title": "Number Of Datasets Process In Batch If Profiling Enabled",
+                    "description": "Number of partitioned table queried in batch when getting metadata. This is a low level config property which should be touched with care. This restriction is needed because we query partitions system view which throws error if we try to touch too many tables.",
+                    "default": 80,
+                    "type": "integer"
                 },
                 "column_limit": {
                     "title": "Column Limit",
