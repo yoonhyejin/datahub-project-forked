@@ -1751,6 +1751,12 @@
                     "description": "# Whether or not to create tags in datahub from the s3 object",
                     "type": "boolean"
                 },
+                "update_schema_on_partition_file_updates": {
+                    "title": "Update Schema On Partition File Updates",
+                    "description": "Whether to update the table schema when schema in files within the partitions are updated.",
+                    "default": false,
+                    "type": "boolean"
+                },
                 "profile_patterns": {
                     "title": "Profile Patterns",
                     "description": "regex patterns for tables to profile ",
@@ -7675,7 +7681,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-02-28T07:14:37.656733+00:00",
+                        "end_time": "2023-02-28T08:06:52.212880+00:00",
                         "start_time": "2023-02-27T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
