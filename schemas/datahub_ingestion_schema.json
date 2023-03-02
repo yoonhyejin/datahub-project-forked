@@ -222,11 +222,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -347,11 +342,6 @@
                     "title": "Env",
                     "description": "Environment to use in namespace when constructing URNs.",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -701,25 +691,6 @@
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "The instance of the platform that all assets produced by this recipe belong to",
-                    "type": "string"
-                },
-                "stateful_ingestion": {
-                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
-                },
                 "store_last_profiling_timestamps": {
                     "title": "Store Last Profiling Timestamps",
                     "description": "Enable storing last profile timestamp in store.",
@@ -810,6 +781,20 @@
                     "description": "Allow/deny patterns for views in snowflake dataset names.",
                     "default": false,
                     "type": "boolean"
+                },
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -1243,11 +1228,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -1473,11 +1453,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -1707,12 +1682,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to (either 's3' or 'file'). If not specified, the platform will be inferred from the path_specs.",
-                    "default": "",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -1725,6 +1694,12 @@
                     "items": {
                         "$ref": "#/definitions/PathSpec"
                     }
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to (either 's3' or 'file'). If not specified, the platform will be inferred from the path_specs.",
+                    "default": "",
+                    "type": "string"
                 },
                 "aws_config": {
                     "title": "Aws Config",
@@ -1842,28 +1817,9 @@
         },
         "glue_config": {
             "title": "GlueSourceConfig",
-            "description": "Common AWS credentials config.\n\nCurrently used by:\n    - Glue source\n    - SageMaker source",
+            "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "The instance of the platform that all assets produced by this recipe belong to",
-                    "type": "string"
-                },
-                "stateful_ingestion": {
-                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
-                },
                 "aws_access_key_id": {
                     "title": "Aws Access Key Id",
                     "description": "AWS access key ID. Can be auto-detected, see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html for details.",
@@ -1924,6 +1880,12 @@
                         "type": "string"
                     }
                 },
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
+                },
                 "database_pattern": {
                     "title": "Database Pattern",
                     "description": "regex patterns for databases to filter in ingestion.",
@@ -1955,6 +1917,20 @@
                             "$ref": "#/definitions/AllowDenyPattern"
                         }
                     ]
+                },
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
+                },
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform to use for the dataset URNs. Must be one of ['glue', 'athena'].",
+                    "default": "glue",
+                    "type": "string"
                 },
                 "extract_owners": {
                     "title": "Extract Owners",
@@ -2131,11 +2107,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -2457,12 +2428,8 @@
             "properties": {
                 "env": {
                     "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -2636,11 +2603,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -2978,11 +2940,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -3206,11 +3163,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -3448,11 +3400,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -3732,11 +3679,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -3837,11 +3779,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -4267,11 +4204,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -4478,11 +4410,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -4848,11 +4775,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -5091,11 +5013,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "default": "salesforce",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -5197,6 +5114,11 @@
                             "$ref": "#/definitions/AllowDenyPattern"
                         }
                     ]
+                },
+                "platform": {
+                    "title": "Platform",
+                    "default": "salesforce",
+                    "type": "string"
                 }
             },
             "additionalProperties": false
@@ -5230,13 +5152,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "default": "delta-lake",
-                    "const": "delta-lake",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -5250,6 +5165,13 @@
                 "relative_path": {
                     "title": "Relative Path",
                     "description": "If set, delta-tables will be searched at location '<base_path>/<relative_path>' and URNs will be created using relative_path only.",
+                    "type": "string"
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "The platform that this source connects to",
+                    "default": "delta-lake",
+                    "const": "delta-lake",
                     "type": "string"
                 },
                 "table_pattern": {
@@ -5316,11 +5238,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -5548,11 +5465,6 @@
                     "additionalProperties": {
                         "type": "string"
                     }
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
                 },
                 "platform_instance": {
                     "title": "Platform Instance",
@@ -5980,11 +5892,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -6198,11 +6105,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -6423,11 +6325,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -6631,11 +6528,6 @@
                     "description": "Earliest date of usage to consider. Default: Last full day in UTC (or hour, depending on `bucket_duration`)",
                     "type": "string",
                     "format": "date-time"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
                 },
                 "platform_instance": {
                     "title": "Platform Instance",
@@ -6920,11 +6812,6 @@
                     "type": "string",
                     "format": "date-time"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -7149,11 +7036,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -7421,28 +7303,27 @@
             "description": "Base configuration class for stateful ingestion for source configs to inherit from.",
             "type": "object",
             "properties": {
-                "env": {
-                    "title": "Env",
-                    "description": "The environment that all assets produced by this connector belong to",
-                    "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
-                "platform_instance": {
-                    "title": "Platform Instance",
-                    "description": "The instance of the platform that all assets produced by this recipe belong to",
-                    "type": "string"
-                },
-                "stateful_ingestion": {
-                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
-                },
                 "store_last_profiling_timestamps": {
                     "title": "Store Last Profiling Timestamps",
                     "description": "Enable storing last profile timestamp in store.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "incremental_lineage": {
+                    "title": "Incremental Lineage",
+                    "description": "When enabled, emits lineage as incremental to existing lineage already in DataHub. When disabled, re-states lineage on each run.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "sql_parser_use_external_process": {
+                    "title": "Sql Parser Use External Process",
+                    "description": "When enabled, sql parser will run in isolated in a separate process. This can affect processing time but can protect from sql parser's mem leak.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "store_last_lineage_extraction_timestamp": {
+                    "title": "Store Last Lineage Extraction Timestamp",
+                    "description": "Enable checking last lineage extraction date in store.",
                     "default": false,
                     "type": "boolean"
                 },
@@ -7473,23 +7354,19 @@
                     "default": true,
                     "type": "boolean"
                 },
-                "incremental_lineage": {
-                    "title": "Incremental Lineage",
-                    "description": "When enabled, emits lineage as incremental to existing lineage already in DataHub. When disabled, re-states lineage on each run.",
-                    "default": true,
-                    "type": "boolean"
+                "env": {
+                    "title": "Env",
+                    "description": "The environment that all assets produced by this connector belong to",
+                    "default": "PROD",
+                    "type": "string"
                 },
-                "sql_parser_use_external_process": {
-                    "title": "Sql Parser Use External Process",
-                    "description": "When enabled, sql parser will run in isolated in a separate process. This can affect processing time but can protect from sql parser's mem leak.",
-                    "default": false,
-                    "type": "boolean"
+                "platform_instance": {
+                    "title": "Platform Instance",
+                    "description": "The instance of the platform that all assets produced by this recipe belong to",
+                    "type": "string"
                 },
-                "store_last_lineage_extraction_timestamp": {
-                    "title": "Store Last Lineage Extraction Timestamp",
-                    "description": "Enable checking last lineage extraction date in store.",
-                    "default": false,
-                    "type": "boolean"
+                "stateful_ingestion": {
+                    "$ref": "#/definitions/StatefulStaleMetadataRemovalConfig"
                 },
                 "options": {
                     "title": "Options",
@@ -7670,7 +7547,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-03-02T09:00:11.122292+00:00",
+                        "end_time": "2023-03-02T09:18:12.974406+00:00",
                         "start_time": "2023-03-01T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
@@ -7927,11 +7804,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -8152,11 +8024,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -8358,11 +8225,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -8575,11 +8437,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "Set this to a platform that you want all schemas to live under. e.g. schemaregistry / schemarepo etc.",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -8608,6 +8465,11 @@
                         }
                     ]
                 },
+                "platform": {
+                    "title": "Platform",
+                    "description": "Set this to a platform that you want all schemas to live under. e.g. schemaregistry / schemarepo etc.",
+                    "type": "string"
+                },
                 "use_id_as_base_uri": {
                     "title": "Use Id As Base Uri",
                     "description": "When enabled, uses the `$id` field in the json schema as the base uri for following references.",
@@ -8625,8 +8487,8 @@
                 }
             },
             "required": [
-                "platform",
-                "path"
+                "path",
+                "platform"
             ],
             "additionalProperties": false
         },
@@ -8712,11 +8574,6 @@
                     "title": "Env",
                     "description": "Environment to use in namespace when constructing URNs.",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "stateful_ingestion": {
@@ -8896,18 +8753,13 @@
         },
         "elasticsearch_config": {
             "title": "ElasticsearchSourceConfig",
-            "description": "Any source that is a primary producer of Dataset metadata should inherit this class",
+            "description": "Any source that connects to a platform should inherit this class",
             "type": "object",
             "properties": {
                 "env": {
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
@@ -9174,11 +9026,6 @@
                         "type": "string"
                     }
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -9440,11 +9287,6 @@
                     "default": "PROD",
                     "type": "string"
                 },
-                "platform": {
-                    "title": "Platform",
-                    "description": "Name of platform being ingested, used in constructing URNs.",
-                    "type": "string"
-                },
                 "platform_instance": {
                     "title": "Platform Instance",
                     "description": "The instance of the platform that all assets produced by this recipe belong to",
@@ -9585,6 +9427,11 @@
                             "$ref": "#/definitions/GEProfilingConfig"
                         }
                     ]
+                },
+                "platform": {
+                    "title": "Platform",
+                    "description": "Name of platform being ingested, used in constructing URNs.",
+                    "type": "string"
                 },
                 "connect_uri": {
                     "title": "Connect Uri",
@@ -10007,11 +9854,6 @@
                     "title": "Env",
                     "description": "The environment that all assets produced by this connector belong to",
                     "default": "PROD",
-                    "type": "string"
-                },
-                "platform": {
-                    "title": "Platform",
-                    "description": "The platform that this source connects to",
                     "type": "string"
                 },
                 "platform_instance": {
