@@ -5,45 +5,11 @@ Terms are something you can ~~~. You can do
 * This
 * That
 
-Fore more information about terms, refer to [About Datahub Terms](https://datahubproject.io/docs/terms/).
+Fore more information about terms, refer to [About DataHub Business Glossary](https://datahubproject.io/docs/glossary/business-glossary).
 
 ## Pre-requisites
-
-### Deploy Datahub Quickstart 
-You need a datahub running in local environment. First, install acryl-datahub if you did't yet. 
-```shell
-python3 -m pip install --upgrade pip wheel setuptools
-python3 -m pip install --upgrade acryl-datahub
-```
-If you can see datahub version like this, you're good to go. 
-```shell
-$ datahub version
-DataHub CLI version: 0.10.0.1
-Python version: 3.9.6 (default, Jun 16 2022, 21:38:53)
-[Clang 13.0.0 (clang-1300.0.27.3)]
-```
-
-Run datahub quickstart. This will deploy local datahub server to http://localhost:9002 
-```shell
-datahub docker quickstart
-```
-After logging in with the default credential(`username: datahub / password: datahub`), you can see Datahub ready for you. 
-
-![datahub-main-ui](../../imgs/tutorials/datahub-main-ui.png)
-
-Please refer to [DataHub Quickstart Guide](https://datahubproject.io/docs/quickstart) for more information. 
-
-### Ingest Sample Data
-We will use sample data provided with datahub quickstart. 
-If you already have data on your datahub, you might skip this part. 
-
-```shell
-datahub docker ingest-sample-data 
-```
-This will ingest various entities like datasets, tags and terms to your local Datahub.
-![datahub-main-ui](../../imgs/tutorials/sample-ingestion.png)
-
-## Example Usage
+For this tutorial, you need to deploy Datahub Quickstart and ingest sample data. 
+For detailed information, please refer to [Prepare Local Datahub Environment](http://localhost:3000/docs/dev-guides/tutorials/references/prepare-datahub).
 
 :::note
 Adding terms assumes that you already have a dataset and terms on your datahub.
@@ -51,7 +17,7 @@ If you try to manipulate with entities that does not exist, it might return erro
 :::
 
 
-### Add Terms With Python SDK
+## Add Terms With Python SDK
 
 Following codes add a glossary term named `CustomerAccount` to a column `user_name` of a hive dataset named `fct_users_created`.
 You can refer to a full code in [dataset_add_column_term.py](https://github.com/datahub-project/datahub/blob/master/metadata-ingestion/examples/library/dataset_add_column_term.py).
@@ -165,10 +131,10 @@ else:
 
 ```
 
-### Add Terms With GraphQL
-There are several ways to do it with GraphQL : GraphQL Explorer, HTTP CURL, Postman or GraphQL SDKs. 
+## Add Terms With GraphQL
 
-#### GraphQL Explorer
+### GraphQL Explorer
+GraphQL Explorer is the fastest way to experiment with GraphQL without any dependancies. 
 Navigate to GraphQL Explorer (`http://localhost:9002/api/graphiql`) and run the following query.
 
 ```python
@@ -191,9 +157,9 @@ You are succeeded if you see the following response.
 }
 ```
 
-#### CURL
+### CURL
 
-With CURL, you need to provide tokens. To generate token, please refer [Generate Access Token](http://localhost:3000/docs/dev-guides/tutorials/generate-access-token). 
+With CURL, you need to provide tokens. To generate token, please refer [Generate Access Token](http://localhost:3000/docs/dev-guides/tutorials/references/generate-access-token). 
 With `accessToken`, you can run the following command.
 
 ```shell

@@ -430,8 +430,13 @@ module.exports = {
           "docs/dev-guides/tutorials/adding-tags",
           "docs/dev-guides/tutorials/adding-terms",
           "docs/dev-guides/tutorials/adding-ownerships",
-          "docs/dev-guides/tutorials/generate-access-token",
-          ],
+          {
+            References : [
+              "docs/dev-guides/tutorials/references/generate-access-token",
+              "docs/dev-guides/tutorials/references/prepare-datahub",
+            ],
+          },
+        ],
       },
       "docs/debugging",
       "docs/plugins",
