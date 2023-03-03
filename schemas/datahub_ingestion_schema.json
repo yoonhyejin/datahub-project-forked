@@ -7547,8 +7547,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-03-02T23:08:55.537957+00:00",
-                        "start_time": "2023-03-01T00:00:00+00:00",
+                        "end_time": "2023-03-03T04:26:05.938279+00:00",
+                        "start_time": "2023-03-02T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -8595,7 +8595,7 @@
                 },
                 "projects": {
                     "title": "Projects",
-                    "description": "List of projects",
+                    "description": "[deprecated] Use project_pattern instead. List of tableau projects ",
                     "default": [
                         "default"
                     ],
@@ -8603,6 +8603,28 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "project_pattern": {
+                    "title": "Project Pattern",
+                    "description": "Filter for specific Tableau projects. For example, use 'My Project' to ingest a root-level Project with name 'My Project', or 'My Project/Nested Project' to ingest a nested Project with name 'Nested Project'. By default, all Projects nested inside a matching Project will be included in ingestion. You can both allow and deny projects based on their name using their name, or a Regex pattern. Deny patterns always take precedence over allow patterns. By default, all projects will be ingested.",
+                    "default": {
+                        "allow": [
+                            ".*"
+                        ],
+                        "deny": [],
+                        "ignoreCase": true
+                    },
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/AllowDenyPattern"
+                        }
+                    ]
+                },
+                "project_path_separator": {
+                    "title": "Project Path Separator",
+                    "description": "The separator used for the project_pattern field between project names. By default, we use a slash. You can change this if your Tableau projects contain slashes in their names, and you'd like to filter by project.",
+                    "default": "/",
+                    "type": "string"
                 },
                 "default_schema_map": {
                     "title": "Default Schema Map",
@@ -8658,6 +8680,12 @@
                 "ingest_embed_url": {
                     "title": "Ingest Embed Url",
                     "description": "Ingest a URL to render an embedded Preview of assets within Tableau.",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "extract_project_hierarchy": {
+                    "title": "Extract Project Hierarchy",
+                    "description": "Whether to extract entire project hierarchy for nested projects.",
                     "default": true,
                     "type": "boolean"
                 }
