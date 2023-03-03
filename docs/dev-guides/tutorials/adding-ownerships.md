@@ -1,9 +1,8 @@
 # Adding Ownerships
 
 ## Why Would You Add Ownerships? 
-Ownerships are something you can ~~~. You can do 
-* This
-* That
+Assigning an owner to an entity helps to establish accountability for the metadata and collaborating as a team. 
+If there are any issues or questions about the data, the designated owner can serve as a reliable point of contact.
 
 ## Pre-requisites
 For this tutorial, you need to deploy Datahub Quickstart and ingest sample data. 
