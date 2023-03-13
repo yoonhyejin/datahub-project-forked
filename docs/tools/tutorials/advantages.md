@@ -14,22 +14,25 @@ Below are some simple use-cases to get you started:
 
 ### Advanced Usage 
 Here our some examples of slightly more complex usage:
+* [Adding Lineage](./adding-lineage.md)
+* [Adding Column-level Lineage](./adding-column-level-lineage.md)
 * Adding Tags on Entities Based on Entity Type
 * Ingesting Entities from CSV Files
-* Adding Column-level Lineage
 
 ## Our APIs
 DataHub supports three APIs : GraphQL, SDKs and OpenAPI. Each method has different usage and format. 
 Here's an overview of what each API can do. 
 
-> Last Updated : Mar 10 2023
+> Last Updated : Mar 13 2023
 
-|                                       | GraphQL | SDK | OpenAPI |
-|---------------------------------------|---|---|---|
-| Add Tags/Terms/Ownership to a column of a dataset | ✅ |✅|✅|
-| Add Tags/Terms/Ownership to a dataset | ✅ |✅|✅|
-| Create Dataset                        |   |✅| ✅        |
-| Delete Dataset                        |   | ✅       | ✅  |
-| Search Dataset                        | ✅ |✅| ✅  |
+|                                                        | GraphQL | SDK | OpenAPI |
+|--------------------------------------------------------|---------|---|---|
+| Add tags/terms/ownership to a column of a dataset      | ✅       |✅|✅|
+| Add tags/terms/ownership to a dataset                  | ✅       |✅|✅|
+| Create dataset                                         |         |✅| ✅        |
+| Delete dataset                                         |         | ✅       | ✅  |
+| Search dataset                                         | ✅       |✅| ✅  |
+| Add lineage between datasets                           |         | ✅  | ✅  |
+| Add column-level (find-grained) linage between dataset |         |✅| ✅  |
 
 
