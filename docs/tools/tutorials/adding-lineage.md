@@ -111,5 +111,5 @@ For more information about the `MetadataChangeProposal`, please refer to [Metada
 ## Expected Outcomes
 You can now see lineage between `fct_users_created` and `fct_users_deleted`.
 
-[//]: # (![lineage-added]&#40;../../imgs/tutorials/lineage-added.png&#41;)
+![lineage-added](../../imgs/tutorials/lineage-added.png)
 
