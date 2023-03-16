@@ -5653,7 +5653,7 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-03-16T12:16:31.352726+00:00",
+                        "end_time": "2023-03-16T12:32:38.471578+00:00",
                         "start_time": "2023-03-15T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
