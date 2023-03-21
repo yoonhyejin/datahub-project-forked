@@ -5659,8 +5659,8 @@
                     "description": "Usage related configs",
                     "default": {
                         "bucket_duration": "DAY",
-                        "end_time": "2023-03-20T23:52:02.091015+00:00",
-                        "start_time": "2023-03-19T00:00:00+00:00",
+                        "end_time": "2023-03-21T07:59:08.026302+00:00",
+                        "start_time": "2023-03-20T00:00:00+00:00",
                         "top_n_queries": 10,
                         "user_email_pattern": {
                             "allow": [
@@ -9855,7 +9855,7 @@
                 "connect_uri": {
                     "title": "Connect Uri",
                     "description": "Superset host URL.",
-                    "default": "localhost:8088",
+                    "default": "http://localhost:8088",
                     "type": "string"
                 },
                 "display_uri": {
