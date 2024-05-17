@@ -4,7 +4,7 @@ DataHub provides the ability to easily leverage Confluent Cloud as your Kafka pr
 
 Doing this is a matter of configuring the Kafka Producer and Consumers used by DataHub correctly. There are 2 places where Kafka configuration should be provided: the metadata service (GMS) and the frontend server (datahub-frontend). Follow the steps below to configure these components for your deployment.
 
-T
+This is some changes from the UI&#x20;
 
 ## **Step 1: Create topics in Confluent Control Center**
 
