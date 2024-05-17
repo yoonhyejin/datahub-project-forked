@@ -1,14 +1,16 @@
-# Integrating with Confluent Cloud 
+# Integrating with Confluent Cloud
 
 DataHub provides the ability to easily leverage Confluent Cloud as your Kafka provider. To do so, you'll need to configure DataHub to talk to a broker and schema registry hosted by Confluent.
 
 Doing this is a matter of configuring the Kafka Producer and Consumers used by DataHub correctly. There are 2 places where Kafka configuration should be provided: the metadata service (GMS) and the frontend server (datahub-frontend). Follow the steps below to configure these components for your deployment.
 
+This is some changes from the UI&#x20;
+
 ## **Step 1: Create topics in Confluent Control Center**
 
 First, you'll need to create following new topics in the [Confluent Control Center](https://docs.confluent.io/platform/current/control-center/index.html). By default they have the following names:
 
-1. **MetadataChangeProposal_v1** 
+1. **MetadataChangeProposal_v1**
 2. **FailedMetadataChangeProposal_v1**
 3. **MetadataChangeLog_Versioned_v1**
 4. **MetadataChangeLog_Timeseries_v1**
@@ -17,12 +19,9 @@ First, you'll need to create following new topics in the [Confluent Control Cent
 7. (Deprecated) **MetadataAuditEvent_v4**: Metadata change log messages
 8. (Deprecated) **FailedMetadataChangeEvent_v4**: Failed to process #1 event
 
-The first five are the most important, and are explained in more depth in [MCP/MCL](../advanced/mcp-mcl.md). The final topics are
-those which are deprecated but still used under certain circumstances. It is likely that in the future they will be completely 
-decommissioned. 
+The first five are the most important, and are explained in more depth in [MCP/MCL](../advanced/mcp-mcl.md). The final topics are those which are deprecated but still used under certain circumstances. It is likely that in the future they will be completely decommissioned.
 
-To create the topics, navigate to your **Cluster** and click "Create Topic". Feel free to tweak the default topic configurations to
-match your preferences.
+To create the topics, navigate to your **Cluster** and click "Create Topic". Feel free to tweak the default topic configurations to match your preferences.
 
 ![CreateTopic](../imgs/confluent-create-topic.png)
 
@@ -61,33 +60,30 @@ KAFKA_PROPERTIES_BASIC_AUTH_CREDENTIALS_SOURCE=USER_INFO
 KAFKA_PROPERTIES_BASIC_AUTH_USER_INFO=P2ETAN5QR2LCWL14:RTjqw7AfETDl0RZo/7R0123LhPYs2TGjFKmvMWUFnlJ3uKubFbB1Sfs7aOjjNi1m23
 ```
 
-Note that this step is only required if `DATAHUB_ANALYTICS_ENABLED` environment variable is not explicitly set to false for the datahub-frontend
-container. 
+Note that this step is only required if `DATAHUB_ANALYTICS_ENABLED` environment variable is not explicitly set to false for the datahub-frontend container.
 
 If you're deploying with Docker Compose, you do not need to deploy the Zookeeper, Kafka Broker, or Schema Registry containers that ship by default.
 
 #### DataHub Actions
 
-Configuring Confluent Cloud for DataHub Actions requires some additional edits to your `executor.yaml`. Under the Kafka
-source connection config you will need to add the Python style client connection information:
+Configuring Confluent Cloud for DataHub Actions requires some additional edits to your `executor.yaml`. Under the Kafka source connection config you will need to add the Python style client connection information:
 
 ```yaml
-    connection:
-        bootstrap: ${KAFKA_BOOTSTRAP_SERVER:-localhost:9092}
-        schema_registry_url: ${SCHEMA_REGISTRY_URL:-http://localhost:8081}
-        consumer_config:
-          security.protocol: ${KAFKA_PROPERTIES_SECURITY_PROTOCOL:-PLAINTEXT}
-          sasl.mechanism: ${KAFKA_PROPERTIES_SASL_MECHANISM:-PLAIN}
-          sasl.username: ${KAFKA_PROPERTIES_SASL_USERNAME}
-          sasl.password: ${KAFKA_PROPERTIES_SASL_PASSWORD}
-        schema_registry_config:
-          basic.auth.user.info: ${KAFKA_PROPERTIES_BASIC_AUTH_USER_INFO}
+connection:
+  bootstrap: ${KAFKA_BOOTSTRAP_SERVER:-localhost:9092}
+  schema_registry_url: ${SCHEMA_REGISTRY_URL:-http://localhost:8081}
+  consumer_config:
+    security.protocol: ${KAFKA_PROPERTIES_SECURITY_PROTOCOL:-PLAINTEXT}
+    sasl.mechanism: ${KAFKA_PROPERTIES_SASL_MECHANISM:-PLAIN}
+    sasl.username: ${KAFKA_PROPERTIES_SASL_USERNAME}
+    sasl.password: ${KAFKA_PROPERTIES_SASL_PASSWORD}
+  schema_registry_config:
+    basic.auth.user.info: ${KAFKA_PROPERTIES_BASIC_AUTH_USER_INFO}
 ```
 
 Specifically `sasl.username` and `sasl.password` are the differences from the base `executor.yaml` example file.
 
-Additionally, you will need to set up environment variables for `KAFKA_PROPERTIES_SASL_USERNAME` and `KAFKA_PROPERTIES_SASL_PASSWORD`
-which will use the same username and API Key you generated for the JAAS config.
+Additionally, you will need to set up environment variables for `KAFKA_PROPERTIES_SASL_USERNAME` and `KAFKA_PROPERTIES_SASL_PASSWORD` which will use the same username and API Key you generated for the JAAS config.
 
 See [Overwriting a System Action Config](https://github.com/acryldata/datahub-actions/blob/main/docker/README.md#overwriting-a-system-action-config) for detailed reflection procedures.
 
@@ -115,7 +111,7 @@ First, disable the `cp-schema-registry` service:
 
 ```
 cp-schema-registry:
-  enabled: false 
+  enabled: false
 ```
 
 Next, disable the `kafkaSetupJob` service:
@@ -135,20 +131,15 @@ kafka:
         url: https://plrm-qwlpp.us-east-2.aws.confluent.cloud
 ```
 
-Next, you'll want to create 2 new Kubernetes secrets, one for the JaaS configuration which contains the username and password for Confluent,
-and another for the user info used for connecting to the schema registry. You'll find the values for each within the Confluent Control Center. Specifically,
-select "Clients" -> "Configure new Java Client". You should see a page like the following:
-
+Next, you'll want to create 2 new Kubernetes secrets, one for the JaaS configuration which contains the username and password for Confluent, and another for the user info used for connecting to the schema registry. You'll find the values for each within the Confluent Control Center. Specifically, select "Clients" -> "Configure new Java Client". You should see a page like the following:
 
 ![Config](../imgs/confluent-cloud-config.png)
 
-You'll want to generate both a Kafka Cluster API Key & a Schema Registry key. Once you do so,you should see the config
-automatically populate with your new secrets:
+You'll want to generate both a Kafka Cluster API Key & a Schema Registry key. Once you do so,you should see the config automatically populate with your new secrets:
 
 ![Config](../imgs/confluent-cloud-config-2.png)
 
-You'll need to copy the values of `sasl.jaas.config` and `basic.auth.user.info`
-for the next step.
+You'll need to copy the values of `sasl.jaas.config` and `basic.auth.user.info` for the next step.
 
 The next step is to create K8s secrets containing the config values you've just generated. Specifically, you can run the following commands:
 
@@ -164,8 +155,7 @@ kubectl create secret generic confluent-secrets --from-literal=sasl_jaas_config=
 kubectl create secret generic confluent-secrets --from-literal=basic_auth_user_info="P2ETAN5QR2LCWL14:RTjqw7AfETDl0RZo/7R0123LhPYs2TGjFKmvMWUFnlJ3uKubFbB1Sfs7aOjjNi1m23"
 ```
 
-Finally, we'll configure our containers to pick up the Confluent Kafka Configs by changing two config blocks in our `values.yaml` file. You
-should see these blocks commented at the bottom of the template. You'll want to uncomment them and set them to the following values: 
+Finally, we'll configure our containers to pick up the Confluent Kafka Configs by changing two config blocks in our `values.yaml` file. You should see these blocks commented at the bottom of the template. You'll want to uncomment them and set them to the following values:
 
 ```
 credentialsAndCertsSecrets:
@@ -182,30 +172,28 @@ springKafkaConfigurationOverrides:
       basic.auth.credentials.source: USER_INFO
 ```
 
-Then simply apply the updated `values.yaml` to your K8s cluster via `kubectl apply`. 
+Then simply apply the updated `values.yaml` to your K8s cluster via `kubectl apply`.
 
 #### DataHub Actions
 
-Configuring Confluent Cloud for DataHub Actions requires some additional edits to your `executor.yaml`. Under the Kafka
-source connection config you will need to add the Python style client connection information:
+Configuring Confluent Cloud for DataHub Actions requires some additional edits to your `executor.yaml`. Under the Kafka source connection config you will need to add the Python style client connection information:
 
 ```yaml
-    connection:
-        bootstrap: ${KAFKA_BOOTSTRAP_SERVER:-localhost:9092}
-        schema_registry_url: ${SCHEMA_REGISTRY_URL:-http://localhost:8081}
-        consumer_config:
-          security.protocol: ${KAFKA_PROPERTIES_SECURITY_PROTOCOL:-PLAINTEXT}
-          sasl.mechanism: ${KAFKA_PROPERTIES_SASL_MECHANISM:-PLAIN}
-          sasl.username: ${KAFKA_PROPERTIES_SASL_USERNAME}
-          sasl.password: ${KAFKA_PROPERTIES_SASL_PASSWORD}
-        schema_registry_config:
-          basic.auth.user.info: ${KAFKA_PROPERTIES_BASIC_AUTH_USER_INFO}
+connection:
+  bootstrap: ${KAFKA_BOOTSTRAP_SERVER:-localhost:9092}
+  schema_registry_url: ${SCHEMA_REGISTRY_URL:-http://localhost:8081}
+  consumer_config:
+    security.protocol: ${KAFKA_PROPERTIES_SECURITY_PROTOCOL:-PLAINTEXT}
+    sasl.mechanism: ${KAFKA_PROPERTIES_SASL_MECHANISM:-PLAIN}
+    sasl.username: ${KAFKA_PROPERTIES_SASL_USERNAME}
+    sasl.password: ${KAFKA_PROPERTIES_SASL_PASSWORD}
+  schema_registry_config:
+    basic.auth.user.info: ${KAFKA_PROPERTIES_BASIC_AUTH_USER_INFO}
 ```
 
 Specifically `sasl.username` and `sasl.password` are the differences from the base `executor.yaml` example file.
 
-Additionally, you will need to set up secrets for `KAFKA_PROPERTIES_SASL_USERNAME` and `KAFKA_PROPERTIES_SASL_PASSWORD`
-which will use the same username and API Key you generated for the JAAS config.
+Additionally, you will need to set up secrets for `KAFKA_PROPERTIES_SASL_USERNAME` and `KAFKA_PROPERTIES_SASL_PASSWORD` which will use the same username and API Key you generated for the JAAS config.
 
 See [Overwriting a System Action Config](https://github.com/acryldata/datahub-actions/blob/main/docker/README.md#overwriting-a-system-action-config) for detailed reflection procedures.
 
@@ -222,8 +210,7 @@ credentialsAndCertsSecrets:
 The Actions pod will automatically pick these up in the correctly named environment variables when they are named this exact way.
 
 ## Contribution
+
 Accepting contributions for a setup script compatible with Confluent Cloud!
 
-The kafka-setup-job container we ship with is only compatible with a distribution of Kafka wherein ZooKeeper
-is exposed and available. A version of the job using the [Confluent CLI](https://docs.confluent.io/confluent-cli/current/command-reference/kafka/topic/confluent_kafka_topic_create.html) 
-would be very useful for the broader community. 
+The kafka-setup-job container we ship with is only compatible with a distribution of Kafka wherein ZooKeeper is exposed and available. A version of the job using the [Confluent CLI](https://docs.confluent.io/confluent-cli/current/command-reference/kafka/topic/confluent_kafka_topic_create.html) would be very useful for the broader community.
